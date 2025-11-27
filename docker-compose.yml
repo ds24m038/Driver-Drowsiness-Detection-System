@@ -1,0 +1,42 @@
+version: '3.8'
+
+services:
+  redis:
+    image: redis:alpine
+    ports:
+      - "6379:6379"
+    networks:
+      - app-network
+
+  frontend:
+    build: ./frontend
+    ports:
+      - "8501:8501"
+    environment:
+      - REDIS_HOST=redis
+    depends_on:
+      - redis
+    networks:
+      - app-network
+
+  backend:
+    build: ./backend
+    environment:
+      - REDIS_HOST=redis
+      # Pass the API key here. 
+      # ideally use: - WANDB_API_KEY=${WANDB_API_KEY} and a .env file, 
+      # but for now, you can paste it directly or keep your hardcoded fallback.
+      - WANDB_API_KEY=${WANDB_API_KEY}
+    depends_on:
+      - redis
+    shm_size: '2gb'
+    volumes:
+      # Mount your specific model file. 
+      # Ensure your local file is named 'resnet18_drowsiness.pt' to match your code logic
+      - ./backend/resnet18_drowsiness.pt:/app/resnet18_drowsiness.pt
+    networks:
+      - app-network
+
+networks:
+  app-network:
+    driver: bridge

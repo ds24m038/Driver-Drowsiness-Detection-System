@@ -1,0 +1,7 @@
+torch
+torchvision
+redis
+numpy
+opencv-python-headless
+wandb
+Pillow
