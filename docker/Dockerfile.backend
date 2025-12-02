@@ -1,0 +1,36 @@
+# FastAPI Backend Dockerfile
+FROM python:3.11-slim
+
+# Install system dependencies for OpenCV (if needed)
+RUN apt-get update && apt-get install -y \
+    libgl1 \
+    libglib2.0-0 \
+    && rm -rf /var/lib/apt/lists/*
+
+# Install UV
+RUN pip install uv
+
+# Set working directory
+WORKDIR /app
+
+# Copy dependency files
+COPY pyproject.toml ./
+
+# Install dependencies using UV
+RUN uv pip install --system -e .
+
+# Copy source code
+COPY src/ ./src/
+
+# Create models directory
+RUN mkdir -p /app/models
+
+# Set PYTHONPATH to include /app
+ENV PYTHONPATH=/app
+
+# Expose port
+EXPOSE 8000
+
+# Run FastAPI app
+CMD ["uvicorn", "src.backend.main:app", "--host", "0.0.0.0", "--port", "8000"]
+

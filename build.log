@@ -1,0 +1,2009 @@
+Compose can now delegate builds to bake for better performance.
+ To do so, set COMPOSE_BAKE=true.
+#0 building with "desktop-linux" instance using docker driver
+
+#1 [api internal] load build definition from Dockerfile.backend
+#1 transferring dockerfile: 699B done
+#1 DONE 0.0s
+
+#2 [alarm_manager internal] load build definition from Dockerfile.alarm
+#2 transferring dockerfile: 425B done
+#2 DONE 0.0s
+
+#3 [api internal] load metadata for docker.io/library/python:3.11-slim
+#3 DONE 0.0s
+
+#4 [api internal] load .dockerignore
+#4 transferring context: 2B done
+#4 DONE 0.0s
+
+#5 [alarm_manager internal] load .dockerignore
+#5 transferring context: 2B done
+#5 DONE 0.0s
+
+#6 [api internal] load build context
+#6 DONE 0.0s
+
+#7 [alarm_manager internal] load build context
+#7 transferring context: 2.12kB done
+#7 DONE 0.0s
+
+#8 [api 1/6] FROM docker.io/library/python:3.11-slim@sha256:193fdd0bbcb3d2ae612bd6cc3548d2f7c78d65b549fcaa8af75624c47474444d
+#8 resolve docker.io/library/python:3.11-slim@sha256:193fdd0bbcb3d2ae612bd6cc3548d2f7c78d65b549fcaa8af75624c47474444d
+#8 resolve docker.io/library/python:3.11-slim@sha256:193fdd0bbcb3d2ae612bd6cc3548d2f7c78d65b549fcaa8af75624c47474444d 1.0s done
+#8 resolve docker.io/library/python:3.11-slim@sha256:193fdd0bbcb3d2ae612bd6cc3548d2f7c78d65b549fcaa8af75624c47474444d 1.0s done
+#8 CACHED
+
+#6 [api internal] load build context
+#6 transferring context: 2.88kB done
+#6 DONE 0.0s
+
+#9 [api 2/8] RUN apt-get update && apt-get install -y     libgl1     libglib2.0-0     && rm -rf /var/lib/apt/lists/*
+#9 0.216 Hit:1 http://deb.debian.org/debian trixie InRelease
+#9 0.225 Get:2 http://deb.debian.org/debian trixie-updates InRelease [47.3 kB]
+#9 0.263 Get:3 http://deb.debian.org/debian-security trixie-security InRelease [43.4 kB]
+#9 0.283 Get:4 http://deb.debian.org/debian trixie/main arm64 Packages [9607 kB]
+#9 3.638 Get:5 http://deb.debian.org/debian trixie-updates/main arm64 Packages [5404 B]
+#9 3.647 Get:6 http://deb.debian.org/debian-security trixie-security/main arm64 Packages [76.7 kB]
+#9 4.303 Fetched 9779 kB in 4s (2365 kB/s)
+#9 4.303 Reading package lists...
+#9 4.639 Reading package lists...
+#9 4.980 Building dependency tree...
+#9 5.085 Reading state information...
+#9 5.241 The following additional packages will be installed:
+#9 5.241   libatomic1 libdrm-amdgpu1 libdrm-common libdrm2 libedit2 libelf1t64
+#9 5.241   libexpat1 libgbm1 libgl1-mesa-dri libglib2.0-data libglvnd0 libglx-mesa0
+#9 5.241   libglx0 libllvm19 libsensors-config libsensors5 libvulkan1
+#9 5.241   libwayland-client0 libwayland-server0 libx11-6 libx11-data libx11-xcb1
+#9 5.241   libxau6 libxcb-dri3-0 libxcb-glx0 libxcb-present0 libxcb-randr0 libxcb-shm0
+#9 5.241   libxcb-sync1 libxcb-xfixes0 libxcb1 libxdmcp6 libxext6 libxml2 libxshmfence1
+#9 5.241   libxxf86vm1 libz3-4 mesa-libgallium mesa-vulkan-drivers shared-mime-info
+#9 5.241   xdg-user-dirs
+#9 5.242 Suggested packages:
+#9 5.242   low-memory-monitor lm-sensors
+#9 5.407 The following NEW packages will be installed:
+#9 5.407   libatomic1 libdrm-amdgpu1 libdrm-common libdrm2 libedit2 libelf1t64
+#9 5.407   libexpat1 libgbm1 libgl1 libgl1-mesa-dri libglib2.0-0t64 libglib2.0-data
+#9 5.407   libglvnd0 libglx-mesa0 libglx0 libllvm19 libsensors-config libsensors5
+#9 5.407   libvulkan1 libwayland-client0 libwayland-server0 libx11-6 libx11-data
+#9 5.407   libx11-xcb1 libxau6 libxcb-dri3-0 libxcb-glx0 libxcb-present0 libxcb-randr0
+#9 5.407   libxcb-shm0 libxcb-sync1 libxcb-xfixes0 libxcb1 libxdmcp6 libxext6 libxml2
+#9 5.407   libxshmfence1 libxxf86vm1 libz3-4 mesa-libgallium mesa-vulkan-drivers
+#9 5.407   shared-mime-info xdg-user-dirs
+#9 5.448 0 upgraded, 43 newly installed, 0 to remove and 0 not upgraded.
+#9 5.448 Need to get 57.9 MB of archives.
+#9 5.448 After this operation, 295 MB of additional disk space will be used.
+#9 5.448 Get:1 http://deb.debian.org/debian trixie/main arm64 libexpat1 arm64 2.7.1-2 [93.3 kB]
+#9 5.491 Get:2 http://deb.debian.org/debian trixie/main arm64 libatomic1 arm64 14.2.0-19 [10.1 kB]
+#9 5.494 Get:3 http://deb.debian.org/debian trixie/main arm64 libdrm-common all 2.4.124-2 [8288 B]
+#9 5.497 Get:4 http://deb.debian.org/debian trixie/main arm64 libdrm2 arm64 2.4.124-2 [38.3 kB]
+#9 5.517 Get:5 http://deb.debian.org/debian trixie/main arm64 libdrm-amdgpu1 arm64 2.4.124-2 [21.8 kB]
+#9 5.525 Get:6 http://deb.debian.org/debian trixie/main arm64 libedit2 arm64 3.1-20250104-1 [89.3 kB]
+#9 5.567 Get:7 http://deb.debian.org/debian trixie/main arm64 libelf1t64 arm64 0.192-4 [189 kB]
+#9 5.648 Get:8 http://deb.debian.org/debian trixie/main arm64 libwayland-server0 arm64 1.23.1-3 [33.7 kB]
+#9 5.664 Get:9 http://deb.debian.org/debian trixie/main arm64 libxml2 arm64 2.12.7+dfsg+really2.9.14-2.1+deb13u2 [630 kB]
+#9 5.848 Get:10 http://deb.debian.org/debian trixie/main arm64 libz3-4 arm64 4.13.3-1 [7507 kB]
+#9 7.896 Get:11 http://deb.debian.org/debian trixie/main arm64 libllvm19 arm64 1:19.1.7-3+b1 [23.3 MB]
+#9 ...
+
+#10 [alarm_manager 2/6] RUN pip install uv
+#10 1.446 Collecting uv
+#10 1.597   Downloading uv-0.9.14-py3-none-manylinux_2_28_aarch64.whl.metadata (11 kB)
+#10 1.648 Downloading uv-0.9.14-py3-none-manylinux_2_28_aarch64.whl (20.5 MB)
+#10 ...
+
+#9 [api 2/8] RUN apt-get update && apt-get install -y     libgl1     libglib2.0-0     && rm -rf /var/lib/apt/lists/*
+#9 16.23 Get:12 http://deb.debian.org/debian trixie/main arm64 libsensors-config all 1:3.6.2-2 [16.2 kB]
+#9 16.23 Get:13 http://deb.debian.org/debian trixie/main arm64 libsensors5 arm64 1:3.6.2-2 [36.4 kB]
+#9 16.25 Get:14 http://deb.debian.org/debian trixie/main arm64 libxau6 arm64 1:1.0.11-1 [20.6 kB]
+#9 16.27 Get:15 http://deb.debian.org/debian trixie/main arm64 libxdmcp6 arm64 1:1.1.5-1 [27.8 kB]
+#9 16.29 Get:16 http://deb.debian.org/debian trixie/main arm64 libxcb1 arm64 1.17.0-2+b1 [143 kB]
+#9 16.42 Get:17 http://deb.debian.org/debian trixie/main arm64 libx11-data all 2:1.8.12-1 [343 kB]
+#9 16.68 Get:18 http://deb.debian.org/debian trixie/main arm64 libx11-6 arm64 2:1.8.12-1 [795 kB]
+#9 16.90 Get:19 http://deb.debian.org/debian trixie/main arm64 libx11-xcb1 arm64 2:1.8.12-1 [247 kB]
+#9 16.97 Get:20 http://deb.debian.org/debian trixie/main arm64 libxcb-dri3-0 arm64 1.17.0-2+b1 [107 kB]
+#9 17.00 Get:21 http://deb.debian.org/debian trixie/main arm64 libxcb-present0 arm64 1.17.0-2+b1 [106 kB]
+#9 17.04 Get:22 http://deb.debian.org/debian trixie/main arm64 libxcb-randr0 arm64 1.17.0-2+b1 [117 kB]
+#9 17.07 Get:23 http://deb.debian.org/debian trixie/main arm64 libxcb-sync1 arm64 1.17.0-2+b1 [109 kB]
+#9 17.10 Get:24 http://deb.debian.org/debian trixie/main arm64 libxcb-xfixes0 arm64 1.17.0-2+b1 [110 kB]
+#9 17.13 Get:25 http://deb.debian.org/debian trixie/main arm64 libxshmfence1 arm64 1.3.3-1 [11.1 kB]
+#9 17.13 Get:26 http://deb.debian.org/debian trixie/main arm64 mesa-libgallium arm64 25.0.7-2 [8032 kB]
+#9 19.32 Get:27 http://deb.debian.org/debian trixie/main arm64 libgbm1 arm64 25.0.7-2 [43.9 kB]
+#9 19.34 Get:28 http://deb.debian.org/debian trixie/main arm64 libglvnd0 arm64 1.7.0-1+b2 [41.6 kB]
+#9 19.36 Get:29 http://deb.debian.org/debian trixie/main arm64 libxcb-glx0 arm64 1.17.0-2+b1 [123 kB]
+#9 19.39 Get:30 http://deb.debian.org/debian trixie/main arm64 libxcb-shm0 arm64 1.17.0-2+b1 [105 kB]
+#9 19.43 Get:31 http://deb.debian.org/debian trixie/main arm64 libxext6 arm64 2:1.3.4-1+b3 [49.2 kB]
+#9 19.44 Get:32 http://deb.debian.org/debian trixie/main arm64 libxxf86vm1 arm64 1:1.1.4-1+b4 [19.2 kB]
+#9 19.46 Get:33 http://deb.debian.org/debian trixie/main arm64 libvulkan1 arm64 1.4.309.0-1 [127 kB]
+#9 19.50 Get:34 http://deb.debian.org/debian trixie/main arm64 libgl1-mesa-dri arm64 25.0.7-2 [45.8 kB]
+#9 19.53 Get:35 http://deb.debian.org/debian trixie/main arm64 libglx-mesa0 arm64 25.0.7-2 [142 kB]
+#9 19.60 Get:36 http://deb.debian.org/debian trixie/main arm64 libglx0 arm64 1.7.0-1+b2 [31.1 kB]
+#9 19.60 Get:37 http://deb.debian.org/debian trixie/main arm64 libgl1 arm64 1.7.0-1+b2 [90.9 kB]
+#9 19.68 Get:38 http://deb.debian.org/debian trixie/main arm64 libglib2.0-0t64 arm64 2.84.4-3~deb13u1 [1427 kB]
+#9 ...
+
+#10 [alarm_manager 2/6] RUN pip install uv
+#10 19.27    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 20.5/20.5 MB 828.2 kB/s eta 0:00:00
+#10 19.32 Installing collected packages: uv
+#10 19.52 Successfully installed uv-0.9.14
+#10 19.52 WARNING: Running pip as the 'root' user can result in broken permissions and conflicting behaviour with the system package manager. It is recommended to use a virtual environment instead: https://pip.pypa.io/warnings/venv
+#10 19.76 
+#10 19.76 [notice] A new release of pip is available: 24.0 -> 25.3
+#10 19.76 [notice] To update, run: pip install --upgrade pip
+#10 DONE 20.0s
+
+#11 [alarm_manager 3/6] WORKDIR /app
+#11 DONE 0.0s
+
+#12 [alarm_manager 4/6] COPY pyproject.toml ./
+#12 DONE 0.0s
+
+#13 [alarm_manager 5/6] RUN uv pip install --system -e .
+#13 0.169 Using Python 3.11.14 environment at: /usr/local
+#13 5.201 Resolved 153 packages in 5.02s
+#13 5.205    Building driver-drowsiness-detection @ file:///app
+#13 5.333 Downloading pygments (1.2MiB)
+#13 5.438 Downloading kiwisolver (1.2MiB)
+#13 5.438 Downloading widgetsnbextension (2.1MiB)
+#13 5.439 Downloading sympy (6.0MiB)
+#13 5.439 Downloading uvloop (3.6MiB)
+#13 5.439 Downloading babel (9.7MiB)
+#13 5.440 Downloading streamlit (9.7MiB)
+#13 5.440 Downloading jupyterlab (11.8MiB)
+#13 5.442 Downloading notebook (13.8MiB)
+#13 5.442 Downloading pandas (11.6MiB)
+#13 5.443 Downloading matplotlib (9.1MiB)
+#13 5.443 Downloading pyarrow (39.2MiB)
+#13 5.443 Downloading scikit-learn (9.1MiB)
+#13 5.443 Downloading networkx (2.0MiB)
+#13 5.443 Downloading wandb (17.9MiB)
+#13 5.444 Downloading pydeck (6.6MiB)
+#13 5.445 Downloading scipy (32.0MiB)
+#13 5.445 Downloading opencv-python (43.8MiB)
+#13 5.445 Downloading torch (99.4MiB)
+#13 5.445 Downloading pydantic-core (1.8MiB)
+#13 5.446 Downloading debugpy (5.0MiB)
+#13 5.452 Downloading torchvision (2.3MiB)
+#13 5.453 Downloading numpy (13.6MiB)
+#13 5.453 Downloading pillow (6.1MiB)
+#13 5.453 Downloading jedi (1.5MiB)
+#13 5.454 Downloading fonttools (4.8MiB)
+#13 ...
+
+#9 [api 2/8] RUN apt-get update && apt-get install -y     libgl1     libglib2.0-0     && rm -rf /var/lib/apt/lists/*
+#9 20.02 Get:39 http://deb.debian.org/debian trixie/main arm64 libglib2.0-data all 2.84.4-3~deb13u1 [1286 kB]
+#9 20.33 Get:40 http://deb.debian.org/debian trixie/main arm64 libwayland-client0 arm64 1.23.1-3 [26.1 kB]
+#9 20.36 Get:41 http://deb.debian.org/debian trixie/main arm64 mesa-vulkan-drivers arm64 25.0.7-2 [11.4 MB]
+#9 25.65 Get:42 http://deb.debian.org/debian trixie/main arm64 shared-mime-info arm64 2.4-5+b2 [756 kB]
+#9 25.88 Get:43 http://deb.debian.org/debian trixie/main arm64 xdg-user-dirs arm64 0.18-2 [53.2 kB]
+#9 26.08 debconf: unable to initialize frontend: Dialog
+#9 26.08 debconf: (TERM is not set, so the dialog frontend is not usable.)
+#9 26.08 debconf: falling back to frontend: Readline
+#9 26.08 debconf: unable to initialize frontend: Readline
+#9 26.08 debconf: (Can't locate Term/ReadLine.pm in @INC (you may need to install the Term::ReadLine module) (@INC entries checked: /etc/perl /usr/local/lib/aarch64-linux-gnu/perl/5.40.1 /usr/local/share/perl/5.40.1 /usr/lib/aarch64-linux-gnu/perl5/5.40 /usr/share/perl5 /usr/lib/aarch64-linux-gnu/perl-base /usr/lib/aarch64-linux-gnu/perl/5.40 /usr/share/perl/5.40 /usr/local/lib/site_perl) at /usr/share/perl5/Debconf/FrontEnd/Readline.pm line 8, <STDIN> line 43.)
+#9 26.08 debconf: falling back to frontend: Teletype
+#9 26.08 debconf: unable to initialize frontend: Teletype
+#9 26.08 debconf: (This frontend requires a controlling tty.)
+#9 26.08 debconf: falling back to frontend: Noninteractive
+#9 27.18 Fetched 57.9 MB in 20s (2825 kB/s)
+#9 27.20 Selecting previously unselected package libexpat1:arm64.
+#9 27.20 (Reading database ... (Reading database ... 5%(Reading database ... 10%(Reading database ... 15%(Reading database ... 20%(Reading database ... 25%(Reading database ... 30%(Reading database ... 35%(Reading database ... 40%(Reading database ... 45%(Reading database ... 50%(Reading database ... 55%(Reading database ... 60%(Reading database ... 65%(Reading database ... 70%(Reading database ... 75%(Reading database ... 80%(Reading database ... 85%(Reading database ... 90%(Reading database ... 95%(Reading database ... 100%(Reading database ... 5642 files and directories currently installed.)
+#9 27.22 Preparing to unpack .../00-libexpat1_2.7.1-2_arm64.deb ...
+#9 27.22 Unpacking libexpat1:arm64 (2.7.1-2) ...
+#9 27.25 Selecting previously unselected package libatomic1:arm64.
+#9 27.25 Preparing to unpack .../01-libatomic1_14.2.0-19_arm64.deb ...
+#9 27.25 Unpacking libatomic1:arm64 (14.2.0-19) ...
+#9 27.26 Selecting previously unselected package libdrm-common.
+#9 27.26 Preparing to unpack .../02-libdrm-common_2.4.124-2_all.deb ...
+#9 27.26 Unpacking libdrm-common (2.4.124-2) ...
+#9 27.27 Selecting previously unselected package libdrm2:arm64.
+#9 27.28 Preparing to unpack .../03-libdrm2_2.4.124-2_arm64.deb ...
+#9 27.28 Unpacking libdrm2:arm64 (2.4.124-2) ...
+#9 27.30 Selecting previously unselected package libdrm-amdgpu1:arm64.
+#9 27.30 Preparing to unpack .../04-libdrm-amdgpu1_2.4.124-2_arm64.deb ...
+#9 27.30 Unpacking libdrm-amdgpu1:arm64 (2.4.124-2) ...
+#9 27.32 Selecting previously unselected package libedit2:arm64.
+#9 27.32 Preparing to unpack .../05-libedit2_3.1-20250104-1_arm64.deb ...
+#9 27.32 Unpacking libedit2:arm64 (3.1-20250104-1) ...
+#9 27.36 Selecting previously unselected package libelf1t64:arm64.
+#9 27.37 Preparing to unpack .../06-libelf1t64_0.192-4_arm64.deb ...
+#9 27.38 Unpacking libelf1t64:arm64 (0.192-4) ...
+#9 27.44 Selecting previously unselected package libwayland-server0:arm64.
+#9 27.44 Preparing to unpack .../07-libwayland-server0_1.23.1-3_arm64.deb ...
+#9 27.46 Unpacking libwayland-server0:arm64 (1.23.1-3) ...
+#9 27.49 Selecting previously unselected package libxml2:arm64.
+#9 27.49 Preparing to unpack .../08-libxml2_2.12.7+dfsg+really2.9.14-2.1+deb13u2_arm64.deb ...
+#9 27.49 Unpacking libxml2:arm64 (2.12.7+dfsg+really2.9.14-2.1+deb13u2) ...
+#9 27.55 Selecting previously unselected package libz3-4:arm64.
+#9 27.55 Preparing to unpack .../09-libz3-4_4.13.3-1_arm64.deb ...
+#9 27.55 Unpacking libz3-4:arm64 (4.13.3-1) ...
+#9 28.30 Selecting previously unselected package libllvm19:arm64.
+#9 28.30 Preparing to unpack .../10-libllvm19_1%3a19.1.7-3+b1_arm64.deb ...
+#9 28.30 Unpacking libllvm19:arm64 (1:19.1.7-3+b1) ...
+#9 29.02 Selecting previously unselected package libsensors-config.
+#9 29.02 Preparing to unpack .../11-libsensors-config_1%3a3.6.2-2_all.deb ...
+#9 29.03 Unpacking libsensors-config (1:3.6.2-2) ...
+#9 29.04 Selecting previously unselected package libsensors5:arm64.
+#9 29.04 Preparing to unpack .../12-libsensors5_1%3a3.6.2-2_arm64.deb ...
+#9 29.05 Unpacking libsensors5:arm64 (1:3.6.2-2) ...
+#9 29.06 Selecting previously unselected package libxau6:arm64.
+#9 29.06 Preparing to unpack .../13-libxau6_1%3a1.0.11-1_arm64.deb ...
+#9 29.06 Unpacking libxau6:arm64 (1:1.0.11-1) ...
+#9 29.07 Selecting previously unselected package libxdmcp6:arm64.
+#9 29.07 Preparing to unpack .../14-libxdmcp6_1%3a1.1.5-1_arm64.deb ...
+#9 29.07 Unpacking libxdmcp6:arm64 (1:1.1.5-1) ...
+#9 29.09 Selecting previously unselected package libxcb1:arm64.
+#9 29.09 Preparing to unpack .../15-libxcb1_1.17.0-2+b1_arm64.deb ...
+#9 29.09 Unpacking libxcb1:arm64 (1.17.0-2+b1) ...
+#9 29.11 Selecting previously unselected package libx11-data.
+#9 29.12 Preparing to unpack .../16-libx11-data_2%3a1.8.12-1_all.deb ...
+#9 29.12 Unpacking libx11-data (2:1.8.12-1) ...
+#9 29.15 Selecting previously unselected package libx11-6:arm64.
+#9 29.15 Preparing to unpack .../17-libx11-6_2%3a1.8.12-1_arm64.deb ...
+#9 29.15 Unpacking libx11-6:arm64 (2:1.8.12-1) ...
+#9 29.19 Selecting previously unselected package libx11-xcb1:arm64.
+#9 29.19 Preparing to unpack .../18-libx11-xcb1_2%3a1.8.12-1_arm64.deb ...
+#9 29.20 Unpacking libx11-xcb1:arm64 (2:1.8.12-1) ...
+#9 29.21 Selecting previously unselected package libxcb-dri3-0:arm64.
+#9 29.21 Preparing to unpack .../19-libxcb-dri3-0_1.17.0-2+b1_arm64.deb ...
+#9 29.22 Unpacking libxcb-dri3-0:arm64 (1.17.0-2+b1) ...
+#9 29.23 Selecting previously unselected package libxcb-present0:arm64.
+#9 29.24 Preparing to unpack .../20-libxcb-present0_1.17.0-2+b1_arm64.deb ...
+#9 29.24 Unpacking libxcb-present0:arm64 (1.17.0-2+b1) ...
+#9 29.25 Selecting previously unselected package libxcb-randr0:arm64.
+#9 29.25 Preparing to unpack .../21-libxcb-randr0_1.17.0-2+b1_arm64.deb ...
+#9 29.25 Unpacking libxcb-randr0:arm64 (1.17.0-2+b1) ...
+#9 29.27 Selecting previously unselected package libxcb-sync1:arm64.
+#9 29.27 Preparing to unpack .../22-libxcb-sync1_1.17.0-2+b1_arm64.deb ...
+#9 29.27 Unpacking libxcb-sync1:arm64 (1.17.0-2+b1) ...
+#9 29.29 Selecting previously unselected package libxcb-xfixes0:arm64.
+#9 29.29 Preparing to unpack .../23-libxcb-xfixes0_1.17.0-2+b1_arm64.deb ...
+#9 29.29 Unpacking libxcb-xfixes0:arm64 (1.17.0-2+b1) ...
+#9 29.31 Selecting previously unselected package libxshmfence1:arm64.
+#9 29.31 Preparing to unpack .../24-libxshmfence1_1.3.3-1_arm64.deb ...
+#9 29.31 Unpacking libxshmfence1:arm64 (1.3.3-1) ...
+#9 29.32 Selecting previously unselected package mesa-libgallium:arm64.
+#9 29.32 Preparing to unpack .../25-mesa-libgallium_25.0.7-2_arm64.deb ...
+#9 29.33 Unpacking mesa-libgallium:arm64 (25.0.7-2) ...
+#9 29.73 Selecting previously unselected package libgbm1:arm64.
+#9 29.73 Preparing to unpack .../26-libgbm1_25.0.7-2_arm64.deb ...
+#9 29.73 Unpacking libgbm1:arm64 (25.0.7-2) ...
+#9 29.76 Selecting previously unselected package libglvnd0:arm64.
+#9 29.76 Preparing to unpack .../27-libglvnd0_1.7.0-1+b2_arm64.deb ...
+#9 29.76 Unpacking libglvnd0:arm64 (1.7.0-1+b2) ...
+#9 29.78 Selecting previously unselected package libxcb-glx0:arm64.
+#9 29.78 Preparing to unpack .../28-libxcb-glx0_1.17.0-2+b1_arm64.deb ...
+#9 29.78 Unpacking libxcb-glx0:arm64 (1.17.0-2+b1) ...
+#9 29.80 Selecting previously unselected package libxcb-shm0:arm64.
+#9 29.80 Preparing to unpack .../29-libxcb-shm0_1.17.0-2+b1_arm64.deb ...
+#9 29.81 Unpacking libxcb-shm0:arm64 (1.17.0-2+b1) ...
+#9 29.83 Selecting previously unselected package libxext6:arm64.
+#9 29.83 Preparing to unpack .../30-libxext6_2%3a1.3.4-1+b3_arm64.deb ...
+#9 29.83 Unpacking libxext6:arm64 (2:1.3.4-1+b3) ...
+#9 29.85 Selecting previously unselected package libxxf86vm1:arm64.
+#9 29.85 Preparing to unpack .../31-libxxf86vm1_1%3a1.1.4-1+b4_arm64.deb ...
+#9 29.85 Unpacking libxxf86vm1:arm64 (1:1.1.4-1+b4) ...
+#9 29.87 Selecting previously unselected package libvulkan1:arm64.
+#9 29.87 Preparing to unpack .../32-libvulkan1_1.4.309.0-1_arm64.deb ...
+#9 29.87 Unpacking libvulkan1:arm64 (1.4.309.0-1) ...
+#9 29.89 Selecting previously unselected package libgl1-mesa-dri:arm64.
+#9 29.89 Preparing to unpack .../33-libgl1-mesa-dri_25.0.7-2_arm64.deb ...
+#9 29.90 Unpacking libgl1-mesa-dri:arm64 (25.0.7-2) ...
+#9 29.92 Selecting previously unselected package libglx-mesa0:arm64.
+#9 29.92 Preparing to unpack .../34-libglx-mesa0_25.0.7-2_arm64.deb ...
+#9 29.92 Unpacking libglx-mesa0:arm64 (25.0.7-2) ...
+#9 29.94 Selecting previously unselected package libglx0:arm64.
+#9 29.94 Preparing to unpack .../35-libglx0_1.7.0-1+b2_arm64.deb ...
+#9 29.94 Unpacking libglx0:arm64 (1.7.0-1+b2) ...
+#9 29.96 Selecting previously unselected package libgl1:arm64.
+#9 29.96 Preparing to unpack .../36-libgl1_1.7.0-1+b2_arm64.deb ...
+#9 29.96 Unpacking libgl1:arm64 (1.7.0-1+b2) ...
+#9 29.99 Selecting previously unselected package libglib2.0-0t64:arm64.
+#9 29.99 Preparing to unpack .../37-libglib2.0-0t64_2.84.4-3~deb13u1_arm64.deb ...
+#9 29.99 Unpacking libglib2.0-0t64:arm64 (2.84.4-3~deb13u1) ...
+#9 30.07 Selecting previously unselected package libglib2.0-data.
+#9 30.07 Preparing to unpack .../38-libglib2.0-data_2.84.4-3~deb13u1_all.deb ...
+#9 30.08 Unpacking libglib2.0-data (2.84.4-3~deb13u1) ...
+#9 30.16 Selecting previously unselected package libwayland-client0:arm64.
+#9 30.16 Preparing to unpack .../39-libwayland-client0_1.23.1-3_arm64.deb ...
+#9 30.16 Unpacking libwayland-client0:arm64 (1.23.1-3) ...
+#9 30.18 Selecting previously unselected package mesa-vulkan-drivers:arm64.
+#9 30.18 Preparing to unpack .../40-mesa-vulkan-drivers_25.0.7-2_arm64.deb ...
+#9 30.18 Unpacking mesa-vulkan-drivers:arm64 (25.0.7-2) ...
+#9 30.63 Selecting previously unselected package shared-mime-info.
+#9 30.63 Preparing to unpack .../41-shared-mime-info_2.4-5+b2_arm64.deb ...
+#9 30.63 Unpacking shared-mime-info (2.4-5+b2) ...
+#9 30.71 Selecting previously unselected package xdg-user-dirs.
+#9 30.71 Preparing to unpack .../42-xdg-user-dirs_0.18-2_arm64.deb ...
+#9 30.71 Unpacking xdg-user-dirs (0.18-2) ...
+#9 30.74 Setting up libexpat1:arm64 (2.7.1-2) ...
+#9 30.75 Setting up libwayland-server0:arm64 (1.23.1-3) ...
+#9 30.75 Setting up libxau6:arm64 (1:1.0.11-1) ...
+#9 30.76 Setting up libxdmcp6:arm64 (1:1.1.5-1) ...
+#9 30.76 Setting up libxcb1:arm64 (1.17.0-2+b1) ...
+#9 30.76 Setting up libxcb-xfixes0:arm64 (1.17.0-2+b1) ...
+#9 30.77 Setting up xdg-user-dirs (0.18-2) ...
+#9 30.78 Setting up libglvnd0:arm64 (1.7.0-1+b2) ...
+#9 30.78 Setting up libxcb-glx0:arm64 (1.17.0-2+b1) ...
+#9 30.78 Setting up libedit2:arm64 (3.1-20250104-1) ...
+#9 30.79 Setting up libsensors-config (1:3.6.2-2) ...
+#9 30.79 Setting up libxcb-shm0:arm64 (1.17.0-2+b1) ...
+#9 30.80 Setting up libelf1t64:arm64 (0.192-4) ...
+#9 30.80 Setting up libxcb-present0:arm64 (1.17.0-2+b1) ...
+#9 30.80 Setting up libz3-4:arm64 (4.13.3-1) ...
+#9 30.81 Setting up libglib2.0-data (2.84.4-3~deb13u1) ...
+#9 30.81 Setting up libx11-data (2:1.8.12-1) ...
+#9 30.82 Setting up libxcb-sync1:arm64 (1.17.0-2+b1) ...
+#9 30.82 Setting up libatomic1:arm64 (14.2.0-19) ...
+#9 30.83 Setting up libsensors5:arm64 (1:3.6.2-2) ...
+#9 30.83 Setting up libvulkan1:arm64 (1.4.309.0-1) ...
+#9 30.83 Setting up libxshmfence1:arm64 (1.3.3-1) ...
+#9 30.84 Setting up libxcb-randr0:arm64 (1.17.0-2+b1) ...
+#9 30.84 Setting up libx11-6:arm64 (2:1.8.12-1) ...
+#9 30.85 Setting up libdrm-common (2.4.124-2) ...
+#9 30.85 Setting up libxml2:arm64 (2.12.7+dfsg+really2.9.14-2.1+deb13u2) ...
+#9 30.86 Setting up libwayland-client0:arm64 (1.23.1-3) ...
+#9 30.86 Setting up libxcb-dri3-0:arm64 (1.17.0-2+b1) ...
+#9 30.86 Setting up libllvm19:arm64 (1:19.1.7-3+b1) ...
+#9 30.87 Setting up libx11-xcb1:arm64 (2:1.8.12-1) ...
+#9 30.87 Setting up libxext6:arm64 (2:1.3.4-1+b3) ...
+#9 30.87 Setting up libxxf86vm1:arm64 (1:1.1.4-1+b4) ...
+#9 30.88 Setting up libglib2.0-0t64:arm64 (2.84.4-3~deb13u1) ...
+#9 30.88 No schema files found: doing nothing.
+#9 30.88 Setting up shared-mime-info (2.4-5+b2) ...
+#9 31.89 Setting up libdrm2:arm64 (2.4.124-2) ...
+#9 31.89 Setting up libdrm-amdgpu1:arm64 (2.4.124-2) ...
+#9 31.90 Setting up mesa-vulkan-drivers:arm64 (25.0.7-2) ...
+#9 31.90 Setting up mesa-libgallium:arm64 (25.0.7-2) ...
+#9 31.91 Setting up libgbm1:arm64 (25.0.7-2) ...
+#9 31.91 Setting up libgl1-mesa-dri:arm64 (25.0.7-2) ...
+#9 31.92 Setting up libglx-mesa0:arm64 (25.0.7-2) ...
+#9 31.92 Setting up libglx0:arm64 (1.7.0-1+b2) ...
+#9 31.92 Setting up libgl1:arm64 (1.7.0-1+b2) ...
+#9 31.93 Processing triggers for libc-bin (2.41-12) ...
+#9 DONE 32.3s
+
+#13 [alarm_manager 5/6] RUN uv pip install --system -e .
+#13 ...
+
+#14 [api 3/8] RUN pip install uv
+#14 2.043 Collecting uv
+#14 2.161   Downloading uv-0.9.14-py3-none-manylinux_2_28_aarch64.whl.metadata (11 kB)
+#14 2.208 Downloading uv-0.9.14-py3-none-manylinux_2_28_aarch64.whl (20.5 MB)
+#14 ...
+
+#13 [alarm_manager 5/6] RUN uv pip install --system -e .
+#13 18.20       Built driver-drowsiness-detection @ file:///app
+#13 ...
+
+#14 [api 3/8] RUN pip install uv
+#14 10.31    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 20.5/20.5 MB 2.7 MB/s eta 0:00:00
+#14 10.36 Installing collected packages: uv
+#14 10.64 Successfully installed uv-0.9.14
+#14 10.64 WARNING: Running pip as the 'root' user can result in broken permissions and conflicting behaviour with the system package manager. It is recommended to use a virtual environment instead: https://pip.pypa.io/warnings/venv
+#14 10.77 
+#14 10.77 [notice] A new release of pip is available: 24.0 -> 25.3
+#14 10.77 [notice] To update, run: pip install --upgrade pip
+#14 DONE 11.3s
+
+#13 [alarm_manager 5/6] RUN uv pip install --system -e .
+#13 ...
+
+#15 [api 4/8] WORKDIR /app
+#15 DONE 0.0s
+
+#16 [api 5/8] COPY pyproject.toml ./
+#16 DONE 0.0s
+
+#17 [api 6/8] RUN uv pip install --system -e .
+#17 0.203 Using Python 3.11.14 environment at: /usr/local
+#17 3.860 Resolved 153 packages in 3.65s
+#17 3.866    Building driver-drowsiness-detection @ file:///app
+#17 3.999 Downloading networkx (2.0MiB)
+#17 3.999 Downloading pydeck (6.6MiB)
+#17 4.000 Downloading jupyterlab (11.8MiB)
+#17 4.001 Downloading sympy (6.0MiB)
+#17 4.002 Downloading babel (9.7MiB)
+#17 4.002 Downloading notebook (13.8MiB)
+#17 4.002 Downloading streamlit (9.7MiB)
+#17 4.003 Downloading numpy (13.6MiB)
+#17 4.003 Downloading pyarrow (39.2MiB)
+#17 4.004 Downloading uvloop (3.6MiB)
+#17 4.005 Downloading matplotlib (9.1MiB)
+#17 4.006 Downloading wandb (17.9MiB)
+#17 4.007 Downloading scikit-learn (9.1MiB)
+#17 4.007 Downloading pillow (6.1MiB)
+#17 4.008 Downloading jedi (1.5MiB)
+#17 4.010 Downloading pygments (1.2MiB)
+#17 4.011 Downloading torchvision (2.3MiB)
+#17 4.012 Downloading debugpy (5.0MiB)
+#17 4.013 Downloading torch (99.4MiB)
+#17 4.014 Downloading fonttools (4.8MiB)
+#17 4.014 Downloading kiwisolver (1.2MiB)
+#17 4.014 Downloading pandas (11.6MiB)
+#17 4.014 Downloading opencv-python (43.8MiB)
+#17 4.016 Downloading scipy (32.0MiB)
+#17 4.016 Downloading pydantic-core (1.8MiB)
+#17 4.083 Downloading widgetsnbextension (2.1MiB)
+#17 ...
+
+#13 [alarm_manager 5/6] RUN uv pip install --system -e .
+#13 24.01  Downloaded pygments
+#13 24.47  Downloaded kiwisolver
+#13 28.57  Downloaded jedi
+#13 32.04  Downloaded pydantic-core
+#13 32.59  Downloaded networkx
+#13 34.44  Downloaded widgetsnbextension
+#13 34.73  Downloaded torchvision
+#13 45.23  Downloaded uvloop
+#13 ...
+
+#17 [api 6/8] RUN uv pip install --system -e .
+#17 21.75       Built driver-drowsiness-detection @ file:///app
+#17 27.02  Downloaded kiwisolver
+#17 27.59  Downloaded pygments
+#17 ...
+
+#13 [alarm_manager 5/6] RUN uv pip install --system -e .
+#13 53.46  Downloaded fonttools
+#13 56.09  Downloaded debugpy
+#13 ...
+
+#17 [api 6/8] RUN uv pip install --system -e .
+#17 30.65  Downloaded jedi
+#17 35.08  Downloaded pydantic-core
+#17 36.31  Downloaded networkx
+#17 37.87  Downloaded widgetsnbextension
+#17 ...
+
+#13 [alarm_manager 5/6] RUN uv pip install --system -e .
+#13 61.71  Downloaded pillow
+#13 62.15  Downloaded sympy
+#13 66.83  Downloaded pydeck
+#13 ...
+
+#17 [api 6/8] RUN uv pip install --system -e .
+#17 39.72  Downloaded torchvision
+#17 50.45  Downloaded uvloop
+#17 ...
+
+#13 [alarm_manager 5/6] RUN uv pip install --system -e .
+#13 78.85  Downloaded scikit-learn
+#13 78.97  Downloaded matplotlib
+#13 81.72  Downloaded streamlit
+#13 82.60  Downloaded babel
+#13 ...
+
+#17 [api 6/8] RUN uv pip install --system -e .
+#17 61.83  Downloaded fonttools
+#17 63.11  Downloaded debugpy
+#17 ...
+
+#13 [alarm_manager 5/6] RUN uv pip install --system -e .
+#13 90.57  Downloaded pandas
+#13 91.38  Downloaded jupyterlab
+#13 97.67  Downloaded numpy
+#13 97.84  Downloaded notebook
+#13 ...
+
+#17 [api 6/8] RUN uv pip install --system -e .
+#17 68.95  Downloaded pillow
+#17 70.14  Downloaded sympy
+#17 72.78  Downloaded pydeck
+#17 ...
+
+#13 [alarm_manager 5/6] RUN uv pip install --system -e .
+#13 106.8  Downloaded wandb
+#13 ...
+
+#17 [api 6/8] RUN uv pip install --system -e .
+#17 89.12  Downloaded scikit-learn
+#17 89.24  Downloaded matplotlib
+#17 92.47  Downloaded babel
+#17 92.63  Downloaded streamlit
+#17 100.1  Downloaded pandas
+#17 100.8  Downloaded jupyterlab
+#17 106.0  Downloaded numpy
+#17 106.8  Downloaded notebook
+#17 ...
+
+#13 [alarm_manager 5/6] RUN uv pip install --system -e .
+#13 130.9  Downloaded scipy
+#13 ...
+
+#17 [api 6/8] RUN uv pip install --system -e .
+#17 115.9  Downloaded wandb
+#17 ...
+
+#13 [alarm_manager 5/6] RUN uv pip install --system -e .
+#13 140.2  Downloaded pyarrow
+#13 144.4  Downloaded opencv-python
+#13 167.0  Downloaded torch
+#13 167.0 Prepared 152 packages in 2m 41s
+#13 ...
+
+#17 [api 6/8] RUN uv pip install --system -e .
+#17 143.8  Downloaded scipy
+#17 ...
+
+#13 [alarm_manager 5/6] RUN uv pip install --system -e .
+#13 168.0 Installed 152 packages in 961ms
+#13 168.0  + altair==5.5.0
+#13 168.0  + annotated-doc==0.0.4
+#13 168.0  + annotated-types==0.7.0
+#13 168.0  + anyio==4.12.0
+#13 168.0  + argon2-cffi==25.1.0
+#13 168.0  + argon2-cffi-bindings==25.1.0
+#13 168.0  + arrow==1.4.0
+#13 168.0  + asttokens==3.0.1
+#13 168.0  + async-lru==2.0.5
+#13 168.0  + attrs==25.4.0
+#13 168.0  + babel==2.17.0
+#13 168.0  + beautifulsoup4==4.14.3
+#13 168.0  + bleach==6.3.0
+#13 168.0  + blinker==1.9.0
+#13 168.0  + cachetools==6.2.2
+#13 168.0  + certifi==2025.11.12
+#13 168.0  + cffi==2.0.0
+#13 168.0  + charset-normalizer==3.4.4
+#13 168.0  + click==8.3.1
+#13 168.0  + comm==0.2.3
+#13 168.0  + contourpy==1.3.3
+#13 168.0  + cycler==0.12.1
+#13 168.0  + debugpy==1.8.17
+#13 168.0  + decorator==5.2.1
+#13 168.0  + defusedxml==0.7.1
+#13 168.0  + driver-drowsiness-detection==0.1.0 (from file:///app)
+#13 168.0  + executing==2.2.1
+#13 168.0  + fastapi==0.123.4
+#13 168.0  + fastjsonschema==2.21.2
+#13 168.0  + filelock==3.20.0
+#13 168.0  + fonttools==4.61.0
+#13 168.0  + fqdn==1.5.1
+#13 168.0  + fsspec==2025.10.0
+#13 168.0  + gitdb==4.0.12
+#13 168.0  + gitpython==3.1.45
+#13 168.0  + h11==0.16.0
+#13 168.0  + httpcore==1.0.9
+#13 168.0  + httptools==0.7.1
+#13 168.0  + httpx==0.28.1
+#13 168.0  + idna==3.11
+#13 168.0  + ipykernel==7.1.0
+#13 168.0  + ipython==9.7.0
+#13 168.0  + ipython-pygments-lexers==1.1.1
+#13 168.0  + ipywidgets==8.1.8
+#13 168.0  + isoduration==20.11.0
+#13 168.0  + jedi==0.19.2
+#13 168.0  + jinja2==3.1.6
+#13 168.0  + joblib==1.5.2
+#13 168.0  + json5==0.12.1
+#13 168.0  + jsonpointer==3.0.0
+#13 168.0  + jsonschema==4.25.1
+#13 168.0  + jsonschema-specifications==2025.9.1
+#13 168.0  + jupyter==1.1.1
+#13 168.0  + jupyter-client==8.6.3
+#13 168.0  + jupyter-console==6.6.3
+#13 168.0  + jupyter-core==5.9.1
+#13 168.0  + jupyter-events==0.12.0
+#13 168.0  + jupyter-lsp==2.3.0
+#13 168.0  + jupyter-server==2.17.0
+#13 168.0  + jupyter-server-terminals==0.5.3
+#13 168.0  + jupyterlab==4.5.0
+#13 168.0  + jupyterlab-pygments==0.3.0
+#13 168.0  + jupyterlab-server==2.28.0
+#13 168.0  + jupyterlab-widgets==3.0.16
+#13 168.0  + kiwisolver==1.4.9
+#13 168.0  + lark==1.3.1
+#13 168.0  + markupsafe==3.0.3
+#13 168.0  + matplotlib==3.10.7
+#13 168.0  + matplotlib-inline==0.2.1
+#13 168.0  + mistune==3.1.4
+#13 168.0  + mpmath==1.3.0
+#13 168.0  + narwhals==2.13.0
+#13 168.0  + nbclient==0.10.2
+#13 168.0  + nbconvert==7.16.6
+#13 168.0  + nbformat==5.10.4
+#13 168.0  + nest-asyncio==1.6.0
+#13 168.0  + networkx==3.6
+#13 168.0  + notebook==7.5.0
+#13 168.0  + notebook-shim==0.2.4
+#13 168.0  + numpy==2.2.6
+#13 168.0  + opencv-python==4.12.0.88
+#13 168.0  + overrides==7.7.0
+#13 168.0  + packaging==25.0
+#13 168.0  + pandas==2.3.3
+#13 168.0  + pandocfilters==1.5.1
+#13 168.0  + parso==0.8.5
+#13 168.0  + pexpect==4.9.0
+#13 168.0  + pillow==12.0.0
+#13 168.0  + platformdirs==4.5.0
+#13 168.0  + prometheus-client==0.23.1
+#13 168.0  + prompt-toolkit==3.0.52
+#13 168.0  + protobuf==6.33.1
+#13 168.0  + psutil==7.1.3
+#13 168.0  + ptyprocess==0.7.0
+#13 168.0  + pure-eval==0.2.3
+#13 168.0  + pyarrow==21.0.0
+#13 168.0  + pycparser==2.23
+#13 168.0  + pydantic==2.12.5
+#13 168.0  + pydantic-core==2.41.5
+#13 168.0  + pydeck==0.9.1
+#13 168.0  + pygments==2.19.2
+#13 168.0  + pyparsing==3.2.5
+#13 168.0  + python-dateutil==2.9.0.post0
+#13 168.0  + python-dotenv==1.2.1
+#13 168.0  + python-json-logger==4.0.0
+#13 168.0  + python-multipart==0.0.20
+#13 168.0  + pytz==2025.2
+#13 168.0  + pyyaml==6.0.3
+#13 168.0  + pyzmq==27.1.0
+#13 168.0  + redis==7.1.0
+#13 168.0  + referencing==0.37.0
+#13 168.0  + requests==2.32.5
+#13 168.0  + rfc3339-validator==0.1.4
+#13 168.0  + rfc3986-validator==0.1.1
+#13 168.0  + rfc3987-syntax==1.1.0
+#13 168.0  + rpds-py==0.30.0
+#13 168.0  + scikit-learn==1.7.2
+#13 168.0  + scipy==1.16.3
+#13 168.0  + send2trash==1.8.3
+#13 168.0  + sentry-sdk==2.46.0
+#13 168.0  + six==1.17.0
+#13 168.0  + smmap==5.0.2
+#13 168.0  + soupsieve==2.8
+#13 168.0  + stack-data==0.6.3
+#13 168.0  + starlette==0.50.0
+#13 168.0  + streamlit==1.51.0
+#13 168.0  + sympy==1.14.0
+#13 168.0  + tenacity==9.1.2
+#13 168.0  + terminado==0.18.1
+#13 168.0  + threadpoolctl==3.6.0
+#13 168.0  + tinycss2==1.4.0
+#13 168.0  + toml==0.10.2
+#13 168.0  + torch==2.9.1
+#13 168.0  + torchvision==0.24.1
+#13 168.0  + tornado==6.5.2
+#13 168.0  + traitlets==5.14.3
+#13 168.0  + typing-extensions==4.15.0
+#13 168.0  + typing-inspection==0.4.2
+#13 168.0  + tzdata==2025.2
+#13 168.0  + uri-template==1.3.0
+#13 168.0  + urllib3==2.5.0
+#13 168.0  + uvicorn==0.38.0
+#13 168.0  + uvloop==0.22.1
+#13 168.0  + wandb==0.23.0
+#13 168.0  + watchdog==6.0.0
+#13 168.0  + watchfiles==1.1.1
+#13 168.0  + wcwidth==0.2.14
+#13 168.0  + webcolors==25.10.0
+#13 168.0  + webencodings==0.5.1
+#13 168.0  + websocket-client==1.9.0
+#13 168.0  + websockets==15.0.1
+#13 168.0  + widgetsnbextension==4.0.15
+#13 DONE 168.9s
+
+#18 [alarm_manager 6/6] COPY src/ ./src/
+#18 DONE 0.2s
+
+#17 [api 6/8] RUN uv pip install --system -e .
+#17 148.4  Downloaded pyarrow
+#17 150.5  Downloaded opencv-python
+#17 ...
+
+#19 [alarm_manager] exporting to image
+#19 exporting layers
+#19 ...
+
+#17 [api 6/8] RUN uv pip install --system -e .
+#17 163.0  Downloaded torch
+#17 163.0 Prepared 152 packages in 2m 39s
+#17 163.3 Installed 152 packages in 280ms
+#17 163.3  + altair==5.5.0
+#17 163.3  + annotated-doc==0.0.4
+#17 163.3  + annotated-types==0.7.0
+#17 163.3  + anyio==4.12.0
+#17 163.3  + argon2-cffi==25.1.0
+#17 163.3  + argon2-cffi-bindings==25.1.0
+#17 163.3  + arrow==1.4.0
+#17 163.3  + asttokens==3.0.1
+#17 163.3  + async-lru==2.0.5
+#17 163.3  + attrs==25.4.0
+#17 163.3  + babel==2.17.0
+#17 163.3  + beautifulsoup4==4.14.3
+#17 163.3  + bleach==6.3.0
+#17 163.3  + blinker==1.9.0
+#17 163.3  + cachetools==6.2.2
+#17 163.3  + certifi==2025.11.12
+#17 163.3  + cffi==2.0.0
+#17 163.3  + charset-normalizer==3.4.4
+#17 163.3  + click==8.3.1
+#17 163.3  + comm==0.2.3
+#17 163.3  + contourpy==1.3.3
+#17 163.3  + cycler==0.12.1
+#17 163.3  + debugpy==1.8.17
+#17 163.3  + decorator==5.2.1
+#17 163.3  + defusedxml==0.7.1
+#17 163.3  + driver-drowsiness-detection==0.1.0 (from file:///app)
+#17 163.3  + executing==2.2.1
+#17 163.3  + fastapi==0.123.4
+#17 163.3  + fastjsonschema==2.21.2
+#17 163.3  + filelock==3.20.0
+#17 163.3  + fonttools==4.61.0
+#17 163.3  + fqdn==1.5.1
+#17 163.3  + fsspec==2025.10.0
+#17 163.3  + gitdb==4.0.12
+#17 163.3  + gitpython==3.1.45
+#17 163.3  + h11==0.16.0
+#17 163.3  + httpcore==1.0.9
+#17 163.3  + httptools==0.7.1
+#17 163.3  + httpx==0.28.1
+#17 163.3  + idna==3.11
+#17 163.3  + ipykernel==7.1.0
+#17 163.3  + ipython==9.7.0
+#17 163.3  + ipython-pygments-lexers==1.1.1
+#17 163.3  + ipywidgets==8.1.8
+#17 163.3  + isoduration==20.11.0
+#17 163.3  + jedi==0.19.2
+#17 163.3  + jinja2==3.1.6
+#17 163.3  + joblib==1.5.2
+#17 163.3  + json5==0.12.1
+#17 163.3  + jsonpointer==3.0.0
+#17 163.3  + jsonschema==4.25.1
+#17 163.3  + jsonschema-specifications==2025.9.1
+#17 163.3  + jupyter==1.1.1
+#17 163.3  + jupyter-client==8.6.3
+#17 163.3  + jupyter-console==6.6.3
+#17 163.3  + jupyter-core==5.9.1
+#17 163.3  + jupyter-events==0.12.0
+#17 163.3  + jupyter-lsp==2.3.0
+#17 163.3  + jupyter-server==2.17.0
+#17 163.3  + jupyter-server-terminals==0.5.3
+#17 163.3  + jupyterlab==4.5.0
+#17 163.3  + jupyterlab-pygments==0.3.0
+#17 163.3  + jupyterlab-server==2.28.0
+#17 163.3  + jupyterlab-widgets==3.0.16
+#17 163.3  + kiwisolver==1.4.9
+#17 163.3  + lark==1.3.1
+#17 163.3  + markupsafe==3.0.3
+#17 163.3  + matplotlib==3.10.7
+#17 163.3  + matplotlib-inline==0.2.1
+#17 163.3  + mistune==3.1.4
+#17 163.3  + mpmath==1.3.0
+#17 163.3  + narwhals==2.13.0
+#17 163.3  + nbclient==0.10.2
+#17 163.3  + nbconvert==7.16.6
+#17 163.3  + nbformat==5.10.4
+#17 163.3  + nest-asyncio==1.6.0
+#17 163.3  + networkx==3.6
+#17 163.3  + notebook==7.5.0
+#17 163.3  + notebook-shim==0.2.4
+#17 163.3  + numpy==2.2.6
+#17 163.3  + opencv-python==4.12.0.88
+#17 163.3  + overrides==7.7.0
+#17 163.3  + packaging==25.0
+#17 163.3  + pandas==2.3.3
+#17 163.3  + pandocfilters==1.5.1
+#17 163.3  + parso==0.8.5
+#17 163.3  + pexpect==4.9.0
+#17 163.3  + pillow==12.0.0
+#17 163.3  + platformdirs==4.5.0
+#17 163.3  + prometheus-client==0.23.1
+#17 163.3  + prompt-toolkit==3.0.52
+#17 163.3  + protobuf==6.33.1
+#17 163.3  + psutil==7.1.3
+#17 163.3  + ptyprocess==0.7.0
+#17 163.3  + pure-eval==0.2.3
+#17 163.3  + pyarrow==21.0.0
+#17 163.3  + pycparser==2.23
+#17 163.3  + pydantic==2.12.5
+#17 163.3  + pydantic-core==2.41.5
+#17 163.3  + pydeck==0.9.1
+#17 163.3  + pygments==2.19.2
+#17 163.3  + pyparsing==3.2.5
+#17 163.3  + python-dateutil==2.9.0.post0
+#17 163.3  + python-dotenv==1.2.1
+#17 163.3  + python-json-logger==4.0.0
+#17 163.3  + python-multipart==0.0.20
+#17 163.3  + pytz==2025.2
+#17 163.3  + pyyaml==6.0.3
+#17 163.3  + pyzmq==27.1.0
+#17 163.3  + redis==7.1.0
+#17 163.3  + referencing==0.37.0
+#17 163.3  + requests==2.32.5
+#17 163.3  + rfc3339-validator==0.1.4
+#17 163.3  + rfc3986-validator==0.1.1
+#17 163.3  + rfc3987-syntax==1.1.0
+#17 163.3  + rpds-py==0.30.0
+#17 163.3  + scikit-learn==1.7.2
+#17 163.3  + scipy==1.16.3
+#17 163.3  + send2trash==1.8.3
+#17 163.3  + sentry-sdk==2.46.0
+#17 163.3  + six==1.17.0
+#17 163.3  + smmap==5.0.2
+#17 163.3  + soupsieve==2.8
+#17 163.3  + stack-data==0.6.3
+#17 163.3  + starlette==0.50.0
+#17 163.3  + streamlit==1.51.0
+#17 163.3  + sympy==1.14.0
+#17 163.3  + tenacity==9.1.2
+#17 163.3  + terminado==0.18.1
+#17 163.3  + threadpoolctl==3.6.0
+#17 163.3  + tinycss2==1.4.0
+#17 163.3  + toml==0.10.2
+#17 163.3  + torch==2.9.1
+#17 163.3  + torchvision==0.24.1
+#17 163.3  + tornado==6.5.2
+#17 163.3  + traitlets==5.14.3
+#17 163.3  + typing-extensions==4.15.0
+#17 163.3  + typing-inspection==0.4.2
+#17 163.3  + tzdata==2025.2
+#17 163.3  + uri-template==1.3.0
+#17 163.3  + urllib3==2.5.0
+#17 163.3  + uvicorn==0.38.0
+#17 163.3  + uvloop==0.22.1
+#17 163.3  + wandb==0.23.0
+#17 163.3  + watchdog==6.0.0
+#17 163.3  + watchfiles==1.1.1
+#17 163.3  + wcwidth==0.2.14
+#17 163.3  + webcolors==25.10.0
+#17 163.3  + webencodings==0.5.1
+#17 163.3  + websocket-client==1.9.0
+#17 163.3  + websockets==15.0.1
+#17 163.3  + widgetsnbextension==4.0.15
+#17 DONE 163.8s
+
+#19 [alarm_manager] exporting to image
+#19 ...
+
+#20 [api 7/8] COPY src/ ./src/
+#20 DONE 0.2s
+
+#19 [alarm_manager] exporting to image
+#19 ...
+
+#21 [api 8/8] RUN mkdir -p /app/models
+#21 DONE 0.1s
+
+#22 [api] exporting to image
+#22 exporting layers
+#22 ...
+
+#19 [alarm_manager] exporting to image
+#19 exporting layers 37.9s done
+#19 exporting manifest sha256:4d86c4de0eaa598784dee366d6a0e345df34f3797b29794bd4143cbe5f867f03 done
+#19 exporting config sha256:6a9a1032479bf2a536dfc93fdb68b39001d4e1dd24e39fa8f9acde14a40858d3 done
+#19 exporting attestation manifest sha256:b7c7b5b82777c4a65c82e4d2c3a70f104d704cd7f5ee4e7ac59a02179518bb9a done
+#19 exporting manifest list sha256:29bf06947f533da33fdd850a30c66b4fc29c174abed914444ccc68b0757bf0a0 done
+#19 naming to docker.io/library/project-alarm_manager:latest done
+#19 unpacking to docker.io/library/project-alarm_manager:latest
+#19 unpacking to docker.io/library/project-alarm_manager:latest 10.9s done
+#19 DONE 48.8s
+
+#23 [alarm_manager] resolving provenance for metadata file
+#23 DONE 0.0s
+
+#22 [api] exporting to image
+#22 exporting layers 40.7s done
+#22 exporting manifest sha256:3302e68aa738f150ee634152b5a178b51e7024a69145170d97d553b396393cdb done
+#22 exporting config sha256:a3bf9229468fcb38aa7ea97d4681bc187375c147c626cbe5ade70257a3f2aea8 done
+#22 exporting attestation manifest sha256:aef2587dae46e856e91dedd0bc8b5d9faa29eddf0a2456f6be192cc4e8d33a88 done
+#22 exporting manifest list sha256:75ee247e2bf714a19a7625de066369947eb4beee794d1b9bec76292e92a735b7 done
+#22 naming to docker.io/library/project-api:latest done
+#22 unpacking to docker.io/library/project-api:latest
+#22 unpacking to docker.io/library/project-api:latest 9.3s done
+#22 DONE 50.1s
+
+#24 [api] resolving provenance for metadata file
+#24 DONE 0.0s
+
+#25 [inference_worker internal] load build definition from Dockerfile.worker
+#25 transferring dockerfile: 650B done
+#25 DONE 0.0s
+
+#3 [inference_worker internal] load metadata for docker.io/library/python:3.11-slim
+#3 DONE 0.0s
+
+#26 [inference_worker internal] load .dockerignore
+#26 transferring context: 2B done
+#26 DONE 0.0s
+
+#8 [inference_worker 1/8] FROM docker.io/library/python:3.11-slim@sha256:193fdd0bbcb3d2ae612bd6cc3548d2f7c78d65b549fcaa8af75624c47474444d
+#8 resolve docker.io/library/python:3.11-slim@sha256:193fdd0bbcb3d2ae612bd6cc3548d2f7c78d65b549fcaa8af75624c47474444d done
+#8 CACHED
+
+#27 [inference_worker internal] load build context
+#27 transferring context: 2.12kB done
+#27 DONE 0.0s
+
+#9 [inference_worker 2/8] RUN apt-get update && apt-get install -y     libgl1     libglib2.0-0     && rm -rf /var/lib/apt/lists/*
+#9 0.205 Hit:1 http://deb.debian.org/debian trixie InRelease
+#9 0.210 Get:2 http://deb.debian.org/debian trixie-updates InRelease [47.3 kB]
+#9 0.231 Get:3 http://deb.debian.org/debian-security trixie-security InRelease [43.4 kB]
+#9 0.261 Get:4 http://deb.debian.org/debian trixie/main arm64 Packages [9607 kB]
+#9 2.301 Get:5 http://deb.debian.org/debian trixie-updates/main arm64 Packages [5404 B]
+#9 2.310 Get:6 http://deb.debian.org/debian-security trixie-security/main arm64 Packages [76.7 kB]
+#9 2.943 Fetched 9779 kB in 3s (3502 kB/s)
+#9 2.943 Reading package lists...
+#9 3.252 Reading package lists...
+#9 3.588 Building dependency tree...
+#9 3.696 Reading state information...
+#9 3.844 The following additional packages will be installed:
+#9 3.844   libatomic1 libdrm-amdgpu1 libdrm-common libdrm2 libedit2 libelf1t64
+#9 3.844   libexpat1 libgbm1 libgl1-mesa-dri libglib2.0-data libglvnd0 libglx-mesa0
+#9 3.844   libglx0 libllvm19 libsensors-config libsensors5 libvulkan1
+#9 3.844   libwayland-client0 libwayland-server0 libx11-6 libx11-data libx11-xcb1
+#9 3.844   libxau6 libxcb-dri3-0 libxcb-glx0 libxcb-present0 libxcb-randr0 libxcb-shm0
+#9 3.844   libxcb-sync1 libxcb-xfixes0 libxcb1 libxdmcp6 libxext6 libxml2 libxshmfence1
+#9 3.844   libxxf86vm1 libz3-4 mesa-libgallium mesa-vulkan-drivers shared-mime-info
+#9 3.844   xdg-user-dirs
+#9 3.845 Suggested packages:
+#9 3.845   low-memory-monitor lm-sensors
+#9 3.999 The following NEW packages will be installed:
+#9 3.999   libatomic1 libdrm-amdgpu1 libdrm-common libdrm2 libedit2 libelf1t64
+#9 3.999   libexpat1 libgbm1 libgl1 libgl1-mesa-dri libglib2.0-0t64 libglib2.0-data
+#9 3.999   libglvnd0 libglx-mesa0 libglx0 libllvm19 libsensors-config libsensors5
+#9 3.999   libvulkan1 libwayland-client0 libwayland-server0 libx11-6 libx11-data
+#9 3.999   libx11-xcb1 libxau6 libxcb-dri3-0 libxcb-glx0 libxcb-present0 libxcb-randr0
+#9 3.999   libxcb-shm0 libxcb-sync1 libxcb-xfixes0 libxcb1 libxdmcp6 libxext6 libxml2
+#9 3.999   libxshmfence1 libxxf86vm1 libz3-4 mesa-libgallium mesa-vulkan-drivers
+#9 3.999   shared-mime-info xdg-user-dirs
+#9 4.041 0 upgraded, 43 newly installed, 0 to remove and 0 not upgraded.
+#9 4.041 Need to get 57.9 MB of archives.
+#9 4.041 After this operation, 295 MB of additional disk space will be used.
+#9 4.041 Get:1 http://deb.debian.org/debian trixie/main arm64 libexpat1 arm64 2.7.1-2 [93.3 kB]
+#9 4.072 Get:2 http://deb.debian.org/debian trixie/main arm64 libatomic1 arm64 14.2.0-19 [10.1 kB]
+#9 4.076 Get:3 http://deb.debian.org/debian trixie/main arm64 libdrm-common all 2.4.124-2 [8288 B]
+#9 4.076 Get:4 http://deb.debian.org/debian trixie/main arm64 libdrm2 arm64 2.4.124-2 [38.3 kB]
+#9 4.099 Get:5 http://deb.debian.org/debian trixie/main arm64 libdrm-amdgpu1 arm64 2.4.124-2 [21.8 kB]
+#9 4.104 Get:6 http://deb.debian.org/debian trixie/main arm64 libedit2 arm64 3.1-20250104-1 [89.3 kB]
+#9 4.135 Get:7 http://deb.debian.org/debian trixie/main arm64 libelf1t64 arm64 0.192-4 [189 kB]
+#9 4.303 Get:8 http://deb.debian.org/debian trixie/main arm64 libwayland-server0 arm64 1.23.1-3 [33.7 kB]
+#9 4.332 Get:9 http://deb.debian.org/debian trixie/main arm64 libxml2 arm64 2.12.7+dfsg+really2.9.14-2.1+deb13u2 [630 kB]
+#9 4.472 Get:10 http://deb.debian.org/debian trixie/main arm64 libz3-4 arm64 4.13.3-1 [7507 kB]
+#9 6.096 Get:11 http://deb.debian.org/debian trixie/main arm64 libllvm19 arm64 1:19.1.7-3+b1 [23.3 MB]
+#9 11.05 Get:12 http://deb.debian.org/debian trixie/main arm64 libsensors-config all 1:3.6.2-2 [16.2 kB]
+#9 11.05 Get:13 http://deb.debian.org/debian trixie/main arm64 libsensors5 arm64 1:3.6.2-2 [36.4 kB]
+#9 11.06 Get:14 http://deb.debian.org/debian trixie/main arm64 libxau6 arm64 1:1.0.11-1 [20.6 kB]
+#9 11.06 Get:15 http://deb.debian.org/debian trixie/main arm64 libxdmcp6 arm64 1:1.1.5-1 [27.8 kB]
+#9 11.07 Get:16 http://deb.debian.org/debian trixie/main arm64 libxcb1 arm64 1.17.0-2+b1 [143 kB]
+#9 11.10 Get:17 http://deb.debian.org/debian trixie/main arm64 libx11-data all 2:1.8.12-1 [343 kB]
+#9 11.18 Get:18 http://deb.debian.org/debian trixie/main arm64 libx11-6 arm64 2:1.8.12-1 [795 kB]
+#9 11.36 Get:19 http://deb.debian.org/debian trixie/main arm64 libx11-xcb1 arm64 2:1.8.12-1 [247 kB]
+#9 11.43 Get:20 http://deb.debian.org/debian trixie/main arm64 libxcb-dri3-0 arm64 1.17.0-2+b1 [107 kB]
+#9 11.45 Get:21 http://deb.debian.org/debian trixie/main arm64 libxcb-present0 arm64 1.17.0-2+b1 [106 kB]
+#9 11.48 Get:22 http://deb.debian.org/debian trixie/main arm64 libxcb-randr0 arm64 1.17.0-2+b1 [117 kB]
+#9 11.52 Get:23 http://deb.debian.org/debian trixie/main arm64 libxcb-sync1 arm64 1.17.0-2+b1 [109 kB]
+#9 11.54 Get:24 http://deb.debian.org/debian trixie/main arm64 libxcb-xfixes0 arm64 1.17.0-2+b1 [110 kB]
+#9 11.56 Get:25 http://deb.debian.org/debian trixie/main arm64 libxshmfence1 arm64 1.3.3-1 [11.1 kB]
+#9 11.57 Get:26 http://deb.debian.org/debian trixie/main arm64 mesa-libgallium arm64 25.0.7-2 [8032 kB]
+#9 13.28 Get:27 http://deb.debian.org/debian trixie/main arm64 libgbm1 arm64 25.0.7-2 [43.9 kB]
+#9 13.30 Get:28 http://deb.debian.org/debian trixie/main arm64 libglvnd0 arm64 1.7.0-1+b2 [41.6 kB]
+#9 13.35 Get:29 http://deb.debian.org/debian trixie/main arm64 libxcb-glx0 arm64 1.17.0-2+b1 [123 kB]
+#9 13.38 Get:30 http://deb.debian.org/debian trixie/main arm64 libxcb-shm0 arm64 1.17.0-2+b1 [105 kB]
+#9 13.40 Get:31 http://deb.debian.org/debian trixie/main arm64 libxext6 arm64 2:1.3.4-1+b3 [49.2 kB]
+#9 13.41 Get:32 http://deb.debian.org/debian trixie/main arm64 libxxf86vm1 arm64 1:1.1.4-1+b4 [19.2 kB]
+#9 13.42 Get:33 http://deb.debian.org/debian trixie/main arm64 libvulkan1 arm64 1.4.309.0-1 [127 kB]
+#9 13.47 Get:34 http://deb.debian.org/debian trixie/main arm64 libgl1-mesa-dri arm64 25.0.7-2 [45.8 kB]
+#9 13.49 Get:35 http://deb.debian.org/debian trixie/main arm64 libglx-mesa0 arm64 25.0.7-2 [142 kB]
+#9 13.54 Get:36 http://deb.debian.org/debian trixie/main arm64 libglx0 arm64 1.7.0-1+b2 [31.1 kB]
+#9 13.54 Get:37 http://deb.debian.org/debian trixie/main arm64 libgl1 arm64 1.7.0-1+b2 [90.9 kB]
+#9 13.57 Get:38 http://deb.debian.org/debian trixie/main arm64 libglib2.0-0t64 arm64 2.84.4-3~deb13u1 [1427 kB]
+#9 13.89 Get:39 http://deb.debian.org/debian trixie/main arm64 libglib2.0-data all 2.84.4-3~deb13u1 [1286 kB]
+#9 14.18 Get:40 http://deb.debian.org/debian trixie/main arm64 libwayland-client0 arm64 1.23.1-3 [26.1 kB]
+#9 14.20 Get:41 http://deb.debian.org/debian trixie/main arm64 mesa-vulkan-drivers arm64 25.0.7-2 [11.4 MB]
+#9 16.63 Get:42 http://deb.debian.org/debian trixie/main arm64 shared-mime-info arm64 2.4-5+b2 [756 kB]
+#9 16.84 Get:43 http://deb.debian.org/debian trixie/main arm64 xdg-user-dirs arm64 0.18-2 [53.2 kB]
+#9 16.97 debconf: unable to initialize frontend: Dialog
+#9 16.97 debconf: (TERM is not set, so the dialog frontend is not usable.)
+#9 16.97 debconf: falling back to frontend: Readline
+#9 16.97 debconf: unable to initialize frontend: Readline
+#9 16.97 debconf: (Can't locate Term/ReadLine.pm in @INC (you may need to install the Term::ReadLine module) (@INC entries checked: /etc/perl /usr/local/lib/aarch64-linux-gnu/perl/5.40.1 /usr/local/share/perl/5.40.1 /usr/lib/aarch64-linux-gnu/perl5/5.40 /usr/share/perl5 /usr/lib/aarch64-linux-gnu/perl-base /usr/lib/aarch64-linux-gnu/perl/5.40 /usr/share/perl/5.40 /usr/local/lib/site_perl) at /usr/share/perl5/Debconf/FrontEnd/Readline.pm line 8, <STDIN> line 43.)
+#9 16.97 debconf: falling back to frontend: Teletype
+#9 16.97 debconf: unable to initialize frontend: Teletype
+#9 16.97 debconf: (This frontend requires a controlling tty.)
+#9 16.97 debconf: falling back to frontend: Noninteractive
+#9 17.68 Fetched 57.9 MB in 13s (4507 kB/s)
+#9 17.69 Selecting previously unselected package libexpat1:arm64.
+#9 17.69 (Reading database ... (Reading database ... 5%(Reading database ... 10%(Reading database ... 15%(Reading database ... 20%(Reading database ... 25%(Reading database ... 30%(Reading database ... 35%(Reading database ... 40%(Reading database ... 45%(Reading database ... 50%(Reading database ... 55%(Reading database ... 60%(Reading database ... 65%(Reading database ... 70%(Reading database ... 75%(Reading database ... 80%(Reading database ... 85%(Reading database ... 90%(Reading database ... 95%(Reading database ... 100%(Reading database ... 5642 files and directories currently installed.)
+#9 17.70 Preparing to unpack .../00-libexpat1_2.7.1-2_arm64.deb ...
+#9 17.70 Unpacking libexpat1:arm64 (2.7.1-2) ...
+#9 17.72 Selecting previously unselected package libatomic1:arm64.
+#9 17.72 Preparing to unpack .../01-libatomic1_14.2.0-19_arm64.deb ...
+#9 17.72 Unpacking libatomic1:arm64 (14.2.0-19) ...
+#9 17.73 Selecting previously unselected package libdrm-common.
+#9 17.73 Preparing to unpack .../02-libdrm-common_2.4.124-2_all.deb ...
+#9 17.73 Unpacking libdrm-common (2.4.124-2) ...
+#9 17.74 Selecting previously unselected package libdrm2:arm64.
+#9 17.74 Preparing to unpack .../03-libdrm2_2.4.124-2_arm64.deb ...
+#9 17.74 Unpacking libdrm2:arm64 (2.4.124-2) ...
+#9 17.75 Selecting previously unselected package libdrm-amdgpu1:arm64.
+#9 17.75 Preparing to unpack .../04-libdrm-amdgpu1_2.4.124-2_arm64.deb ...
+#9 17.76 Unpacking libdrm-amdgpu1:arm64 (2.4.124-2) ...
+#9 17.77 Selecting previously unselected package libedit2:arm64.
+#9 17.77 Preparing to unpack .../05-libedit2_3.1-20250104-1_arm64.deb ...
+#9 17.77 Unpacking libedit2:arm64 (3.1-20250104-1) ...
+#9 17.78 Selecting previously unselected package libelf1t64:arm64.
+#9 17.78 Preparing to unpack .../06-libelf1t64_0.192-4_arm64.deb ...
+#9 17.78 Unpacking libelf1t64:arm64 (0.192-4) ...
+#9 17.80 Selecting previously unselected package libwayland-server0:arm64.
+#9 17.80 Preparing to unpack .../07-libwayland-server0_1.23.1-3_arm64.deb ...
+#9 17.80 Unpacking libwayland-server0:arm64 (1.23.1-3) ...
+#9 17.82 Selecting previously unselected package libxml2:arm64.
+#9 17.82 Preparing to unpack .../08-libxml2_2.12.7+dfsg+really2.9.14-2.1+deb13u2_arm64.deb ...
+#9 17.82 Unpacking libxml2:arm64 (2.12.7+dfsg+really2.9.14-2.1+deb13u2) ...
+#9 17.85 Selecting previously unselected package libz3-4:arm64.
+#9 17.85 Preparing to unpack .../09-libz3-4_4.13.3-1_arm64.deb ...
+#9 17.86 Unpacking libz3-4:arm64 (4.13.3-1) ...
+#9 18.21 Selecting previously unselected package libllvm19:arm64.
+#9 18.21 Preparing to unpack .../10-libllvm19_1%3a19.1.7-3+b1_arm64.deb ...
+#9 18.21 Unpacking libllvm19:arm64 (1:19.1.7-3+b1) ...
+#9 18.85 Selecting previously unselected package libsensors-config.
+#9 18.85 Preparing to unpack .../11-libsensors-config_1%3a3.6.2-2_all.deb ...
+#9 18.85 Unpacking libsensors-config (1:3.6.2-2) ...
+#9 18.86 Selecting previously unselected package libsensors5:arm64.
+#9 18.86 Preparing to unpack .../12-libsensors5_1%3a3.6.2-2_arm64.deb ...
+#9 18.86 Unpacking libsensors5:arm64 (1:3.6.2-2) ...
+#9 18.87 Selecting previously unselected package libxau6:arm64.
+#9 18.87 Preparing to unpack .../13-libxau6_1%3a1.0.11-1_arm64.deb ...
+#9 18.87 Unpacking libxau6:arm64 (1:1.0.11-1) ...
+#9 18.89 Selecting previously unselected package libxdmcp6:arm64.
+#9 18.89 Preparing to unpack .../14-libxdmcp6_1%3a1.1.5-1_arm64.deb ...
+#9 18.90 Unpacking libxdmcp6:arm64 (1:1.1.5-1) ...
+#9 18.91 Selecting previously unselected package libxcb1:arm64.
+#9 18.91 Preparing to unpack .../15-libxcb1_1.17.0-2+b1_arm64.deb ...
+#9 18.91 Unpacking libxcb1:arm64 (1.17.0-2+b1) ...
+#9 18.92 Selecting previously unselected package libx11-data.
+#9 18.92 Preparing to unpack .../16-libx11-data_2%3a1.8.12-1_all.deb ...
+#9 18.92 Unpacking libx11-data (2:1.8.12-1) ...
+#9 18.95 Selecting previously unselected package libx11-6:arm64.
+#9 18.95 Preparing to unpack .../17-libx11-6_2%3a1.8.12-1_arm64.deb ...
+#9 18.95 Unpacking libx11-6:arm64 (2:1.8.12-1) ...
+#9 18.99 Selecting previously unselected package libx11-xcb1:arm64.
+#9 18.99 Preparing to unpack .../18-libx11-xcb1_2%3a1.8.12-1_arm64.deb ...
+#9 18.99 Unpacking libx11-xcb1:arm64 (2:1.8.12-1) ...
+#9 19.00 Selecting previously unselected package libxcb-dri3-0:arm64.
+#9 19.01 Preparing to unpack .../19-libxcb-dri3-0_1.17.0-2+b1_arm64.deb ...
+#9 19.01 Unpacking libxcb-dri3-0:arm64 (1.17.0-2+b1) ...
+#9 19.02 Selecting previously unselected package libxcb-present0:arm64.
+#9 19.02 Preparing to unpack .../20-libxcb-present0_1.17.0-2+b1_arm64.deb ...
+#9 19.02 Unpacking libxcb-present0:arm64 (1.17.0-2+b1) ...
+#9 19.03 Selecting previously unselected package libxcb-randr0:arm64.
+#9 19.03 Preparing to unpack .../21-libxcb-randr0_1.17.0-2+b1_arm64.deb ...
+#9 19.04 Unpacking libxcb-randr0:arm64 (1.17.0-2+b1) ...
+#9 19.05 Selecting previously unselected package libxcb-sync1:arm64.
+#9 19.05 Preparing to unpack .../22-libxcb-sync1_1.17.0-2+b1_arm64.deb ...
+#9 19.05 Unpacking libxcb-sync1:arm64 (1.17.0-2+b1) ...
+#9 19.07 Selecting previously unselected package libxcb-xfixes0:arm64.
+#9 19.07 Preparing to unpack .../23-libxcb-xfixes0_1.17.0-2+b1_arm64.deb ...
+#9 19.07 Unpacking libxcb-xfixes0:arm64 (1.17.0-2+b1) ...
+#9 19.08 Selecting previously unselected package libxshmfence1:arm64.
+#9 19.08 Preparing to unpack .../24-libxshmfence1_1.3.3-1_arm64.deb ...
+#9 19.08 Unpacking libxshmfence1:arm64 (1.3.3-1) ...
+#9 19.09 Selecting previously unselected package mesa-libgallium:arm64.
+#9 19.09 Preparing to unpack .../25-mesa-libgallium_25.0.7-2_arm64.deb ...
+#9 19.09 Unpacking mesa-libgallium:arm64 (25.0.7-2) ...
+#9 19.46 Selecting previously unselected package libgbm1:arm64.
+#9 19.46 Preparing to unpack .../26-libgbm1_25.0.7-2_arm64.deb ...
+#9 19.47 Unpacking libgbm1:arm64 (25.0.7-2) ...
+#9 19.48 Selecting previously unselected package libglvnd0:arm64.
+#9 19.48 Preparing to unpack .../27-libglvnd0_1.7.0-1+b2_arm64.deb ...
+#9 19.48 Unpacking libglvnd0:arm64 (1.7.0-1+b2) ...
+#9 19.49 Selecting previously unselected package libxcb-glx0:arm64.
+#9 19.49 Preparing to unpack .../28-libxcb-glx0_1.17.0-2+b1_arm64.deb ...
+#9 19.50 Unpacking libxcb-glx0:arm64 (1.17.0-2+b1) ...
+#9 19.51 Selecting previously unselected package libxcb-shm0:arm64.
+#9 19.51 Preparing to unpack .../29-libxcb-shm0_1.17.0-2+b1_arm64.deb ...
+#9 19.51 Unpacking libxcb-shm0:arm64 (1.17.0-2+b1) ...
+#9 19.52 Selecting previously unselected package libxext6:arm64.
+#9 19.53 Preparing to unpack .../30-libxext6_2%3a1.3.4-1+b3_arm64.deb ...
+#9 19.53 Unpacking libxext6:arm64 (2:1.3.4-1+b3) ...
+#9 19.54 Selecting previously unselected package libxxf86vm1:arm64.
+#9 19.54 Preparing to unpack .../31-libxxf86vm1_1%3a1.1.4-1+b4_arm64.deb ...
+#9 19.54 Unpacking libxxf86vm1:arm64 (1:1.1.4-1+b4) ...
+#9 19.55 Selecting previously unselected package libvulkan1:arm64.
+#9 19.55 Preparing to unpack .../32-libvulkan1_1.4.309.0-1_arm64.deb ...
+#9 19.55 Unpacking libvulkan1:arm64 (1.4.309.0-1) ...
+#9 19.57 Selecting previously unselected package libgl1-mesa-dri:arm64.
+#9 19.57 Preparing to unpack .../33-libgl1-mesa-dri_25.0.7-2_arm64.deb ...
+#9 19.57 Unpacking libgl1-mesa-dri:arm64 (25.0.7-2) ...
+#9 19.58 Selecting previously unselected package libglx-mesa0:arm64.
+#9 19.58 Preparing to unpack .../34-libglx-mesa0_25.0.7-2_arm64.deb ...
+#9 19.58 Unpacking libglx-mesa0:arm64 (25.0.7-2) ...
+#9 19.60 Selecting previously unselected package libglx0:arm64.
+#9 19.60 Preparing to unpack .../35-libglx0_1.7.0-1+b2_arm64.deb ...
+#9 19.60 Unpacking libglx0:arm64 (1.7.0-1+b2) ...
+#9 19.61 Selecting previously unselected package libgl1:arm64.
+#9 19.62 Preparing to unpack .../36-libgl1_1.7.0-1+b2_arm64.deb ...
+#9 19.62 Unpacking libgl1:arm64 (1.7.0-1+b2) ...
+#9 19.63 Selecting previously unselected package libglib2.0-0t64:arm64.
+#9 19.63 Preparing to unpack .../37-libglib2.0-0t64_2.84.4-3~deb13u1_arm64.deb ...
+#9 19.64 Unpacking libglib2.0-0t64:arm64 (2.84.4-3~deb13u1) ...
+#9 19.71 Selecting previously unselected package libglib2.0-data.
+#9 19.71 Preparing to unpack .../38-libglib2.0-data_2.84.4-3~deb13u1_all.deb ...
+#9 19.71 Unpacking libglib2.0-data (2.84.4-3~deb13u1) ...
+#9 19.79 Selecting previously unselected package libwayland-client0:arm64.
+#9 19.79 Preparing to unpack .../39-libwayland-client0_1.23.1-3_arm64.deb ...
+#9 19.79 Unpacking libwayland-client0:arm64 (1.23.1-3) ...
+#9 19.80 Selecting previously unselected package mesa-vulkan-drivers:arm64.
+#9 19.80 Preparing to unpack .../40-mesa-vulkan-drivers_25.0.7-2_arm64.deb ...
+#9 19.80 Unpacking mesa-vulkan-drivers:arm64 (25.0.7-2) ...
+#9 20.21 Selecting previously unselected package shared-mime-info.
+#9 20.21 Preparing to unpack .../41-shared-mime-info_2.4-5+b2_arm64.deb ...
+#9 20.21 Unpacking shared-mime-info (2.4-5+b2) ...
+#9 20.26 Selecting previously unselected package xdg-user-dirs.
+#9 20.26 Preparing to unpack .../42-xdg-user-dirs_0.18-2_arm64.deb ...
+#9 20.26 Unpacking xdg-user-dirs (0.18-2) ...
+#9 20.27 Setting up libexpat1:arm64 (2.7.1-2) ...
+#9 20.28 Setting up libwayland-server0:arm64 (1.23.1-3) ...
+#9 20.28 Setting up libxau6:arm64 (1:1.0.11-1) ...
+#9 20.28 Setting up libxdmcp6:arm64 (1:1.1.5-1) ...
+#9 20.28 Setting up libxcb1:arm64 (1.17.0-2+b1) ...
+#9 20.29 Setting up libxcb-xfixes0:arm64 (1.17.0-2+b1) ...
+#9 20.29 Setting up xdg-user-dirs (0.18-2) ...
+#9 20.29 Setting up libglvnd0:arm64 (1.7.0-1+b2) ...
+#9 20.30 Setting up libxcb-glx0:arm64 (1.17.0-2+b1) ...
+#9 20.30 Setting up libedit2:arm64 (3.1-20250104-1) ...
+#9 20.30 Setting up libsensors-config (1:3.6.2-2) ...
+#9 20.31 Setting up libxcb-shm0:arm64 (1.17.0-2+b1) ...
+#9 20.31 Setting up libelf1t64:arm64 (0.192-4) ...
+#9 20.31 Setting up libxcb-present0:arm64 (1.17.0-2+b1) ...
+#9 20.31 Setting up libz3-4:arm64 (4.13.3-1) ...
+#9 20.32 Setting up libglib2.0-data (2.84.4-3~deb13u1) ...
+#9 20.32 Setting up libx11-data (2:1.8.12-1) ...
+#9 20.32 Setting up libxcb-sync1:arm64 (1.17.0-2+b1) ...
+#9 20.32 Setting up libatomic1:arm64 (14.2.0-19) ...
+#9 20.32 Setting up libsensors5:arm64 (1:3.6.2-2) ...
+#9 20.33 Setting up libvulkan1:arm64 (1.4.309.0-1) ...
+#9 20.33 Setting up libxshmfence1:arm64 (1.3.3-1) ...
+#9 20.33 Setting up libxcb-randr0:arm64 (1.17.0-2+b1) ...
+#9 20.33 Setting up libx11-6:arm64 (2:1.8.12-1) ...
+#9 20.34 Setting up libdrm-common (2.4.124-2) ...
+#9 20.34 Setting up libxml2:arm64 (2.12.7+dfsg+really2.9.14-2.1+deb13u2) ...
+#9 20.34 Setting up libwayland-client0:arm64 (1.23.1-3) ...
+#9 20.34 Setting up libxcb-dri3-0:arm64 (1.17.0-2+b1) ...
+#9 20.34 Setting up libllvm19:arm64 (1:19.1.7-3+b1) ...
+#9 20.35 Setting up libx11-xcb1:arm64 (2:1.8.12-1) ...
+#9 20.35 Setting up libxext6:arm64 (2:1.3.4-1+b3) ...
+#9 20.35 Setting up libxxf86vm1:arm64 (1:1.1.4-1+b4) ...
+#9 20.36 Setting up libglib2.0-0t64:arm64 (2.84.4-3~deb13u1) ...
+#9 20.36 No schema files found: doing nothing.
+#9 20.36 Setting up shared-mime-info (2.4-5+b2) ...
+#9 20.88 Setting up libdrm2:arm64 (2.4.124-2) ...
+#9 20.89 Setting up libdrm-amdgpu1:arm64 (2.4.124-2) ...
+#9 20.89 Setting up mesa-vulkan-drivers:arm64 (25.0.7-2) ...
+#9 20.89 Setting up mesa-libgallium:arm64 (25.0.7-2) ...
+#9 20.89 Setting up libgbm1:arm64 (25.0.7-2) ...
+#9 20.90 Setting up libgl1-mesa-dri:arm64 (25.0.7-2) ...
+#9 20.90 Setting up libglx-mesa0:arm64 (25.0.7-2) ...
+#9 20.90 Setting up libglx0:arm64 (1.7.0-1+b2) ...
+#9 20.91 Setting up libgl1:arm64 (1.7.0-1+b2) ...
+#9 20.91 Processing triggers for libc-bin (2.41-12) ...
+#9 DONE 53.7s
+
+#14 [inference_worker 3/8] RUN pip install uv
+#14 1.358 Collecting uv
+#14 1.485   Downloading uv-0.9.14-py3-none-manylinux_2_28_aarch64.whl.metadata (11 kB)
+#14 1.527 Downloading uv-0.9.14-py3-none-manylinux_2_28_aarch64.whl (20.5 MB)
+#14 5.969    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 20.5/20.5 MB 4.7 MB/s eta 0:00:00
+#14 6.007 Installing collected packages: uv
+#14 6.189 Successfully installed uv-0.9.14
+#14 6.189 WARNING: Running pip as the 'root' user can result in broken permissions and conflicting behaviour with the system package manager. It is recommended to use a virtual environment instead: https://pip.pypa.io/warnings/venv
+#14 6.292 
+#14 6.292 [notice] A new release of pip is available: 24.0 -> 25.3
+#14 6.292 [notice] To update, run: pip install --upgrade pip
+#14 DONE 17.7s
+
+#15 [inference_worker 4/8] WORKDIR /app
+#15 DONE 0.0s
+
+#28 [inference_worker 5/8] COPY pyproject.toml ./
+#28 DONE 0.0s
+
+#29 [inference_worker 6/8] RUN uv pip install --system -e .
+#29 0.134 Using Python 3.11.14 environment at: /usr/local
+#29 2.685 Resolved 153 packages in 2.54s
+#29 2.691    Building driver-drowsiness-detection @ file:///app
+#29 2.742 Downloading notebook (13.8MiB)
+#29 2.797 Downloading sympy (6.0MiB)
+#29 2.797 Downloading babel (9.7MiB)
+#29 2.797 Downloading pygments (1.2MiB)
+#29 2.884 Downloading networkx (2.0MiB)
+#29 2.884 Downloading jupyterlab (11.8MiB)
+#29 2.884 Downloading widgetsnbextension (2.1MiB)
+#29 2.885 Downloading numpy (13.6MiB)
+#29 2.885 Downloading pyarrow (39.2MiB)
+#29 2.887 Downloading jedi (1.5MiB)
+#29 2.887 Downloading wandb (17.9MiB)
+#29 2.888 Downloading streamlit (9.7MiB)
+#29 2.888 Downloading pydantic-core (1.8MiB)
+#29 2.888 Downloading fonttools (4.8MiB)
+#29 2.888 Downloading torch (99.4MiB)
+#29 2.889 Downloading pillow (6.1MiB)
+#29 2.889 Downloading uvloop (3.6MiB)
+#29 2.889 Downloading scipy (32.0MiB)
+#29 2.890 Downloading scikit-learn (9.1MiB)
+#29 2.891 Downloading pandas (11.6MiB)
+#29 2.892 Downloading kiwisolver (1.2MiB)
+#29 2.892 Downloading opencv-python (43.8MiB)
+#29 2.893 Downloading pydeck (6.6MiB)
+#29 2.894 Downloading matplotlib (9.1MiB)
+#29 2.894 Downloading debugpy (5.0MiB)
+#29 2.898 Downloading torchvision (2.3MiB)
+#29 12.86       Built driver-drowsiness-detection @ file:///app
+#29 16.36  Downloaded pygments
+#29 16.48  Downloaded kiwisolver
+#29 18.23  Downloaded jedi
+#29 20.58  Downloaded pydantic-core
+#29 21.58  Downloaded networkx
+#29 21.81  Downloaded widgetsnbextension
+#29 22.76  Downloaded torchvision
+#29 28.89  Downloaded uvloop
+#29 33.73  Downloaded fonttools
+#29 34.23  Downloaded debugpy
+#29 37.80  Downloaded sympy
+#29 37.99  Downloaded pillow
+#29 39.78  Downloaded pydeck
+#29 47.46  Downloaded matplotlib
+#29 47.68  Downloaded scikit-learn
+#29 49.06  Downloaded streamlit
+#29 49.23  Downloaded babel
+#29 52.55  Downloaded pandas
+#29 53.47  Downloaded jupyterlab
+#29 55.98  Downloaded numpy
+#29 56.56  Downloaded notebook
+#29 60.94  Downloaded wandb
+#29 73.54  Downloaded scipy
+#29 78.54  Downloaded pyarrow
+#29 80.50  Downloaded opencv-python
+#29 92.87  Downloaded torch
+#29 92.87 Prepared 152 packages in 1m 30s
+#29 93.94 Installed 152 packages in 1.06s
+#29 93.95  + altair==5.5.0
+#29 93.95  + annotated-doc==0.0.4
+#29 93.95  + annotated-types==0.7.0
+#29 93.95  + anyio==4.12.0
+#29 93.95  + argon2-cffi==25.1.0
+#29 93.95  + argon2-cffi-bindings==25.1.0
+#29 93.95  + arrow==1.4.0
+#29 93.95  + asttokens==3.0.1
+#29 93.95  + async-lru==2.0.5
+#29 93.95  + attrs==25.4.0
+#29 93.95  + babel==2.17.0
+#29 93.95  + beautifulsoup4==4.14.3
+#29 93.95  + bleach==6.3.0
+#29 93.95  + blinker==1.9.0
+#29 93.95  + cachetools==6.2.2
+#29 93.95  + certifi==2025.11.12
+#29 93.95  + cffi==2.0.0
+#29 93.95  + charset-normalizer==3.4.4
+#29 93.95  + click==8.3.1
+#29 93.95  + comm==0.2.3
+#29 93.95  + contourpy==1.3.3
+#29 93.95  + cycler==0.12.1
+#29 93.95  + debugpy==1.8.17
+#29 93.95  + decorator==5.2.1
+#29 93.95  + defusedxml==0.7.1
+#29 93.95  + driver-drowsiness-detection==0.1.0 (from file:///app)
+#29 93.95  + executing==2.2.1
+#29 93.95  + fastapi==0.123.4
+#29 93.95  + fastjsonschema==2.21.2
+#29 93.95  + filelock==3.20.0
+#29 93.95  + fonttools==4.61.0
+#29 93.95  + fqdn==1.5.1
+#29 93.95  + fsspec==2025.10.0
+#29 93.95  + gitdb==4.0.12
+#29 93.95  + gitpython==3.1.45
+#29 93.95  + h11==0.16.0
+#29 93.95  + httpcore==1.0.9
+#29 93.95  + httptools==0.7.1
+#29 93.95  + httpx==0.28.1
+#29 93.95  + idna==3.11
+#29 93.95  + ipykernel==7.1.0
+#29 93.95  + ipython==9.7.0
+#29 93.95  + ipython-pygments-lexers==1.1.1
+#29 93.95  + ipywidgets==8.1.8
+#29 93.95  + isoduration==20.11.0
+#29 93.95  + jedi==0.19.2
+#29 93.95  + jinja2==3.1.6
+#29 93.95  + joblib==1.5.2
+#29 93.95  + json5==0.12.1
+#29 93.95  + jsonpointer==3.0.0
+#29 93.95  + jsonschema==4.25.1
+#29 93.95  + jsonschema-specifications==2025.9.1
+#29 93.95  + jupyter==1.1.1
+#29 93.95  + jupyter-client==8.6.3
+#29 93.95  + jupyter-console==6.6.3
+#29 93.95  + jupyter-core==5.9.1
+#29 93.95  + jupyter-events==0.12.0
+#29 93.95  + jupyter-lsp==2.3.0
+#29 93.95  + jupyter-server==2.17.0
+#29 93.95  + jupyter-server-terminals==0.5.3
+#29 93.95  + jupyterlab==4.5.0
+#29 93.95  + jupyterlab-pygments==0.3.0
+#29 93.95  + jupyterlab-server==2.28.0
+#29 93.95  + jupyterlab-widgets==3.0.16
+#29 93.95  + kiwisolver==1.4.9
+#29 93.95  + lark==1.3.1
+#29 93.95  + markupsafe==3.0.3
+#29 93.95  + matplotlib==3.10.7
+#29 93.95  + matplotlib-inline==0.2.1
+#29 93.95  + mistune==3.1.4
+#29 93.95  + mpmath==1.3.0
+#29 93.95  + narwhals==2.13.0
+#29 93.95  + nbclient==0.10.2
+#29 93.95  + nbconvert==7.16.6
+#29 93.95  + nbformat==5.10.4
+#29 93.95  + nest-asyncio==1.6.0
+#29 93.95  + networkx==3.6
+#29 93.95  + notebook==7.5.0
+#29 93.95  + notebook-shim==0.2.4
+#29 93.95  + numpy==2.2.6
+#29 93.95  + opencv-python==4.12.0.88
+#29 93.95  + overrides==7.7.0
+#29 93.95  + packaging==25.0
+#29 93.95  + pandas==2.3.3
+#29 93.95  + pandocfilters==1.5.1
+#29 93.95  + parso==0.8.5
+#29 93.95  + pexpect==4.9.0
+#29 93.95  + pillow==12.0.0
+#29 93.95  + platformdirs==4.5.0
+#29 93.95  + prometheus-client==0.23.1
+#29 93.95  + prompt-toolkit==3.0.52
+#29 93.95  + protobuf==6.33.1
+#29 93.95  + psutil==7.1.3
+#29 93.95  + ptyprocess==0.7.0
+#29 93.95  + pure-eval==0.2.3
+#29 93.95  + pyarrow==21.0.0
+#29 93.95  + pycparser==2.23
+#29 93.95  + pydantic==2.12.5
+#29 93.95  + pydantic-core==2.41.5
+#29 93.95  + pydeck==0.9.1
+#29 93.95  + pygments==2.19.2
+#29 93.95  + pyparsing==3.2.5
+#29 93.95  + python-dateutil==2.9.0.post0
+#29 93.95  + python-dotenv==1.2.1
+#29 93.95  + python-json-logger==4.0.0
+#29 93.95  + python-multipart==0.0.20
+#29 93.95  + pytz==2025.2
+#29 93.95  + pyyaml==6.0.3
+#29 93.95  + pyzmq==27.1.0
+#29 93.95  + redis==7.1.0
+#29 93.95  + referencing==0.37.0
+#29 93.95  + requests==2.32.5
+#29 93.95  + rfc3339-validator==0.1.4
+#29 93.95  + rfc3986-validator==0.1.1
+#29 93.95  + rfc3987-syntax==1.1.0
+#29 93.95  + rpds-py==0.30.0
+#29 93.95  + scikit-learn==1.7.2
+#29 93.95  + scipy==1.16.3
+#29 93.95  + send2trash==1.8.3
+#29 93.95  + sentry-sdk==2.46.0
+#29 93.95  + six==1.17.0
+#29 93.95  + smmap==5.0.2
+#29 93.95  + soupsieve==2.8
+#29 93.95  + stack-data==0.6.3
+#29 93.95  + starlette==0.50.0
+#29 93.95  + streamlit==1.51.0
+#29 93.95  + sympy==1.14.0
+#29 93.95  + tenacity==9.1.2
+#29 93.95  + terminado==0.18.1
+#29 93.95  + threadpoolctl==3.6.0
+#29 93.95  + tinycss2==1.4.0
+#29 93.95  + toml==0.10.2
+#29 93.95  + torch==2.9.1
+#29 93.95  + torchvision==0.24.1
+#29 93.95  + tornado==6.5.2
+#29 93.95  + traitlets==5.14.3
+#29 93.95  + typing-extensions==4.15.0
+#29 93.95  + typing-inspection==0.4.2
+#29 93.95  + tzdata==2025.2
+#29 93.95  + uri-template==1.3.0
+#29 93.95  + urllib3==2.5.0
+#29 93.95  + uvicorn==0.38.0
+#29 93.95  + uvloop==0.22.1
+#29 93.95  + wandb==0.23.0
+#29 93.95  + watchdog==6.0.0
+#29 93.95  + watchfiles==1.1.1
+#29 93.95  + wcwidth==0.2.14
+#29 93.95  + webcolors==25.10.0
+#29 93.95  + webencodings==0.5.1
+#29 93.95  + websocket-client==1.9.0
+#29 93.95  + websockets==15.0.1
+#29 93.95  + widgetsnbextension==4.0.15
+#29 DONE 94.7s
+
+#30 [inference_worker 7/8] COPY src/ ./src/
+#30 DONE 0.3s
+
+#31 [inference_worker 8/8] RUN mkdir -p /app/models
+#31 DONE 0.2s
+
+#32 [inference_worker] exporting to image
+#32 exporting layers
+#32 exporting layers 38.7s done
+#32 exporting manifest sha256:b23bb2896dcb9d56a06398b8d4c79faeb1813d900a2810553283d561f899bfa8 done
+#32 exporting config sha256:2b7710bdb79594ad9b78175b2695bafed218d9a31935fb2034b3ff247fee8715 done
+#32 exporting attestation manifest sha256:3f0fc1894697d449f17f95691a907c0c4e5401b0bad548db3c592f8b6bd11c53 done
+#32 exporting manifest list sha256:752a86e4d6ace57a78b3045ab69ed21f06633644613d2fd6f271f347b7a9ec87 done
+#32 naming to docker.io/library/project-inference_worker:latest done
+#32 unpacking to docker.io/library/project-inference_worker:latest
+#32 unpacking to docker.io/library/project-inference_worker:latest 10.6s done
+#32 DONE 49.3s
+
+#33 [inference_worker] resolving provenance for metadata file
+#33 DONE 0.0s
+
+#34 [frontend internal] load build definition from Dockerfile.frontend
+#34 transferring dockerfile: 721B done
+#34 DONE 0.0s
+
+#3 [frontend internal] load metadata for docker.io/library/python:3.11-slim
+#3 DONE 0.0s
+
+#35 [frontend internal] load .dockerignore
+#35 transferring context: 2B done
+#35 DONE 0.0s
+
+#36 [frontend internal] load build context
+#36 transferring context: 2.12kB done
+#36 DONE 0.0s
+
+#8 [frontend 1/7] FROM docker.io/library/python:3.11-slim@sha256:193fdd0bbcb3d2ae612bd6cc3548d2f7c78d65b549fcaa8af75624c47474444d
+#8 resolve docker.io/library/python:3.11-slim@sha256:193fdd0bbcb3d2ae612bd6cc3548d2f7c78d65b549fcaa8af75624c47474444d 0.0s done
+#8 CACHED
+
+#37 [frontend 2/7] RUN apt-get update && apt-get install -y     libgl1     libglib2.0-0     libsm6     libxext6     libxrender1     libgomp1     && rm -rf /var/lib/apt/lists/*
+#37 0.196 Hit:1 http://deb.debian.org/debian trixie InRelease
+#37 0.199 Get:2 http://deb.debian.org/debian trixie-updates InRelease [47.3 kB]
+#37 0.217 Get:3 http://deb.debian.org/debian-security trixie-security InRelease [43.4 kB]
+#37 0.262 Get:4 http://deb.debian.org/debian trixie/main arm64 Packages [9607 kB]
+#37 2.336 Get:5 http://deb.debian.org/debian trixie-updates/main arm64 Packages [5404 B]
+#37 2.377 Get:6 http://deb.debian.org/debian-security trixie-security/main arm64 Packages [76.7 kB]
+#37 3.004 Fetched 9779 kB in 3s (3441 kB/s)
+#37 3.004 Reading package lists...
+#37 3.386 Reading package lists...
+#37 3.722 Building dependency tree...
+#37 3.837 Reading state information...
+#37 4.002 The following additional packages will be installed:
+#37 4.002   libatomic1 libdrm-amdgpu1 libdrm-common libdrm2 libedit2 libelf1t64
+#37 4.002   libexpat1 libgbm1 libgl1-mesa-dri libglib2.0-data libglvnd0 libglx-mesa0
+#37 4.002   libglx0 libice6 libllvm19 libsensors-config libsensors5 libvulkan1
+#37 4.002   libwayland-client0 libwayland-server0 libx11-6 libx11-data libx11-xcb1
+#37 4.002   libxau6 libxcb-dri3-0 libxcb-glx0 libxcb-present0 libxcb-randr0 libxcb-shm0
+#37 4.002   libxcb-sync1 libxcb-xfixes0 libxcb1 libxdmcp6 libxml2 libxshmfence1
+#37 4.002   libxxf86vm1 libz3-4 mesa-libgallium mesa-vulkan-drivers shared-mime-info
+#37 4.002   x11-common xdg-user-dirs
+#37 4.003 Suggested packages:
+#37 4.003   low-memory-monitor lm-sensors
+#37 4.179 The following NEW packages will be installed:
+#37 4.179   libatomic1 libdrm-amdgpu1 libdrm-common libdrm2 libedit2 libelf1t64
+#37 4.179   libexpat1 libgbm1 libgl1 libgl1-mesa-dri libglib2.0-0t64 libglib2.0-data
+#37 4.179   libglvnd0 libglx-mesa0 libglx0 libgomp1 libice6 libllvm19 libsensors-config
+#37 4.179   libsensors5 libsm6 libvulkan1 libwayland-client0 libwayland-server0 libx11-6
+#37 4.179   libx11-data libx11-xcb1 libxau6 libxcb-dri3-0 libxcb-glx0 libxcb-present0
+#37 4.179   libxcb-randr0 libxcb-shm0 libxcb-sync1 libxcb-xfixes0 libxcb1 libxdmcp6
+#37 4.179   libxext6 libxml2 libxrender1 libxshmfence1 libxxf86vm1 libz3-4
+#37 4.180   mesa-libgallium mesa-vulkan-drivers shared-mime-info x11-common
+#37 4.180   xdg-user-dirs
+#37 4.222 0 upgraded, 48 newly installed, 0 to remove and 0 not upgraded.
+#37 4.222 Need to get 58.3 MB of archives.
+#37 4.222 After this operation, 296 MB of additional disk space will be used.
+#37 4.222 Get:1 http://deb.debian.org/debian trixie/main arm64 libexpat1 arm64 2.7.1-2 [93.3 kB]
+#37 4.257 Get:2 http://deb.debian.org/debian trixie/main arm64 libatomic1 arm64 14.2.0-19 [10.1 kB]
+#37 4.258 Get:3 http://deb.debian.org/debian trixie/main arm64 libdrm-common all 2.4.124-2 [8288 B]
+#37 4.261 Get:4 http://deb.debian.org/debian trixie/main arm64 libdrm2 arm64 2.4.124-2 [38.3 kB]
+#37 4.307 Get:5 http://deb.debian.org/debian trixie/main arm64 libdrm-amdgpu1 arm64 2.4.124-2 [21.8 kB]
+#37 4.313 Get:6 http://deb.debian.org/debian trixie/main arm64 libedit2 arm64 3.1-20250104-1 [89.3 kB]
+#37 4.344 Get:7 http://deb.debian.org/debian trixie/main arm64 libelf1t64 arm64 0.192-4 [189 kB]
+#37 4.397 Get:8 http://deb.debian.org/debian trixie/main arm64 libwayland-server0 arm64 1.23.1-3 [33.7 kB]
+#37 4.415 Get:9 http://deb.debian.org/debian trixie/main arm64 libxml2 arm64 2.12.7+dfsg+really2.9.14-2.1+deb13u2 [630 kB]
+#37 4.559 Get:10 http://deb.debian.org/debian trixie/main arm64 libz3-4 arm64 4.13.3-1 [7507 kB]
+#37 6.195 Get:11 http://deb.debian.org/debian trixie/main arm64 libllvm19 arm64 1:19.1.7-3+b1 [23.3 MB]
+#37 11.16 Get:12 http://deb.debian.org/debian trixie/main arm64 libsensors-config all 1:3.6.2-2 [16.2 kB]
+#37 11.16 Get:13 http://deb.debian.org/debian trixie/main arm64 libsensors5 arm64 1:3.6.2-2 [36.4 kB]
+#37 11.16 Get:14 http://deb.debian.org/debian trixie/main arm64 libxau6 arm64 1:1.0.11-1 [20.6 kB]
+#37 11.17 Get:15 http://deb.debian.org/debian trixie/main arm64 libxdmcp6 arm64 1:1.1.5-1 [27.8 kB]
+#37 11.18 Get:16 http://deb.debian.org/debian trixie/main arm64 libxcb1 arm64 1.17.0-2+b1 [143 kB]
+#37 11.21 Get:17 http://deb.debian.org/debian trixie/main arm64 libx11-data all 2:1.8.12-1 [343 kB]
+#37 11.29 Get:18 http://deb.debian.org/debian trixie/main arm64 libx11-6 arm64 2:1.8.12-1 [795 kB]
+#37 11.48 Get:19 http://deb.debian.org/debian trixie/main arm64 libx11-xcb1 arm64 2:1.8.12-1 [247 kB]
+#37 11.54 Get:20 http://deb.debian.org/debian trixie/main arm64 libxcb-dri3-0 arm64 1.17.0-2+b1 [107 kB]
+#37 11.57 Get:21 http://deb.debian.org/debian trixie/main arm64 libxcb-present0 arm64 1.17.0-2+b1 [106 kB]
+#37 11.60 Get:22 http://deb.debian.org/debian trixie/main arm64 libxcb-randr0 arm64 1.17.0-2+b1 [117 kB]
+#37 11.63 Get:23 http://deb.debian.org/debian trixie/main arm64 libxcb-sync1 arm64 1.17.0-2+b1 [109 kB]
+#37 11.65 Get:24 http://deb.debian.org/debian trixie/main arm64 libxcb-xfixes0 arm64 1.17.0-2+b1 [110 kB]
+#37 11.67 Get:25 http://deb.debian.org/debian trixie/main arm64 libxshmfence1 arm64 1.3.3-1 [11.1 kB]
+#37 11.69 Get:26 http://deb.debian.org/debian trixie/main arm64 mesa-libgallium arm64 25.0.7-2 [8032 kB]
+#37 13.40 Get:27 http://deb.debian.org/debian trixie/main arm64 libgbm1 arm64 25.0.7-2 [43.9 kB]
+#37 13.50 Get:28 http://deb.debian.org/debian trixie/main arm64 libglvnd0 arm64 1.7.0-1+b2 [41.6 kB]
+#37 13.66 Get:29 http://deb.debian.org/debian trixie/main arm64 libxcb-glx0 arm64 1.17.0-2+b1 [123 kB]
+#37 13.68 Get:30 http://deb.debian.org/debian trixie/main arm64 libxcb-shm0 arm64 1.17.0-2+b1 [105 kB]
+#37 13.73 Get:31 http://deb.debian.org/debian trixie/main arm64 libxext6 arm64 2:1.3.4-1+b3 [49.2 kB]
+#37 13.74 Get:32 http://deb.debian.org/debian trixie/main arm64 libxxf86vm1 arm64 1:1.1.4-1+b4 [19.2 kB]
+#37 13.76 Get:33 http://deb.debian.org/debian trixie/main arm64 libvulkan1 arm64 1.4.309.0-1 [127 kB]
+#37 13.80 Get:34 http://deb.debian.org/debian trixie/main arm64 libgl1-mesa-dri arm64 25.0.7-2 [45.8 kB]
+#37 13.82 Get:35 http://deb.debian.org/debian trixie/main arm64 libglx-mesa0 arm64 25.0.7-2 [142 kB]
+#37 13.87 Get:36 http://deb.debian.org/debian trixie/main arm64 libglx0 arm64 1.7.0-1+b2 [31.1 kB]
+#37 13.88 Get:37 http://deb.debian.org/debian trixie/main arm64 libgl1 arm64 1.7.0-1+b2 [90.9 kB]
+#37 13.91 Get:38 http://deb.debian.org/debian trixie/main arm64 libglib2.0-0t64 arm64 2.84.4-3~deb13u1 [1427 kB]
+#37 14.23 Get:39 http://deb.debian.org/debian trixie/main arm64 libglib2.0-data all 2.84.4-3~deb13u1 [1286 kB]
+#37 14.52 Get:40 http://deb.debian.org/debian trixie/main arm64 libgomp1 arm64 14.2.0-19 [124 kB]
+#37 14.56 Get:41 http://deb.debian.org/debian trixie/main arm64 x11-common all 1:7.7+24+deb13u1 [217 kB]
+#37 14.62 Get:42 http://deb.debian.org/debian trixie/main arm64 libice6 arm64 2:1.1.1-1 [62.1 kB]
+#37 14.65 Get:43 http://deb.debian.org/debian trixie/main arm64 libsm6 arm64 2:1.2.6-1 [36.4 kB]
+#37 14.67 Get:44 http://deb.debian.org/debian trixie/main arm64 libwayland-client0 arm64 1.23.1-3 [26.1 kB]
+#37 14.69 Get:45 http://deb.debian.org/debian trixie/main arm64 libxrender1 arm64 1:0.9.12-1 [27.0 kB]
+#37 14.70 Get:46 http://deb.debian.org/debian trixie/main arm64 mesa-vulkan-drivers arm64 25.0.7-2 [11.4 MB]
+#37 17.14 Get:47 http://deb.debian.org/debian trixie/main arm64 shared-mime-info arm64 2.4-5+b2 [756 kB]
+#37 17.32 Get:48 http://deb.debian.org/debian trixie/main arm64 xdg-user-dirs arm64 0.18-2 [53.2 kB]
+#37 17.47 debconf: unable to initialize frontend: Dialog
+#37 17.47 debconf: (TERM is not set, so the dialog frontend is not usable.)
+#37 17.47 debconf: falling back to frontend: Readline
+#37 17.47 debconf: unable to initialize frontend: Readline
+#37 17.47 debconf: (Can't locate Term/ReadLine.pm in @INC (you may need to install the Term::ReadLine module) (@INC entries checked: /etc/perl /usr/local/lib/aarch64-linux-gnu/perl/5.40.1 /usr/local/share/perl/5.40.1 /usr/lib/aarch64-linux-gnu/perl5/5.40 /usr/share/perl5 /usr/lib/aarch64-linux-gnu/perl-base /usr/lib/aarch64-linux-gnu/perl/5.40 /usr/share/perl/5.40 /usr/local/lib/site_perl) at /usr/share/perl5/Debconf/FrontEnd/Readline.pm line 8, <STDIN> line 48.)
+#37 17.47 debconf: falling back to frontend: Teletype
+#37 17.48 debconf: unable to initialize frontend: Teletype
+#37 17.48 debconf: (This frontend requires a controlling tty.)
+#37 17.48 debconf: falling back to frontend: Noninteractive
+#37 18.24 Fetched 58.3 MB in 13s (4438 kB/s)
+#37 18.26 Selecting previously unselected package libexpat1:arm64.
+#37 18.26 (Reading database ... (Reading database ... 5%(Reading database ... 10%(Reading database ... 15%(Reading database ... 20%(Reading database ... 25%(Reading database ... 30%(Reading database ... 35%(Reading database ... 40%(Reading database ... 45%(Reading database ... 50%(Reading database ... 55%(Reading database ... 60%(Reading database ... 65%(Reading database ... 70%(Reading database ... 75%(Reading database ... 80%(Reading database ... 85%(Reading database ... 90%(Reading database ... 95%(Reading database ... 100%(Reading database ... 5642 files and directories currently installed.)
+#37 18.27 Preparing to unpack .../00-libexpat1_2.7.1-2_arm64.deb ...
+#37 18.27 Unpacking libexpat1:arm64 (2.7.1-2) ...
+#37 18.29 Selecting previously unselected package libatomic1:arm64.
+#37 18.29 Preparing to unpack .../01-libatomic1_14.2.0-19_arm64.deb ...
+#37 18.29 Unpacking libatomic1:arm64 (14.2.0-19) ...
+#37 18.30 Selecting previously unselected package libdrm-common.
+#37 18.30 Preparing to unpack .../02-libdrm-common_2.4.124-2_all.deb ...
+#37 18.30 Unpacking libdrm-common (2.4.124-2) ...
+#37 18.31 Selecting previously unselected package libdrm2:arm64.
+#37 18.31 Preparing to unpack .../03-libdrm2_2.4.124-2_arm64.deb ...
+#37 18.31 Unpacking libdrm2:arm64 (2.4.124-2) ...
+#37 18.32 Selecting previously unselected package libdrm-amdgpu1:arm64.
+#37 18.32 Preparing to unpack .../04-libdrm-amdgpu1_2.4.124-2_arm64.deb ...
+#37 18.32 Unpacking libdrm-amdgpu1:arm64 (2.4.124-2) ...
+#37 18.33 Selecting previously unselected package libedit2:arm64.
+#37 18.33 Preparing to unpack .../05-libedit2_3.1-20250104-1_arm64.deb ...
+#37 18.33 Unpacking libedit2:arm64 (3.1-20250104-1) ...
+#37 18.35 Selecting previously unselected package libelf1t64:arm64.
+#37 18.35 Preparing to unpack .../06-libelf1t64_0.192-4_arm64.deb ...
+#37 18.35 Unpacking libelf1t64:arm64 (0.192-4) ...
+#37 18.37 Selecting previously unselected package libwayland-server0:arm64.
+#37 18.37 Preparing to unpack .../07-libwayland-server0_1.23.1-3_arm64.deb ...
+#37 18.37 Unpacking libwayland-server0:arm64 (1.23.1-3) ...
+#37 18.38 Selecting previously unselected package libxml2:arm64.
+#37 18.38 Preparing to unpack .../08-libxml2_2.12.7+dfsg+really2.9.14-2.1+deb13u2_arm64.deb ...
+#37 18.38 Unpacking libxml2:arm64 (2.12.7+dfsg+really2.9.14-2.1+deb13u2) ...
+#37 18.42 Selecting previously unselected package libz3-4:arm64.
+#37 18.42 Preparing to unpack .../09-libz3-4_4.13.3-1_arm64.deb ...
+#37 18.42 Unpacking libz3-4:arm64 (4.13.3-1) ...
+#37 18.75 Selecting previously unselected package libllvm19:arm64.
+#37 18.75 Preparing to unpack .../10-libllvm19_1%3a19.1.7-3+b1_arm64.deb ...
+#37 18.75 Unpacking libllvm19:arm64 (1:19.1.7-3+b1) ...
+#37 19.44 Selecting previously unselected package libsensors-config.
+#37 19.44 Preparing to unpack .../11-libsensors-config_1%3a3.6.2-2_all.deb ...
+#37 19.44 Unpacking libsensors-config (1:3.6.2-2) ...
+#37 19.45 Selecting previously unselected package libsensors5:arm64.
+#37 19.45 Preparing to unpack .../12-libsensors5_1%3a3.6.2-2_arm64.deb ...
+#37 19.45 Unpacking libsensors5:arm64 (1:3.6.2-2) ...
+#37 19.46 Selecting previously unselected package libxau6:arm64.
+#37 19.46 Preparing to unpack .../13-libxau6_1%3a1.0.11-1_arm64.deb ...
+#37 19.46 Unpacking libxau6:arm64 (1:1.0.11-1) ...
+#37 19.47 Selecting previously unselected package libxdmcp6:arm64.
+#37 19.47 Preparing to unpack .../14-libxdmcp6_1%3a1.1.5-1_arm64.deb ...
+#37 19.47 Unpacking libxdmcp6:arm64 (1:1.1.5-1) ...
+#37 19.48 Selecting previously unselected package libxcb1:arm64.
+#37 19.48 Preparing to unpack .../15-libxcb1_1.17.0-2+b1_arm64.deb ...
+#37 19.48 Unpacking libxcb1:arm64 (1.17.0-2+b1) ...
+#37 19.50 Selecting previously unselected package libx11-data.
+#37 19.50 Preparing to unpack .../16-libx11-data_2%3a1.8.12-1_all.deb ...
+#37 19.50 Unpacking libx11-data (2:1.8.12-1) ...
+#37 19.52 Selecting previously unselected package libx11-6:arm64.
+#37 19.53 Preparing to unpack .../17-libx11-6_2%3a1.8.12-1_arm64.deb ...
+#37 19.53 Unpacking libx11-6:arm64 (2:1.8.12-1) ...
+#37 19.56 Selecting previously unselected package libx11-xcb1:arm64.
+#37 19.56 Preparing to unpack .../18-libx11-xcb1_2%3a1.8.12-1_arm64.deb ...
+#37 19.57 Unpacking libx11-xcb1:arm64 (2:1.8.12-1) ...
+#37 19.58 Selecting previously unselected package libxcb-dri3-0:arm64.
+#37 19.58 Preparing to unpack .../19-libxcb-dri3-0_1.17.0-2+b1_arm64.deb ...
+#37 19.58 Unpacking libxcb-dri3-0:arm64 (1.17.0-2+b1) ...
+#37 19.60 Selecting previously unselected package libxcb-present0:arm64.
+#37 19.60 Preparing to unpack .../20-libxcb-present0_1.17.0-2+b1_arm64.deb ...
+#37 19.60 Unpacking libxcb-present0:arm64 (1.17.0-2+b1) ...
+#37 19.61 Selecting previously unselected package libxcb-randr0:arm64.
+#37 19.61 Preparing to unpack .../21-libxcb-randr0_1.17.0-2+b1_arm64.deb ...
+#37 19.62 Unpacking libxcb-randr0:arm64 (1.17.0-2+b1) ...
+#37 19.63 Selecting previously unselected package libxcb-sync1:arm64.
+#37 19.63 Preparing to unpack .../22-libxcb-sync1_1.17.0-2+b1_arm64.deb ...
+#37 19.63 Unpacking libxcb-sync1:arm64 (1.17.0-2+b1) ...
+#37 19.65 Selecting previously unselected package libxcb-xfixes0:arm64.
+#37 19.65 Preparing to unpack .../23-libxcb-xfixes0_1.17.0-2+b1_arm64.deb ...
+#37 19.65 Unpacking libxcb-xfixes0:arm64 (1.17.0-2+b1) ...
+#37 19.66 Selecting previously unselected package libxshmfence1:arm64.
+#37 19.66 Preparing to unpack .../24-libxshmfence1_1.3.3-1_arm64.deb ...
+#37 19.66 Unpacking libxshmfence1:arm64 (1.3.3-1) ...
+#37 19.67 Selecting previously unselected package mesa-libgallium:arm64.
+#37 19.67 Preparing to unpack .../25-mesa-libgallium_25.0.7-2_arm64.deb ...
+#37 19.67 Unpacking mesa-libgallium:arm64 (25.0.7-2) ...
+#37 20.03 Selecting previously unselected package libgbm1:arm64.
+#37 20.03 Preparing to unpack .../26-libgbm1_25.0.7-2_arm64.deb ...
+#37 20.03 Unpacking libgbm1:arm64 (25.0.7-2) ...
+#37 20.05 Selecting previously unselected package libglvnd0:arm64.
+#37 20.05 Preparing to unpack .../27-libglvnd0_1.7.0-1+b2_arm64.deb ...
+#37 20.05 Unpacking libglvnd0:arm64 (1.7.0-1+b2) ...
+#37 20.07 Selecting previously unselected package libxcb-glx0:arm64.
+#37 20.07 Preparing to unpack .../28-libxcb-glx0_1.17.0-2+b1_arm64.deb ...
+#37 20.07 Unpacking libxcb-glx0:arm64 (1.17.0-2+b1) ...
+#37 20.09 Selecting previously unselected package libxcb-shm0:arm64.
+#37 20.09 Preparing to unpack .../29-libxcb-shm0_1.17.0-2+b1_arm64.deb ...
+#37 20.09 Unpacking libxcb-shm0:arm64 (1.17.0-2+b1) ...
+#37 20.10 Selecting previously unselected package libxext6:arm64.
+#37 20.11 Preparing to unpack .../30-libxext6_2%3a1.3.4-1+b3_arm64.deb ...
+#37 20.11 Unpacking libxext6:arm64 (2:1.3.4-1+b3) ...
+#37 20.13 Selecting previously unselected package libxxf86vm1:arm64.
+#37 20.13 Preparing to unpack .../31-libxxf86vm1_1%3a1.1.4-1+b4_arm64.deb ...
+#37 20.13 Unpacking libxxf86vm1:arm64 (1:1.1.4-1+b4) ...
+#37 20.14 Selecting previously unselected package libvulkan1:arm64.
+#37 20.14 Preparing to unpack .../32-libvulkan1_1.4.309.0-1_arm64.deb ...
+#37 20.15 Unpacking libvulkan1:arm64 (1.4.309.0-1) ...
+#37 20.17 Selecting previously unselected package libgl1-mesa-dri:arm64.
+#37 20.17 Preparing to unpack .../33-libgl1-mesa-dri_25.0.7-2_arm64.deb ...
+#37 20.17 Unpacking libgl1-mesa-dri:arm64 (25.0.7-2) ...
+#37 20.19 Selecting previously unselected package libglx-mesa0:arm64.
+#37 20.19 Preparing to unpack .../34-libglx-mesa0_25.0.7-2_arm64.deb ...
+#37 20.19 Unpacking libglx-mesa0:arm64 (25.0.7-2) ...
+#37 20.21 Selecting previously unselected package libglx0:arm64.
+#37 20.21 Preparing to unpack .../35-libglx0_1.7.0-1+b2_arm64.deb ...
+#37 20.21 Unpacking libglx0:arm64 (1.7.0-1+b2) ...
+#37 20.22 Selecting previously unselected package libgl1:arm64.
+#37 20.22 Preparing to unpack .../36-libgl1_1.7.0-1+b2_arm64.deb ...
+#37 20.22 Unpacking libgl1:arm64 (1.7.0-1+b2) ...
+#37 20.24 Selecting previously unselected package libglib2.0-0t64:arm64.
+#37 20.24 Preparing to unpack .../37-libglib2.0-0t64_2.84.4-3~deb13u1_arm64.deb ...
+#37 20.24 Unpacking libglib2.0-0t64:arm64 (2.84.4-3~deb13u1) ...
+#37 20.31 Selecting previously unselected package libglib2.0-data.
+#37 20.31 Preparing to unpack .../38-libglib2.0-data_2.84.4-3~deb13u1_all.deb ...
+#37 20.31 Unpacking libglib2.0-data (2.84.4-3~deb13u1) ...
+#37 20.40 Selecting previously unselected package libgomp1:arm64.
+#37 20.40 Preparing to unpack .../39-libgomp1_14.2.0-19_arm64.deb ...
+#37 20.40 Unpacking libgomp1:arm64 (14.2.0-19) ...
+#37 20.41 Selecting previously unselected package x11-common.
+#37 20.42 Preparing to unpack .../40-x11-common_1%3a7.7+24+deb13u1_all.deb ...
+#37 20.42 Unpacking x11-common (1:7.7+24+deb13u1) ...
+#37 20.43 Selecting previously unselected package libice6:arm64.
+#37 20.43 Preparing to unpack .../41-libice6_2%3a1.1.1-1_arm64.deb ...
+#37 20.43 Unpacking libice6:arm64 (2:1.1.1-1) ...
+#37 20.44 Selecting previously unselected package libsm6:arm64.
+#37 20.44 Preparing to unpack .../42-libsm6_2%3a1.2.6-1_arm64.deb ...
+#37 20.45 Unpacking libsm6:arm64 (2:1.2.6-1) ...
+#37 20.46 Selecting previously unselected package libwayland-client0:arm64.
+#37 20.46 Preparing to unpack .../43-libwayland-client0_1.23.1-3_arm64.deb ...
+#37 20.46 Unpacking libwayland-client0:arm64 (1.23.1-3) ...
+#37 20.47 Selecting previously unselected package libxrender1:arm64.
+#37 20.47 Preparing to unpack .../44-libxrender1_1%3a0.9.12-1_arm64.deb ...
+#37 20.47 Unpacking libxrender1:arm64 (1:0.9.12-1) ...
+#37 20.48 Selecting previously unselected package mesa-vulkan-drivers:arm64.
+#37 20.48 Preparing to unpack .../45-mesa-vulkan-drivers_25.0.7-2_arm64.deb ...
+#37 20.48 Unpacking mesa-vulkan-drivers:arm64 (25.0.7-2) ...
+#37 20.81 Selecting previously unselected package shared-mime-info.
+#37 20.81 Preparing to unpack .../46-shared-mime-info_2.4-5+b2_arm64.deb ...
+#37 20.82 Unpacking shared-mime-info (2.4-5+b2) ...
+#37 20.88 Selecting previously unselected package xdg-user-dirs.
+#37 20.88 Preparing to unpack .../47-xdg-user-dirs_0.18-2_arm64.deb ...
+#37 20.88 Unpacking xdg-user-dirs (0.18-2) ...
+#37 20.90 Setting up libexpat1:arm64 (2.7.1-2) ...
+#37 20.90 Setting up libwayland-server0:arm64 (1.23.1-3) ...
+#37 20.90 Setting up libxau6:arm64 (1:1.0.11-1) ...
+#37 20.90 Setting up libxdmcp6:arm64 (1:1.1.5-1) ...
+#37 20.91 Setting up libxcb1:arm64 (1.17.0-2+b1) ...
+#37 20.91 Setting up libxcb-xfixes0:arm64 (1.17.0-2+b1) ...
+#37 20.91 Setting up xdg-user-dirs (0.18-2) ...
+#37 20.92 Setting up libglvnd0:arm64 (1.7.0-1+b2) ...
+#37 20.92 Setting up libxcb-glx0:arm64 (1.17.0-2+b1) ...
+#37 20.92 Setting up libedit2:arm64 (3.1-20250104-1) ...
+#37 20.92 Setting up x11-common (1:7.7+24+deb13u1) ...
+#37 20.96 debconf: unable to initialize frontend: Dialog
+#37 20.96 debconf: (TERM is not set, so the dialog frontend is not usable.)
+#37 20.96 debconf: falling back to frontend: Readline
+#37 20.97 debconf: unable to initialize frontend: Readline
+#37 20.97 debconf: (Can't locate Term/ReadLine.pm in @INC (you may need to install the Term::ReadLine module) (@INC entries checked: /etc/perl /usr/local/lib/aarch64-linux-gnu/perl/5.40.1 /usr/local/share/perl/5.40.1 /usr/lib/aarch64-linux-gnu/perl5/5.40 /usr/share/perl5 /usr/lib/aarch64-linux-gnu/perl-base /usr/lib/aarch64-linux-gnu/perl/5.40 /usr/share/perl/5.40 /usr/local/lib/site_perl) at /usr/share/perl5/Debconf/FrontEnd/Readline.pm line 8.)
+#37 20.97 debconf: falling back to frontend: Teletype
+#37 20.97 debconf: unable to initialize frontend: Teletype
+#37 20.97 debconf: (This frontend requires a controlling tty.)
+#37 20.97 debconf: falling back to frontend: Noninteractive
+#37 20.98 invoke-rc.d: could not determine current runlevel
+#37 20.98 invoke-rc.d: policy-rc.d denied execution of start.
+#37 20.98 Setting up libsensors-config (1:3.6.2-2) ...
+#37 20.99 Setting up libxcb-shm0:arm64 (1.17.0-2+b1) ...
+#37 20.99 Setting up libgomp1:arm64 (14.2.0-19) ...
+#37 20.99 Setting up libelf1t64:arm64 (0.192-4) ...
+#37 21.00 Setting up libxcb-present0:arm64 (1.17.0-2+b1) ...
+#37 21.00 Setting up libz3-4:arm64 (4.13.3-1) ...
+#37 21.00 Setting up libglib2.0-data (2.84.4-3~deb13u1) ...
+#37 21.00 Setting up libx11-data (2:1.8.12-1) ...
+#37 21.01 Setting up libxcb-sync1:arm64 (1.17.0-2+b1) ...
+#37 21.01 Setting up libatomic1:arm64 (14.2.0-19) ...
+#37 21.01 Setting up libsensors5:arm64 (1:3.6.2-2) ...
+#37 21.01 Setting up libvulkan1:arm64 (1.4.309.0-1) ...
+#37 21.02 Setting up libxshmfence1:arm64 (1.3.3-1) ...
+#37 21.02 Setting up libxcb-randr0:arm64 (1.17.0-2+b1) ...
+#37 21.02 Setting up libx11-6:arm64 (2:1.8.12-1) ...
+#37 21.02 Setting up libdrm-common (2.4.124-2) ...
+#37 21.02 Setting up libxml2:arm64 (2.12.7+dfsg+really2.9.14-2.1+deb13u2) ...
+#37 21.03 Setting up libwayland-client0:arm64 (1.23.1-3) ...
+#37 21.03 Setting up libxcb-dri3-0:arm64 (1.17.0-2+b1) ...
+#37 21.03 Setting up libllvm19:arm64 (1:19.1.7-3+b1) ...
+#37 21.03 Setting up libx11-xcb1:arm64 (2:1.8.12-1) ...
+#37 21.04 Setting up libice6:arm64 (2:1.1.1-1) ...
+#37 21.04 Setting up libxrender1:arm64 (1:0.9.12-1) ...
+#37 21.04 Setting up libxext6:arm64 (2:1.3.4-1+b3) ...
+#37 21.04 Setting up libxxf86vm1:arm64 (1:1.1.4-1+b4) ...
+#37 21.05 Setting up libglib2.0-0t64:arm64 (2.84.4-3~deb13u1) ...
+#37 21.05 No schema files found: doing nothing.
+#37 21.05 Setting up shared-mime-info (2.4-5+b2) ...
+#37 21.60 Setting up libdrm2:arm64 (2.4.124-2) ...
+#37 21.60 Setting up libsm6:arm64 (2:1.2.6-1) ...
+#37 21.60 Setting up libdrm-amdgpu1:arm64 (2.4.124-2) ...
+#37 21.60 Setting up mesa-vulkan-drivers:arm64 (25.0.7-2) ...
+#37 21.61 Setting up mesa-libgallium:arm64 (25.0.7-2) ...
+#37 21.61 Setting up libgbm1:arm64 (25.0.7-2) ...
+#37 21.61 Setting up libgl1-mesa-dri:arm64 (25.0.7-2) ...
+#37 21.62 Setting up libglx-mesa0:arm64 (25.0.7-2) ...
+#37 21.62 Setting up libglx0:arm64 (1.7.0-1+b2) ...
+#37 21.62 Setting up libgl1:arm64 (1.7.0-1+b2) ...
+#37 21.62 Processing triggers for libc-bin (2.41-12) ...
+#37 DONE 22.1s
+
+#38 [frontend 3/7] RUN pip install uv
+#38 1.346 Collecting uv
+#38 1.471   Downloading uv-0.9.14-py3-none-manylinux_2_28_aarch64.whl.metadata (11 kB)
+#38 1.516 Downloading uv-0.9.14-py3-none-manylinux_2_28_aarch64.whl (20.5 MB)
+#38 5.950    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 20.5/20.5 MB 4.6 MB/s eta 0:00:00
+#38 5.987 Installing collected packages: uv
+#38 6.166 Successfully installed uv-0.9.14
+#38 6.166 WARNING: Running pip as the 'root' user can result in broken permissions and conflicting behaviour with the system package manager. It is recommended to use a virtual environment instead: https://pip.pypa.io/warnings/venv
+#38 6.266 
+#38 6.266 [notice] A new release of pip is available: 24.0 -> 25.3
+#38 6.266 [notice] To update, run: pip install --upgrade pip
+#38 DONE 6.4s
+
+#39 [frontend 4/7] WORKDIR /app
+#39 DONE 0.0s
+
+#40 [frontend 5/7] COPY pyproject.toml ./
+#40 DONE 0.0s
+
+#41 [frontend 6/7] RUN uv pip install --system -e .
+#41 0.130 Using Python 3.11.14 environment at: /usr/local
+#41 2.673 Resolved 153 packages in 2.54s
+#41 2.678    Building driver-drowsiness-detection @ file:///app
+#41 2.717 Downloading sympy (6.0MiB)
+#41 2.815 Downloading pyarrow (39.2MiB)
+#41 2.816 Downloading pydeck (6.6MiB)
+#41 2.817 Downloading pygments (1.2MiB)
+#41 2.817 Downloading scikit-learn (9.1MiB)
+#41 2.817 Downloading pillow (6.1MiB)
+#41 2.817 Downloading babel (9.7MiB)
+#41 2.817 Downloading torch (99.4MiB)
+#41 2.818 Downloading notebook (13.8MiB)
+#41 2.818 Downloading jupyterlab (11.8MiB)
+#41 2.818 Downloading networkx (2.0MiB)
+#41 2.819 Downloading matplotlib (9.1MiB)
+#41 2.819 Downloading widgetsnbextension (2.1MiB)
+#41 2.819 Downloading pydantic-core (1.8MiB)
+#41 2.819 Downloading opencv-python (43.8MiB)
+#41 2.820 Downloading wandb (17.9MiB)
+#41 2.820 Downloading scipy (32.0MiB)
+#41 2.821 Downloading fonttools (4.8MiB)
+#41 2.823 Downloading torchvision (2.3MiB)
+#41 2.823 Downloading uvloop (3.6MiB)
+#41 2.823 Downloading debugpy (5.0MiB)
+#41 2.824 Downloading jedi (1.5MiB)
+#41 2.825 Downloading numpy (13.6MiB)
+#41 2.826 Downloading streamlit (9.7MiB)
+#41 2.827 Downloading pandas (11.6MiB)
+#41 2.828 Downloading kiwisolver (1.2MiB)
+#41 12.48       Built driver-drowsiness-detection @ file:///app
+#41 14.79  Downloaded kiwisolver
+#41 15.02  Downloaded pygments
+#41 16.35  Downloaded jedi
+#41 18.57  Downloaded pydantic-core
+#41 19.61  Downloaded widgetsnbextension
+#41 19.77  Downloaded networkx
+#41 20.81  Downloaded torchvision
+#41 26.83  Downloaded uvloop
+#41 30.89  Downloaded fonttools
+#41 32.11  Downloaded debugpy
+#41 34.70  Downloaded sympy
+#41 35.53  Downloaded pillow
+#41 37.53  Downloaded pydeck
+#41 44.36  Downloaded matplotlib
+#41 44.51  Downloaded scikit-learn
+#41 45.87  Downloaded streamlit
+#41 46.27  Downloaded babel
+#41 50.20  Downloaded pandas
+#41 50.68  Downloaded jupyterlab
+#41 53.01  Downloaded numpy
+#41 53.50  Downloaded notebook
+#41 57.87  Downloaded wandb
+#41 72.28  Downloaded scipy
+#41 77.06  Downloaded pyarrow
+#41 79.13  Downloaded opencv-python
+#41 91.52  Downloaded torch
+#41 91.52 Prepared 152 packages in 1m 28s
+#41 91.94 Installed 152 packages in 411ms
+#41 91.94  + altair==5.5.0
+#41 91.94  + annotated-doc==0.0.4
+#41 91.94  + annotated-types==0.7.0
+#41 91.94  + anyio==4.12.0
+#41 91.94  + argon2-cffi==25.1.0
+#41 91.94  + argon2-cffi-bindings==25.1.0
+#41 91.94  + arrow==1.4.0
+#41 91.94  + asttokens==3.0.1
+#41 91.94  + async-lru==2.0.5
+#41 91.94  + attrs==25.4.0
+#41 91.94  + babel==2.17.0
+#41 91.94  + beautifulsoup4==4.14.3
+#41 91.94  + bleach==6.3.0
+#41 91.94  + blinker==1.9.0
+#41 91.94  + cachetools==6.2.2
+#41 91.94  + certifi==2025.11.12
+#41 91.94  + cffi==2.0.0
+#41 91.94  + charset-normalizer==3.4.4
+#41 91.94  + click==8.3.1
+#41 91.94  + comm==0.2.3
+#41 91.94  + contourpy==1.3.3
+#41 91.94  + cycler==0.12.1
+#41 91.94  + debugpy==1.8.17
+#41 91.94  + decorator==5.2.1
+#41 91.94  + defusedxml==0.7.1
+#41 91.94  + driver-drowsiness-detection==0.1.0 (from file:///app)
+#41 91.94  + executing==2.2.1
+#41 91.94  + fastapi==0.123.4
+#41 91.94  + fastjsonschema==2.21.2
+#41 91.94  + filelock==3.20.0
+#41 91.94  + fonttools==4.61.0
+#41 91.94  + fqdn==1.5.1
+#41 91.94  + fsspec==2025.10.0
+#41 91.94  + gitdb==4.0.12
+#41 91.94  + gitpython==3.1.45
+#41 91.94  + h11==0.16.0
+#41 91.94  + httpcore==1.0.9
+#41 91.94  + httptools==0.7.1
+#41 91.94  + httpx==0.28.1
+#41 91.94  + idna==3.11
+#41 91.94  + ipykernel==7.1.0
+#41 91.94  + ipython==9.7.0
+#41 91.94  + ipython-pygments-lexers==1.1.1
+#41 91.94  + ipywidgets==8.1.8
+#41 91.94  + isoduration==20.11.0
+#41 91.94  + jedi==0.19.2
+#41 91.94  + jinja2==3.1.6
+#41 91.94  + joblib==1.5.2
+#41 91.94  + json5==0.12.1
+#41 91.94  + jsonpointer==3.0.0
+#41 91.94  + jsonschema==4.25.1
+#41 91.94  + jsonschema-specifications==2025.9.1
+#41 91.94  + jupyter==1.1.1
+#41 91.94  + jupyter-client==8.6.3
+#41 91.94  + jupyter-console==6.6.3
+#41 91.94  + jupyter-core==5.9.1
+#41 91.94  + jupyter-events==0.12.0
+#41 91.94  + jupyter-lsp==2.3.0
+#41 91.94  + jupyter-server==2.17.0
+#41 91.94  + jupyter-server-terminals==0.5.3
+#41 91.94  + jupyterlab==4.5.0
+#41 91.94  + jupyterlab-pygments==0.3.0
+#41 91.94  + jupyterlab-server==2.28.0
+#41 91.94  + jupyterlab-widgets==3.0.16
+#41 91.94  + kiwisolver==1.4.9
+#41 91.94  + lark==1.3.1
+#41 91.94  + markupsafe==3.0.3
+#41 91.94  + matplotlib==3.10.7
+#41 91.94  + matplotlib-inline==0.2.1
+#41 91.94  + mistune==3.1.4
+#41 91.94  + mpmath==1.3.0
+#41 91.94  + narwhals==2.13.0
+#41 91.94  + nbclient==0.10.2
+#41 91.94  + nbconvert==7.16.6
+#41 91.94  + nbformat==5.10.4
+#41 91.94  + nest-asyncio==1.6.0
+#41 91.94  + networkx==3.6
+#41 91.94  + notebook==7.5.0
+#41 91.94  + notebook-shim==0.2.4
+#41 91.94  + numpy==2.2.6
+#41 91.94  + opencv-python==4.12.0.88
+#41 91.94  + overrides==7.7.0
+#41 91.94  + packaging==25.0
+#41 91.94  + pandas==2.3.3
+#41 91.94  + pandocfilters==1.5.1
+#41 91.94  + parso==0.8.5
+#41 91.94  + pexpect==4.9.0
+#41 91.94  + pillow==12.0.0
+#41 91.94  + platformdirs==4.5.0
+#41 91.94  + prometheus-client==0.23.1
+#41 91.94  + prompt-toolkit==3.0.52
+#41 91.94  + protobuf==6.33.1
+#41 91.94  + psutil==7.1.3
+#41 91.94  + ptyprocess==0.7.0
+#41 91.94  + pure-eval==0.2.3
+#41 91.94  + pyarrow==21.0.0
+#41 91.94  + pycparser==2.23
+#41 91.94  + pydantic==2.12.5
+#41 91.94  + pydantic-core==2.41.5
+#41 91.94  + pydeck==0.9.1
+#41 91.94  + pygments==2.19.2
+#41 91.94  + pyparsing==3.2.5
+#41 91.94  + python-dateutil==2.9.0.post0
+#41 91.94  + python-dotenv==1.2.1
+#41 91.94  + python-json-logger==4.0.0
+#41 91.94  + python-multipart==0.0.20
+#41 91.94  + pytz==2025.2
+#41 91.94  + pyyaml==6.0.3
+#41 91.94  + pyzmq==27.1.0
+#41 91.94  + redis==7.1.0
+#41 91.94  + referencing==0.37.0
+#41 91.94  + requests==2.32.5
+#41 91.94  + rfc3339-validator==0.1.4
+#41 91.94  + rfc3986-validator==0.1.1
+#41 91.94  + rfc3987-syntax==1.1.0
+#41 91.94  + rpds-py==0.30.0
+#41 91.94  + scikit-learn==1.7.2
+#41 91.94  + scipy==1.16.3
+#41 91.94  + send2trash==1.8.3
+#41 91.94  + sentry-sdk==2.46.0
+#41 91.94  + six==1.17.0
+#41 91.94  + smmap==5.0.2
+#41 91.94  + soupsieve==2.8
+#41 91.94  + stack-data==0.6.3
+#41 91.94  + starlette==0.50.0
+#41 91.94  + streamlit==1.51.0
+#41 91.94  + sympy==1.14.0
+#41 91.94  + tenacity==9.1.2
+#41 91.94  + terminado==0.18.1
+#41 91.94  + threadpoolctl==3.6.0
+#41 91.94  + tinycss2==1.4.0
+#41 91.94  + toml==0.10.2
+#41 91.94  + torch==2.9.1
+#41 91.94  + torchvision==0.24.1
+#41 91.94  + tornado==6.5.2
+#41 91.94  + traitlets==5.14.3
+#41 91.94  + typing-extensions==4.15.0
+#41 91.94  + typing-inspection==0.4.2
+#41 91.94  + tzdata==2025.2
+#41 91.94  + uri-template==1.3.0
+#41 91.94  + urllib3==2.5.0
+#41 91.94  + uvicorn==0.38.0
+#41 91.94  + uvloop==0.22.1
+#41 91.94  + wandb==0.23.0
+#41 91.94  + watchdog==6.0.0
+#41 91.94  + watchfiles==1.1.1
+#41 91.94  + wcwidth==0.2.14
+#41 91.94  + webcolors==25.10.0
+#41 91.94  + webencodings==0.5.1
+#41 91.94  + websocket-client==1.9.0
+#41 91.94  + websockets==15.0.1
+#41 91.94  + widgetsnbextension==4.0.15
+#41 DONE 92.9s
+
+#42 [frontend 7/7] COPY src/ ./src/
+#42 DONE 0.2s
+
+#43 [frontend] exporting to image
+#43 exporting layers
+#43 exporting layers 34.1s done
+#43 exporting manifest sha256:ffe54586184e225c8f9bac1741e989f72f74f10b926b0b12db5ca2e5c87019a5 done
+#43 exporting config sha256:094720392909f5f5d533252f8c02ac4e1ea27b035a22a7b458973c465522ee05 done
+#43 exporting attestation manifest sha256:3ede8ffb7113bbe5004297f25e9cabbe0aefb51597f207db9260514e5e18a83a done
+#43 exporting manifest list sha256:0ad3c8d21f0c93daa096e0710e79d7550f9eaa7953a58de4c58369a63580c25a done
+#43 naming to docker.io/library/project-frontend:latest done
+#43 unpacking to docker.io/library/project-frontend:latest
+#43 unpacking to docker.io/library/project-frontend:latest 9.8s done
+#43 DONE 44.0s
+
+#44 [frontend] resolving provenance for metadata file
+#44 DONE 0.0s
+ alarm_manager  Built
+ api  Built
+ frontend  Built
+ inference_worker  Built

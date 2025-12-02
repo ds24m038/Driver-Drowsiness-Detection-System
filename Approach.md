@@ -301,6 +301,7 @@ Short description (adapted for implementation):
   - Starts all required services with one command.
   - Defines network and environment variables.
 - Logging & basic troubleshooting (e.g. logging to stdout / files) should be supported.
+- As package manager use UV instead of PIP!! 
 
 ### 6.5 Weights & Biases (W&B) – Detailed Requirements
 
