@@ -47,6 +47,10 @@ Project/
 
 ## 2. Data Preparation
 
+NOTE THE DATA CAN BE LOADED FROM KAGGLE VIA THIS LINK:
+
+https://www.kaggle.com/datasets/ismailnasri20/driver-drowsiness-dataset-ddd
+
 The dataset should already be in the `Data/` directory:
 
 - `Data/Drowsy/` - Contains drowsy driver face images (PNG, 227×227)
