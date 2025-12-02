@@ -1,2 +1,0 @@
-"""Inference worker package."""
-
