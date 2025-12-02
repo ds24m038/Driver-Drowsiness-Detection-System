@@ -69,20 +69,32 @@ This system monitors a driver's state in real-time through webcam footage and tr
 ### Prerequisites
 
 - Docker and Docker Compose
-- Trained model file at `models/best_model.pth` (see HOWTO.md for training instructions)
+- Weights & Biases API key (for automatic model download)
+- OR a trained model file at `models/best_model.pth` (see HOWTO.md for training instructions)
 
 ### Running the System
 
-1. **Ensure you have a trained model:**
+1. **Set up environment variables:**
    ```bash
-   # Train the model first (see HOWTO.md)
-   # Model should be saved to models/best_model.pth
+   # Create a .env file with your W&B API key
+   echo "WANDB_API_KEY=your_wandb_api_key_here" > .env
+   
+   # Optional: Specify W&B project and artifact version
+   echo "WANDB_PROJECT=Driver-Drowsiness-Training" >> .env
+   echo "WANDB_ARTIFACT_VERSION=latest" >> .env
    ```
+   
+   Get your W&B API key from: https://wandb.ai/authorize
 
 2. **Start all services:**
    ```bash
    docker compose up --build
    ```
+   
+   The system will automatically:
+   - Download the model from W&B if not found locally
+   - Fall back to local model if available
+   - Use the downloaded model for inference
 
 3. **Access the Streamlit UI:**
    - Open your browser to `http://localhost:8501`
@@ -105,6 +117,20 @@ Key configuration parameters (in `src/config/settings.py`):
 - `ALARM_THRESHOLD_SECONDS = 10` - Seconds of consecutive drowsiness before alarm
 - `FPS = 5` - Frames per second for threshold calculation
 - `ALARM_THRESHOLD_FRAMES = 50` - Frames threshold (FPS × seconds)
+
+### Model Loading
+
+The system supports automatic model loading from Weights & Biases:
+
+- **Automatic Download**: If the model file is not found locally, the system will automatically download it from W&B
+- **Environment Variables**:
+  - `WANDB_API_KEY` - Your W&B API key (required for download)
+  - `WANDB_PROJECT` - W&B project name (default: "Driver-Drowsiness-Training")
+  - `WANDB_ARTIFACT_VERSION` - Artifact version to download (default: "latest")
+- **Artifact Name**: The system looks for the artifact named `drowsiness_detection_model`
+- **Fallback**: If W&B download fails, the system will look for a local model file
+
+This means you don't need to commit large model files to GitHub - they're stored in W&B and downloaded automatically when needed.
 
 ## Technology Stack
 

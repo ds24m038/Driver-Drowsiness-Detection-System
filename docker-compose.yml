@@ -20,12 +20,15 @@ services:
     ports:
       - "8000:8000"
     volumes:
-      - ./models:/app/models:ro
+      - ./models:/app/models
       - ./src:/app/src:ro
     environment:
       - REDIS_HOST=redis
       - REDIS_PORT=6379
       - MODEL_PATH=/app/models/best_model.pth
+      - WANDB_API_KEY=${WANDB_API_KEY}
+      - WANDB_PROJECT=${WANDB_PROJECT:-Driver-Drowsiness-Training}
+      - WANDB_ARTIFACT_VERSION=${WANDB_ARTIFACT_VERSION:-latest}
     depends_on:
       redis:
         condition: service_healthy
@@ -42,12 +45,15 @@ services:
       dockerfile: docker/Dockerfile.worker
     container_name: drowsiness_worker
     volumes:
-      - ./models:/app/models:ro
+      - ./models:/app/models
       - ./src:/app/src:ro
     environment:
       - REDIS_HOST=redis
       - REDIS_PORT=6379
       - MODEL_PATH=/app/models/best_model.pth
+      - WANDB_API_KEY=${WANDB_API_KEY}
+      - WANDB_PROJECT=${WANDB_PROJECT:-Driver-Drowsiness-Training}
+      - WANDB_ARTIFACT_VERSION=${WANDB_ARTIFACT_VERSION:-latest}
     depends_on:
       redis:
         condition: service_healthy

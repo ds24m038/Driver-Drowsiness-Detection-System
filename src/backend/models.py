@@ -4,7 +4,12 @@ import torch.nn as nn
 import torch.nn.functional as F
 from pathlib import Path
 from typing import Optional
+import logging
+
 from src.config.settings import MODEL_PATH, MODEL_INPUT_SIZE, NUM_CLASSES, CLASS_NAMES, DROWSY_THRESHOLD
+from src.config.wandb_utils import download_model_from_wandb
+
+logger = logging.getLogger(__name__)
 
 
 class DrowsinessCNN(nn.Module):
@@ -78,12 +83,14 @@ def create_model(num_classes: int = NUM_CLASSES) -> DrowsinessCNN:
     return DrowsinessCNN(num_classes=num_classes)
 
 
-def load_model(model_path: Optional[str] = None, device: str = "cpu") -> DrowsinessCNN:
-    """Load a trained model from disk.
+def load_model(model_path: Optional[str] = None, device: str = "cpu", use_wandb: bool = True) -> DrowsinessCNN:
+    """Load a trained model from disk or W&B.
     
     Args:
         model_path: Path to model checkpoint. If None, uses default from settings.
+                   If file doesn't exist and use_wandb=True, attempts to download from W&B.
         device: Device to load model on ("cpu", "cuda", or "mps" for Apple Silicon)
+        use_wandb: If True, attempt to download from W&B if local file not found
         
     Returns:
         Loaded model in evaluation mode
@@ -93,7 +100,20 @@ def load_model(model_path: Optional[str] = None, device: str = "cpu") -> Drowsin
     
     model_path = Path(model_path)
     
-    if not model_path.exists():
+    # If local file doesn't exist and W&B is enabled, try downloading
+    if not model_path.exists() and use_wandb:
+        logger.info(f"Local model not found at {model_path}. Attempting to download from W&B...")
+        wandb_model_path = download_model_from_wandb()
+        if wandb_model_path and wandb_model_path.exists():
+            model_path = wandb_model_path
+            logger.info(f"Using model from W&B: {model_path}")
+        else:
+            raise FileNotFoundError(
+                f"Model file not found locally at {MODEL_PATH} "
+                f"and could not be downloaded from W&B. "
+                f"Please ensure the model is available or set WANDB_API_KEY environment variable."
+            )
+    elif not model_path.exists():
         raise FileNotFoundError(f"Model file not found: {model_path}")
     
     # Create model
