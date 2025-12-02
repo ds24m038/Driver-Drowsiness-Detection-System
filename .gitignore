@@ -32,3 +32,11 @@ models/*.pt
 models/*.h5
 models/*.ckpt
 !models/.gitkeep
+
+# Log files
+*.log
+build.log
+training.log
+
+# Weights & Biases (experiment tracking)
+wandb/
