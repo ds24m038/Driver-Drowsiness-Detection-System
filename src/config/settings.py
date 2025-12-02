@@ -37,7 +37,7 @@ CLASS_NAMES = ["alert", "drowsy"]  # Index 0: alert, Index 1: drowsy
 DROWSY_THRESHOLD = float(os.getenv("DROWSY_THRESHOLD", "0.15"))  # Default: 15% drowsy probability triggers drowsy
 
 # Weights & Biases configuration
-WANDB_PROJECT = "SDC Project Final"
+WANDB_PROJECT = os.getenv("WANDB_PROJECT", "Driver-Drowsiness-Training")
 WANDB_API_KEY = os.getenv("WANDB_API_KEY", "")
 
 # FastAPI configuration
