@@ -1,0 +1,28 @@
+# Data folder
+Data/
+
+# Environment variables
+.env
+
+# Common Python ignores (if applicable)
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+env/
+venv/
+ENV/
+.venv
+
+# Common IDE ignores
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# OS files
+.DS_Store
+Thumbs.db
+
