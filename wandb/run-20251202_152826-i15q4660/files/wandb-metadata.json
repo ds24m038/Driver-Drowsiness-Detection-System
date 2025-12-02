@@ -1,0 +1,37 @@
+{
+  "os": "macOS-15.6.1-arm64-arm-64bit",
+  "python": "CPython 3.11.5",
+  "startedAt": "2025-12-02T14:28:26.306558Z",
+  "program": "/Users/sinahaghgoo/Library/CloudStorage/OneDrive-Persönlich/Solution Deployment/Project/train_model.py",
+  "codePath": "train_model.py",
+  "codePathLocal": "train_model.py",
+  "git": {
+    "remote": "https://github.com/ds24m038/Solution-Deployment-Project.git",
+    "commit": "f4879bf8b9adb9e8979c91e5590b4bebab872625"
+  },
+  "email": "ds24m038@technikum-wien.at",
+  "root": "/Users/sinahaghgoo/Library/CloudStorage/OneDrive-Persönlich/Solution Deployment/Project",
+  "host": "192.168.1.135",
+  "executable": "/Users/sinahaghgoo/anaconda3/bin/python",
+  "cpu_count": 11,
+  "cpu_count_logical": 11,
+  "disk": {
+    "/": {
+      "total": "494384795648",
+      "used": "457787400192"
+    }
+  },
+  "memory": {
+    "total": "19327352832"
+  },
+  "apple": {
+    "name": "Apple M3 Pro",
+    "ecpuCores": 6,
+    "pcpuCores": 5,
+    "gpuCores": 14,
+    "memoryGb": 18,
+    "swapTotalBytes": "1073741824",
+    "ramTotalBytes": "19327352832"
+  },
+  "writerId": "c2e4loetkjngksvbgpg62dsxdj81v7jr"
+}

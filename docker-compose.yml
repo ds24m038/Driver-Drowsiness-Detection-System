@@ -1,0 +1,97 @@
+services:
+  redis:
+    image: redis:7-alpine
+    container_name: drowsiness_redis
+    ports:
+      - "6379:6379"
+    volumes:
+      - redis_data:/data
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 5s
+      timeout: 3s
+      retries: 5
+
+  api:
+    build:
+      context: .
+      dockerfile: docker/Dockerfile.backend
+    container_name: drowsiness_api
+    ports:
+      - "8000:8000"
+    volumes:
+      - ./models:/app/models:ro
+      - ./src:/app/src:ro
+    environment:
+      - REDIS_HOST=redis
+      - REDIS_PORT=6379
+      - MODEL_PATH=/app/models/best_model.pth
+    depends_on:
+      redis:
+        condition: service_healthy
+    healthcheck:
+      test: ["CMD", "python", "-c", "import urllib.request; urllib.request.urlopen('http://localhost:8000/health')"]
+      interval: 10s
+      timeout: 5s
+      retries: 3
+      start_period: 10s
+
+  inference_worker:
+    build:
+      context: .
+      dockerfile: docker/Dockerfile.worker
+    container_name: drowsiness_worker
+    volumes:
+      - ./models:/app/models:ro
+      - ./src:/app/src:ro
+    environment:
+      - REDIS_HOST=redis
+      - REDIS_PORT=6379
+      - MODEL_PATH=/app/models/best_model.pth
+    depends_on:
+      redis:
+        condition: service_healthy
+      api:
+        condition: service_healthy
+
+  alarm_manager:
+    build:
+      context: .
+      dockerfile: docker/Dockerfile.alarm
+    container_name: drowsiness_alarm
+    volumes:
+      - ./src:/app/src:ro
+    environment:
+      - REDIS_HOST=redis
+      - REDIS_PORT=6379
+    depends_on:
+      redis:
+        condition: service_healthy
+
+  frontend:
+    build:
+      context: .
+      dockerfile: docker/Dockerfile.frontend
+    container_name: drowsiness_frontend
+    ports:
+      - "8501:8501"
+    volumes:
+      - ./src:/app/src:ro
+    environment:
+      - REDIS_HOST=redis
+      - REDIS_PORT=6379
+    depends_on:
+      redis:
+        condition: service_healthy
+      inference_worker:
+        condition: service_started
+      alarm_manager:
+        condition: service_started
+
+volumes:
+  redis_data:
+
+networks:
+  default:
+    name: drowsiness_network
+

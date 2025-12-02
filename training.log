@@ -1,0 +1,583 @@
+wandb: Appending key for api.wandb.ai to your netrc file: /Users/sinahaghgoo/.netrc
+wandb: Currently logged in as: ds24m038 (ds24m038-fh-technikum-wien) to https://api.wandb.ai. Use `wandb login --relogin` to force relogin
+wandb: setting up run pl0falso
+wandb: Tracking run with wandb version 0.23.0
+wandb: Run data is saved locally in /Users/sinahaghgoo/Library/CloudStorage/OneDrive-Persönlich/Solution Deployment/Project/wandb/run-20251202_153435-pl0falso
+wandb: Run `wandb offline` to turn off syncing.
+wandb: Syncing run drowsiness_cnn_training
+wandb: ⭐️ View project at https://wandb.ai/ds24m038-fh-technikum-wien/Driver-Drowsiness-Training
+wandb: 🚀 View run at https://wandb.ai/ds24m038-fh-technikum-wien/Driver-Drowsiness-Training/runs/pl0falso
+Project root: /Users/sinahaghgoo/Library/CloudStorage/OneDrive-Persönlich/Solution Deployment/Project
+PyTorch version: 2.8.0
+CUDA available: False
+MPS available: True
+W&B Project: Driver-Drowsiness-Training
+
+=== Initializing Weights & Biases ===
+✓ W&B initialized. View run at: https://wandb.ai/ds24m038-fh-technikum-wien/Driver-Drowsiness-Training/runs/pl0falso
+
+=== Loading Dataset ===
+Loading Drowsy images from /Users/sinahaghgoo/Library/CloudStorage/OneDrive-Persönlich/Solution Deployment/Project/Data/Drowsy...
+Loading Non Drowsy images from /Users/sinahaghgoo/Library/CloudStorage/OneDrive-Persönlich/Solution Deployment/Project/Data/Non Drowsy...
+Total images loaded: 41793
+Train samples: 29255
+Validation samples: 6268
+Test samples: 6270
+
+=== Initializing Model ===
+Using MPS (Apple Silicon GPU)
+Model created on device: mps
+Total parameters: 26,211,842
+
+=== Starting Training ===
+
+Epoch 1/10
+Project root: /Users/sinahaghgoo/Library/CloudStorage/OneDrive-Persönlich/Solution Deployment/Project
+PyTorch version: 2.8.0
+CUDA available: False
+MPS available: True
+W&B Project: Driver-Drowsiness-Training
+Project root: /Users/sinahaghgoo/Library/CloudStorage/OneDrive-Persönlich/Solution Deployment/Project
+PyTorch version: 2.8.0
+CUDA available: False
+MPS available: True
+W&B Project: Driver-Drowsiness-Training
+Project root: /Users/sinahaghgoo/Library/CloudStorage/OneDrive-Persönlich/Solution Deployment/Project
+PyTorch version: 2.8.0
+CUDA available: False
+MPS available: True
+W&B Project: Driver-Drowsiness-Training
+Project root: /Users/sinahaghgoo/Library/CloudStorage/OneDrive-Persönlich/Solution Deployment/Project
+PyTorch version: 2.8.0
+CUDA available: False
+MPS available: True
+W&B Project: Driver-Drowsiness-Training
+Project root: /Users/sinahaghgoo/Library/CloudStorage/OneDrive-Persönlich/Solution Deployment/Project
+PyTorch version: 2.8.0
+CUDA available: False
+MPS available: True
+W&B Project: Driver-Drowsiness-Training
+Project root: /Users/sinahaghgoo/Library/CloudStorage/OneDrive-Persönlich/Solution Deployment/Project
+PyTorch version: 2.8.0
+CUDA available: False
+MPS available: True
+W&B Project: Driver-Drowsiness-Training
+Project root: /Users/sinahaghgoo/Library/CloudStorage/OneDrive-Persönlich/Solution Deployment/Project
+PyTorch version: 2.8.0
+CUDA available: False
+MPS available: True
+W&B Project: Driver-Drowsiness-Training
+Project root: /Users/sinahaghgoo/Library/CloudStorage/OneDrive-Persönlich/Solution Deployment/Project
+PyTorch version: 2.8.0
+CUDA available: False
+MPS available: True
+W&B Project: Driver-Drowsiness-Training
+  Train Loss: 0.2353, Train Acc: 93.62%
+  Val Loss: 0.2232, Val Acc: 96.55%
+  Precision: 0.9679, Recall: 0.9655, F1: 0.9656
+  ✓ Saved best model (val_acc: 96.55%)
+
+Epoch 2/10
+Project root: /Users/sinahaghgoo/Library/CloudStorage/OneDrive-Persönlich/Solution Deployment/Project
+PyTorch version: 2.8.0
+CUDA available: False
+MPS available: True
+W&B Project: Driver-Drowsiness-Training
+Project root: /Users/sinahaghgoo/Library/CloudStorage/OneDrive-Persönlich/Solution Deployment/Project
+PyTorch version: 2.8.0
+CUDA available: False
+MPS available: True
+W&B Project: Driver-Drowsiness-Training
+Project root: /Users/sinahaghgoo/Library/CloudStorage/OneDrive-Persönlich/Solution Deployment/Project
+PyTorch version: 2.8.0
+CUDA available: False
+MPS available: True
+W&B Project: Driver-Drowsiness-Training
+Project root: /Users/sinahaghgoo/Library/CloudStorage/OneDrive-Persönlich/Solution Deployment/Project
+PyTorch version: 2.8.0
+CUDA available: False
+MPS available: True
+W&B Project: Driver-Drowsiness-Training
+Project root: /Users/sinahaghgoo/Library/CloudStorage/OneDrive-Persönlich/Solution Deployment/Project
+PyTorch version: 2.8.0
+CUDA available: False
+MPS available: True
+W&B Project: Driver-Drowsiness-Training
+Project root: /Users/sinahaghgoo/Library/CloudStorage/OneDrive-Persönlich/Solution Deployment/Project
+PyTorch version: 2.8.0
+CUDA available: False
+MPS available: True
+W&B Project: Driver-Drowsiness-Training
+Project root: /Users/sinahaghgoo/Library/CloudStorage/OneDrive-Persönlich/Solution Deployment/Project
+PyTorch version: 2.8.0
+CUDA available: False
+MPS available: True
+W&B Project: Driver-Drowsiness-Training
+Project root: /Users/sinahaghgoo/Library/CloudStorage/OneDrive-Persönlich/Solution Deployment/Project
+PyTorch version: 2.8.0
+CUDA available: False
+MPS available: True
+W&B Project: Driver-Drowsiness-Training
+  Train Loss: 0.0354, Train Acc: 99.01%
+  Val Loss: 0.0059, Val Acc: 99.84%
+  Precision: 0.9984, Recall: 0.9984, F1: 0.9984
+  ✓ Saved best model (val_acc: 99.84%)
+
+Epoch 3/10
+Project root: /Users/sinahaghgoo/Library/CloudStorage/OneDrive-Persönlich/Solution Deployment/Project
+PyTorch version: 2.8.0
+CUDA available: False
+MPS available: True
+W&B Project: Driver-Drowsiness-Training
+Project root: /Users/sinahaghgoo/Library/CloudStorage/OneDrive-Persönlich/Solution Deployment/Project
+PyTorch version: 2.8.0
+CUDA available: False
+MPS available: True
+W&B Project: Driver-Drowsiness-Training
+Project root: /Users/sinahaghgoo/Library/CloudStorage/OneDrive-Persönlich/Solution Deployment/Project
+PyTorch version: 2.8.0
+CUDA available: False
+MPS available: True
+W&B Project: Driver-Drowsiness-Training
+Project root: /Users/sinahaghgoo/Library/CloudStorage/OneDrive-Persönlich/Solution Deployment/Project
+PyTorch version: 2.8.0
+CUDA available: False
+MPS available: True
+W&B Project: Driver-Drowsiness-Training
+Project root: /Users/sinahaghgoo/Library/CloudStorage/OneDrive-Persönlich/Solution Deployment/Project
+PyTorch version: 2.8.0
+CUDA available: False
+MPS available: True
+W&B Project: Driver-Drowsiness-Training
+Project root: /Users/sinahaghgoo/Library/CloudStorage/OneDrive-Persönlich/Solution Deployment/Project
+PyTorch version: 2.8.0
+CUDA available: False
+MPS available: True
+W&B Project: Driver-Drowsiness-Training
+Project root: /Users/sinahaghgoo/Library/CloudStorage/OneDrive-Persönlich/Solution Deployment/Project
+PyTorch version: 2.8.0
+CUDA available: False
+MPS available: True
+W&B Project: Driver-Drowsiness-Training
+Project root: /Users/sinahaghgoo/Library/CloudStorage/OneDrive-Persönlich/Solution Deployment/Project
+PyTorch version: 2.8.0
+CUDA available: False
+MPS available: True
+W&B Project: Driver-Drowsiness-Training
+  Train Loss: 0.0212, Train Acc: 99.41%
+  Val Loss: 0.0048, Val Acc: 99.86%
+  Precision: 0.9986, Recall: 0.9986, F1: 0.9986
+  ✓ Saved best model (val_acc: 99.86%)
+
+Epoch 4/10
+Project root: /Users/sinahaghgoo/Library/CloudStorage/OneDrive-Persönlich/Solution Deployment/Project
+PyTorch version: 2.8.0
+CUDA available: False
+MPS available: True
+W&B Project: Driver-Drowsiness-Training
+Project root: /Users/sinahaghgoo/Library/CloudStorage/OneDrive-Persönlich/Solution Deployment/Project
+PyTorch version: 2.8.0
+CUDA available: False
+MPS available: True
+W&B Project: Driver-Drowsiness-Training
+Project root: /Users/sinahaghgoo/Library/CloudStorage/OneDrive-Persönlich/Solution Deployment/Project
+PyTorch version: 2.8.0
+CUDA available: False
+MPS available: True
+W&B Project: Driver-Drowsiness-Training
+Project root: /Users/sinahaghgoo/Library/CloudStorage/OneDrive-Persönlich/Solution Deployment/Project
+PyTorch version: 2.8.0
+CUDA available: False
+MPS available: True
+W&B Project: Driver-Drowsiness-Training
+Project root: /Users/sinahaghgoo/Library/CloudStorage/OneDrive-Persönlich/Solution Deployment/Project
+PyTorch version: 2.8.0
+CUDA available: False
+MPS available: True
+W&B Project: Driver-Drowsiness-Training
+Project root: /Users/sinahaghgoo/Library/CloudStorage/OneDrive-Persönlich/Solution Deployment/Project
+PyTorch version: 2.8.0
+CUDA available: False
+MPS available: True
+W&B Project: Driver-Drowsiness-Training
+Project root: /Users/sinahaghgoo/Library/CloudStorage/OneDrive-Persönlich/Solution Deployment/Project
+PyTorch version: 2.8.0
+CUDA available: False
+MPS available: True
+W&B Project: Driver-Drowsiness-Training
+Project root: /Users/sinahaghgoo/Library/CloudStorage/OneDrive-Persönlich/Solution Deployment/Project
+PyTorch version: 2.8.0
+CUDA available: False
+MPS available: True
+W&B Project: Driver-Drowsiness-Training
+  Train Loss: 0.0198, Train Acc: 99.45%
+  Val Loss: 0.0019, Val Acc: 99.94%
+  Precision: 0.9994, Recall: 0.9994, F1: 0.9994
+  ✓ Saved best model (val_acc: 99.94%)
+
+Epoch 5/10
+Project root: /Users/sinahaghgoo/Library/CloudStorage/OneDrive-Persönlich/Solution Deployment/Project
+PyTorch version: 2.8.0
+CUDA available: False
+MPS available: True
+W&B Project: Driver-Drowsiness-Training
+Project root: /Users/sinahaghgoo/Library/CloudStorage/OneDrive-Persönlich/Solution Deployment/Project
+PyTorch version: 2.8.0
+CUDA available: False
+MPS available: True
+W&B Project: Driver-Drowsiness-Training
+Project root: /Users/sinahaghgoo/Library/CloudStorage/OneDrive-Persönlich/Solution Deployment/Project
+PyTorch version: 2.8.0
+CUDA available: False
+MPS available: True
+W&B Project: Driver-Drowsiness-Training
+Project root: /Users/sinahaghgoo/Library/CloudStorage/OneDrive-Persönlich/Solution Deployment/Project
+PyTorch version: 2.8.0
+CUDA available: False
+MPS available: True
+W&B Project: Driver-Drowsiness-Training
+Project root: /Users/sinahaghgoo/Library/CloudStorage/OneDrive-Persönlich/Solution Deployment/Project
+PyTorch version: 2.8.0
+CUDA available: False
+MPS available: True
+W&B Project: Driver-Drowsiness-Training
+Project root: /Users/sinahaghgoo/Library/CloudStorage/OneDrive-Persönlich/Solution Deployment/Project
+PyTorch version: 2.8.0
+CUDA available: False
+MPS available: True
+W&B Project: Driver-Drowsiness-Training
+Project root: /Users/sinahaghgoo/Library/CloudStorage/OneDrive-Persönlich/Solution Deployment/Project
+PyTorch version: 2.8.0
+CUDA available: False
+MPS available: True
+W&B Project: Driver-Drowsiness-Training
+Project root: /Users/sinahaghgoo/Library/CloudStorage/OneDrive-Persönlich/Solution Deployment/Project
+PyTorch version: 2.8.0
+CUDA available: False
+MPS available: True
+W&B Project: Driver-Drowsiness-Training
+  Train Loss: 0.0175, Train Acc: 99.49%
+  Val Loss: 0.0018, Val Acc: 99.94%
+  Precision: 0.9994, Recall: 0.9994, F1: 0.9994
+
+Epoch 6/10
+Project root: /Users/sinahaghgoo/Library/CloudStorage/OneDrive-Persönlich/Solution Deployment/Project
+PyTorch version: 2.8.0
+CUDA available: False
+MPS available: True
+W&B Project: Driver-Drowsiness-Training
+Project root: /Users/sinahaghgoo/Library/CloudStorage/OneDrive-Persönlich/Solution Deployment/Project
+PyTorch version: 2.8.0
+CUDA available: False
+MPS available: True
+W&B Project: Driver-Drowsiness-Training
+Project root: /Users/sinahaghgoo/Library/CloudStorage/OneDrive-Persönlich/Solution Deployment/Project
+PyTorch version: 2.8.0
+CUDA available: False
+MPS available: True
+W&B Project: Driver-Drowsiness-Training
+Project root: /Users/sinahaghgoo/Library/CloudStorage/OneDrive-Persönlich/Solution Deployment/Project
+PyTorch version: 2.8.0
+CUDA available: False
+MPS available: True
+W&B Project: Driver-Drowsiness-Training
+Project root: /Users/sinahaghgoo/Library/CloudStorage/OneDrive-Persönlich/Solution Deployment/Project
+PyTorch version: 2.8.0
+CUDA available: False
+MPS available: True
+W&B Project: Driver-Drowsiness-Training
+Project root: /Users/sinahaghgoo/Library/CloudStorage/OneDrive-Persönlich/Solution Deployment/Project
+PyTorch version: 2.8.0
+CUDA available: False
+MPS available: True
+W&B Project: Driver-Drowsiness-Training
+Project root: /Users/sinahaghgoo/Library/CloudStorage/OneDrive-Persönlich/Solution Deployment/Project
+PyTorch version: 2.8.0
+CUDA available: False
+MPS available: True
+W&B Project: Driver-Drowsiness-Training
+Project root: /Users/sinahaghgoo/Library/CloudStorage/OneDrive-Persönlich/Solution Deployment/Project
+PyTorch version: 2.8.0
+CUDA available: False
+MPS available: True
+W&B Project: Driver-Drowsiness-Training
+  Train Loss: 0.0135, Train Acc: 99.73%
+  Val Loss: 0.0009, Val Acc: 99.95%
+  Precision: 0.9995, Recall: 0.9995, F1: 0.9995
+  ✓ Saved best model (val_acc: 99.95%)
+
+Epoch 7/10
+Project root: /Users/sinahaghgoo/Library/CloudStorage/OneDrive-Persönlich/Solution Deployment/Project
+PyTorch version: 2.8.0
+CUDA available: False
+MPS available: True
+W&B Project: Driver-Drowsiness-Training
+Project root: /Users/sinahaghgoo/Library/CloudStorage/OneDrive-Persönlich/Solution Deployment/Project
+PyTorch version: 2.8.0
+CUDA available: False
+MPS available: True
+W&B Project: Driver-Drowsiness-Training
+Project root: /Users/sinahaghgoo/Library/CloudStorage/OneDrive-Persönlich/Solution Deployment/Project
+PyTorch version: 2.8.0
+CUDA available: False
+MPS available: True
+W&B Project: Driver-Drowsiness-Training
+Project root: /Users/sinahaghgoo/Library/CloudStorage/OneDrive-Persönlich/Solution Deployment/Project
+PyTorch version: 2.8.0
+CUDA available: False
+MPS available: True
+W&B Project: Driver-Drowsiness-Training
+Project root: /Users/sinahaghgoo/Library/CloudStorage/OneDrive-Persönlich/Solution Deployment/Project
+PyTorch version: 2.8.0
+CUDA available: False
+MPS available: True
+W&B Project: Driver-Drowsiness-Training
+Project root: /Users/sinahaghgoo/Library/CloudStorage/OneDrive-Persönlich/Solution Deployment/Project
+PyTorch version: 2.8.0
+CUDA available: False
+MPS available: True
+W&B Project: Driver-Drowsiness-Training
+Project root: /Users/sinahaghgoo/Library/CloudStorage/OneDrive-Persönlich/Solution Deployment/Project
+PyTorch version: 2.8.0
+CUDA available: False
+MPS available: True
+W&B Project: Driver-Drowsiness-Training
+Project root: /Users/sinahaghgoo/Library/CloudStorage/OneDrive-Persönlich/Solution Deployment/Project
+PyTorch version: 2.8.0
+CUDA available: False
+MPS available: True
+W&B Project: Driver-Drowsiness-Training
+  Train Loss: 0.0145, Train Acc: 99.64%
+  Val Loss: 0.0028, Val Acc: 99.97%
+  Precision: 0.9997, Recall: 0.9997, F1: 0.9997
+  ✓ Saved best model (val_acc: 99.97%)
+
+Epoch 8/10
+Project root: /Users/sinahaghgoo/Library/CloudStorage/OneDrive-Persönlich/Solution Deployment/Project
+PyTorch version: 2.8.0
+CUDA available: False
+MPS available: True
+W&B Project: Driver-Drowsiness-Training
+Project root: /Users/sinahaghgoo/Library/CloudStorage/OneDrive-Persönlich/Solution Deployment/Project
+PyTorch version: 2.8.0
+CUDA available: False
+MPS available: True
+W&B Project: Driver-Drowsiness-Training
+Project root: /Users/sinahaghgoo/Library/CloudStorage/OneDrive-Persönlich/Solution Deployment/Project
+PyTorch version: 2.8.0
+CUDA available: False
+MPS available: True
+W&B Project: Driver-Drowsiness-Training
+Project root: /Users/sinahaghgoo/Library/CloudStorage/OneDrive-Persönlich/Solution Deployment/Project
+PyTorch version: 2.8.0
+CUDA available: False
+MPS available: True
+W&B Project: Driver-Drowsiness-Training
+Project root: /Users/sinahaghgoo/Library/CloudStorage/OneDrive-Persönlich/Solution Deployment/Project
+PyTorch version: 2.8.0
+CUDA available: False
+MPS available: True
+W&B Project: Driver-Drowsiness-Training
+Project root: /Users/sinahaghgoo/Library/CloudStorage/OneDrive-Persönlich/Solution Deployment/Project
+PyTorch version: 2.8.0
+CUDA available: False
+MPS available: True
+W&B Project: Driver-Drowsiness-Training
+Project root: /Users/sinahaghgoo/Library/CloudStorage/OneDrive-Persönlich/Solution Deployment/Project
+PyTorch version: 2.8.0
+CUDA available: False
+MPS available: True
+W&B Project: Driver-Drowsiness-Training
+Project root: /Users/sinahaghgoo/Library/CloudStorage/OneDrive-Persönlich/Solution Deployment/Project
+PyTorch version: 2.8.0
+CUDA available: False
+MPS available: True
+W&B Project: Driver-Drowsiness-Training
+  Train Loss: 0.0106, Train Acc: 99.70%
+  Val Loss: 0.0018, Val Acc: 99.95%
+  Precision: 0.9995, Recall: 0.9995, F1: 0.9995
+
+Epoch 9/10
+Project root: /Users/sinahaghgoo/Library/CloudStorage/OneDrive-Persönlich/Solution Deployment/Project
+PyTorch version: 2.8.0
+CUDA available: False
+MPS available: True
+W&B Project: Driver-Drowsiness-Training
+Project root: /Users/sinahaghgoo/Library/CloudStorage/OneDrive-Persönlich/Solution Deployment/Project
+PyTorch version: 2.8.0
+CUDA available: False
+MPS available: True
+W&B Project: Driver-Drowsiness-Training
+Project root: /Users/sinahaghgoo/Library/CloudStorage/OneDrive-Persönlich/Solution Deployment/Project
+PyTorch version: 2.8.0
+CUDA available: False
+MPS available: True
+W&B Project: Driver-Drowsiness-Training
+Project root: /Users/sinahaghgoo/Library/CloudStorage/OneDrive-Persönlich/Solution Deployment/Project
+PyTorch version: 2.8.0
+CUDA available: False
+MPS available: True
+W&B Project: Driver-Drowsiness-Training
+Project root: /Users/sinahaghgoo/Library/CloudStorage/OneDrive-Persönlich/Solution Deployment/Project
+PyTorch version: 2.8.0
+CUDA available: False
+MPS available: True
+W&B Project: Driver-Drowsiness-Training
+Project root: /Users/sinahaghgoo/Library/CloudStorage/OneDrive-Persönlich/Solution Deployment/Project
+PyTorch version: 2.8.0
+CUDA available: False
+MPS available: True
+W&B Project: Driver-Drowsiness-Training
+Project root: /Users/sinahaghgoo/Library/CloudStorage/OneDrive-Persönlich/Solution Deployment/Project
+PyTorch version: 2.8.0
+CUDA available: False
+MPS available: True
+W&B Project: Driver-Drowsiness-Training
+Project root: /Users/sinahaghgoo/Library/CloudStorage/OneDrive-Persönlich/Solution Deployment/Project
+PyTorch version: 2.8.0
+CUDA available: False
+MPS available: True
+W&B Project: Driver-Drowsiness-Training
+  Train Loss: 0.0134, Train Acc: 99.70%
+  Val Loss: 0.0016, Val Acc: 99.95%
+  Precision: 0.9995, Recall: 0.9995, F1: 0.9995
+
+Epoch 10/10
+Project root: /Users/sinahaghgoo/Library/CloudStorage/OneDrive-Persönlich/Solution Deployment/Project
+PyTorch version: 2.8.0
+CUDA available: False
+MPS available: True
+W&B Project: Driver-Drowsiness-Training
+Project root: /Users/sinahaghgoo/Library/CloudStorage/OneDrive-Persönlich/Solution Deployment/Project
+PyTorch version: 2.8.0
+CUDA available: False
+MPS available: True
+W&B Project: Driver-Drowsiness-Training
+Project root: /Users/sinahaghgoo/Library/CloudStorage/OneDrive-Persönlich/Solution Deployment/Project
+PyTorch version: 2.8.0
+CUDA available: False
+MPS available: True
+W&B Project: Driver-Drowsiness-Training
+Project root: /Users/sinahaghgoo/Library/CloudStorage/OneDrive-Persönlich/Solution Deployment/Project
+PyTorch version: 2.8.0
+CUDA available: False
+MPS available: True
+W&B Project: Driver-Drowsiness-Training
+Project root: /Users/sinahaghgoo/Library/CloudStorage/OneDrive-Persönlich/Solution Deployment/Project
+PyTorch version: 2.8.0
+CUDA available: False
+MPS available: True
+W&B Project: Driver-Drowsiness-Training
+Project root: /Users/sinahaghgoo/Library/CloudStorage/OneDrive-Persönlich/Solution Deployment/Project
+PyTorch version: 2.8.0
+CUDA available: False
+MPS available: True
+W&B Project: Driver-Drowsiness-Training
+Project root: /Users/sinahaghgoo/Library/CloudStorage/OneDrive-Persönlich/Solution Deployment/Project
+PyTorch version: 2.8.0
+CUDA available: False
+MPS available: True
+W&B Project: Driver-Drowsiness-Training
+Project root: /Users/sinahaghgoo/Library/CloudStorage/OneDrive-Persönlich/Solution Deployment/Project
+PyTorch version: 2.8.0
+CUDA available: False
+MPS available: True
+W&B Project: Driver-Drowsiness-Training
+  Train Loss: 0.0087, Train Acc: 99.80%
+  Val Loss: 0.0002, Val Acc: 99.98%
+  Precision: 0.9998, Recall: 0.9998, F1: 0.9998
+  ✓ Saved best model (val_acc: 99.98%)
+
+=== Training Completed ===
+Best validation accuracy: 99.98%
+
+=== Evaluating on Test Set ===
+Project root: /Users/sinahaghgoo/Library/CloudStorage/OneDrive-Persönlich/Solution Deployment/Project
+PyTorch version: 2.8.0
+CUDA available: False
+MPS available: True
+W&B Project: Driver-Drowsiness-Training
+Project root: /Users/sinahaghgoo/Library/CloudStorage/OneDrive-Persönlich/Solution Deployment/Project
+PyTorch version: 2.8.0
+CUDA available: False
+MPS available: True
+W&B Project: Driver-Drowsiness-Training
+Project root: /Users/sinahaghgoo/Library/CloudStorage/OneDrive-Persönlich/Solution Deployment/Project
+PyTorch version: 2.8.0
+CUDA available: False
+MPS available: True
+W&B Project: Driver-Drowsiness-Training
+Project root: /Users/sinahaghgoo/Library/CloudStorage/OneDrive-Persönlich/Solution Deployment/Project
+PyTorch version: 2.8.0
+CUDA available: False
+MPS available: True
+W&B Project: Driver-Drowsiness-Training
+wandb: updating run metadata; uploading artifact drowsiness_detection_model; uploading history steps 20-21, summary, console lines 78-88
+wandb: uploading artifact drowsiness_detection_model; uploading output.log; uploading config.yaml
+wandb: uploading artifact drowsiness_detection_model
+wandb: uploading artifact drowsiness_detection_model; uploading summary, console lines 89-90
+wandb: uploading artifact drowsiness_detection_model
+wandb: uploading artifact drowsiness_detection_model; uploading data
+wandb: uploading artifact drowsiness_detection_model
+wandb: uploading artifact drowsiness_detection_model; uploading data
+wandb: uploading artifact drowsiness_detection_model
+wandb: uploading artifact drowsiness_detection_model; uploading data
+wandb: uploading artifact drowsiness_detection_model
+wandb: uploading artifact drowsiness_detection_model; uploading data
+wandb: uploading artifact drowsiness_detection_model
+wandb: uploading artifact drowsiness_detection_model; uploading data
+wandb: uploading artifact drowsiness_detection_model
+wandb: uploading artifact drowsiness_detection_model; uploading data
+wandb: uploading artifact drowsiness_detection_model
+wandb: uploading artifact drowsiness_detection_model; uploading data
+wandb: uploading artifact drowsiness_detection_model
+wandb: uploading artifact drowsiness_detection_model; uploading data
+wandb: uploading artifact drowsiness_detection_model
+wandb: 
+wandb: Run history:
+wandb:                 epoch ▁▂▃▃▄▅▆▆▇█
+wandb:         test_accuracy ▁
+wandb:               test_f1 ▁
+wandb:         test_f1_alert ▁
+wandb:        test_f1_drowsy ▁
+wandb:             test_loss ▁
+wandb:        test_precision ▁
+wandb:  test_precision_alert ▁
+wandb: test_precision_drowsy ▁
+wandb:           test_recall ▁
+wandb:                   +15 ...
+wandb: 
+wandb: Run summary:
+wandb:                 epoch 9
+wandb:         test_accuracy 99.9681
+wandb:               test_f1 0.99968
+wandb:         test_f1_alert 0.99966
+wandb:        test_f1_drowsy 0.9997
+wandb:             test_loss 0.0014
+wandb:        test_precision 0.99968
+wandb:  test_precision_alert 0.99966
+wandb: test_precision_drowsy 0.9997
+wandb:           test_recall 0.99968
+wandb:                   +15 ...
+wandb: 
+wandb: 🚀 View run drowsiness_cnn_training at: https://wandb.ai/ds24m038-fh-technikum-wien/Driver-Drowsiness-Training/runs/pl0falso
+wandb: ⭐️ View project at: https://wandb.ai/ds24m038-fh-technikum-wien/Driver-Drowsiness-Training
+wandb: Synced 5 W&B file(s), 11 media file(s), 21 artifact file(s) and 0 other file(s)
+wandb: Find logs at: ./wandb/run-20251202_153435-pl0falso/logs
+Test Results:
+  Loss: 0.0014
+  Accuracy: 99.97%
+  Precision: 0.9997
+  Recall: 0.9997
+  F1 Score: 0.9997
+  Per-class Precision: Alert=0.9997, Drowsy=0.9997
+  Per-class Recall: Alert=0.9997, Drowsy=0.9997
+  Per-class F1: Alert=0.9997, Drowsy=0.9997
+
+=== Saving Model Artifact to W&B ===
+✓ Model artifact saved to W&B
+  Artifact name: drowsiness_detection_model
+
+✓ Training complete! Model saved and logged to W&B.
+Model saved to: /Users/sinahaghgoo/Library/CloudStorage/OneDrive-Persönlich/Solution Deployment/Project/models/best_model.pth
+View your run at: https://wandb.ai

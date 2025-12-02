@@ -26,3 +26,9 @@ ENV/
 .DS_Store
 Thumbs.db
 
+# Model files (too large for GitHub)
+models/*.pth
+models/*.pt
+models/*.h5
+models/*.ckpt
+!models/.gitkeep
