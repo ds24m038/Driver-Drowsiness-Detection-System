@@ -23,7 +23,7 @@ Create a `.env` file in the project root:
 
 ```bash
 # Required: Your W&B API key
-WANDB_API_KEY=your_wandb_api_key_here
+WANDB_API_KEY="f26183572c58ebbc017b8996d0cdf2155a634913"
 
 # Optional: W&B project name (default: Driver-Drowsiness-Training)
 WANDB_PROJECT=Driver-Drowsiness-Training
