@@ -173,7 +173,4 @@ This means you don't need to commit large model files to GitHub - they're stored
 - **HOWTO.md** - Step-by-step setup and usage instructions
 - **Approach.md** - Complete project specification
 
-## License
-
-This project is part of a course assignment for "Solution Deployment & Communication".
 
