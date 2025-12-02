@@ -83,7 +83,7 @@ def load_model(model_path: Optional[str] = None, device: str = "cpu") -> Drowsin
     
     Args:
         model_path: Path to model checkpoint. If None, uses default from settings.
-        device: Device to load model on ("cpu" or "cuda")
+        device: Device to load model on ("cpu", "cuda", or "mps" for Apple Silicon)
         
     Returns:
         Loaded model in evaluation mode
@@ -150,16 +150,21 @@ def predict_image(model: nn.Module, image_tensor: torch.Tensor, device: str = "c
         alert_prob = probabilities[0][0].item()  # Index 0 = alert
         drowsy_prob = probabilities[0][1].item()  # Index 1 = drowsy
         
-        # Pessimistic prediction: if drowsy probability exceeds threshold, classify as drowsy
-        # This makes the model more likely to predict drowsy (more pessimistic)
-        if drowsy_prob >= drowsy_threshold:
-            predicted_class = "drowsy"
-            predicted_idx = 1
-            confidence = drowsy_prob
-        else:
+        # PESSIMISTIC prediction logic (more sensitive to drowsiness):
+        # Only predict "alert" if alert_prob is high (>= 0.70)
+        # Otherwise, predict "drowsy" (more pessimistic - err on the side of caution)
+        # Lower threshold means more sensitive drowsiness detection
+        ALERT_CONFIDENCE_THRESHOLD = 0.70  # Need 70% confidence in alert to predict alert (lowered from 0.85)
+        
+        if alert_prob >= ALERT_CONFIDENCE_THRESHOLD:
             predicted_class = "alert"
             predicted_idx = 0
             confidence = alert_prob
+        else:
+            # If not highly confident in alert, predict drowsy (pessimistic)
+            predicted_class = "drowsy"
+            predicted_idx = 1
+            confidence = drowsy_prob
         
         # Get all probabilities
         prob_dict = {
