@@ -85,13 +85,27 @@ def process_frame(frame_data: bytes, model, device: str) -> tuple:
         return "alert", 0.5  # Default to alert on error
 
 
+def get_device():
+    """Determine the best available device for inference.
+    
+    Priority: CUDA (NVIDIA) > MPS (Apple Silicon) > CPU
+    """
+    import torch
+    
+    if torch.cuda.is_available():
+        return "cuda"
+    elif hasattr(torch.backends, "mps") and torch.backends.mps.is_available():
+        return "mps"
+    else:
+        return "cpu"
+
+
 def main():
     """Main inference worker loop."""
     logger.info("Starting inference worker...")
     
     # Determine device
-    import torch
-    device = "cuda" if torch.cuda.is_available() else "cpu"
+    device = get_device()
     
     # Load model
     logger.info(f"Loading model from {MODEL_PATH} on device {device}")

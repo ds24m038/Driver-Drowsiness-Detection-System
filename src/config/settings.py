@@ -32,8 +32,9 @@ NUM_CLASSES = 2
 CLASS_NAMES = ["alert", "drowsy"]  # Index 0: alert, Index 1: drowsy
 
 # Prediction threshold - lower value = more pessimistic (more likely to predict drowsy)
-# 0.3 means if drowsy probability > 0.3, classify as drowsy (even if alert is higher)
-DROWSY_THRESHOLD = float(os.getenv("DROWSY_THRESHOLD", "0.3"))  # Default: 30% drowsy probability triggers drowsy
+# 0.15 means if drowsy probability > 0.15, classify as drowsy (even if alert is higher)
+# This makes the model very pessimistic - it will predict drowsy even with low confidence
+DROWSY_THRESHOLD = float(os.getenv("DROWSY_THRESHOLD", "0.15"))  # Default: 15% drowsy probability triggers drowsy
 
 # Weights & Biases configuration
 WANDB_PROJECT = "SDC Project Final"

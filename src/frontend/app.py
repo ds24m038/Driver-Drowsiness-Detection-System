@@ -5,6 +5,7 @@ import logging
 from typing import Optional, Tuple
 
 import streamlit as st
+import streamlit.components.v1 as components
 import cv2
 import numpy as np
 from PIL import Image
@@ -18,6 +19,8 @@ from src.config.redis_utils import (
     is_alarm_active,
     get_consecutive_drowsy_frames,
     reset_alarm_state,
+    set_current_status,
+    set_alarm_active,
 )
 from src.config.settings import ALARM_THRESHOLD_FRAMES, FPS
 
@@ -32,9 +35,15 @@ st.set_page_config(
     layout="wide"
 )
 
-# WebRTC configuration
+# WebRTC configuration with multiple STUN servers for better connectivity
 RTC_CONFIGURATION = RTCConfiguration(
-    {"iceServers": [{"urls": ["stun:stun.l.google.com:19302"]}]}
+    {
+        "iceServers": [
+            {"urls": ["stun:stun.l.google.com:19302"]},
+            {"urls": ["stun:stun1.l.google.com:19302"]},
+            {"urls": ["stun:stun2.l.google.com:19302"]},
+        ]
+    }
 )
 
 # Load face detection cascade
@@ -165,6 +174,18 @@ def main():
             st.session_state.redis_client.ping()
             st.session_state.redis_connected = True
             logger.info("Redis connection established")
+            
+            # Initialize alarm state if not set (ensure it defaults to False)
+            if get_current_status(st.session_state.redis_client) is None:
+                set_current_status(st.session_state.redis_client, "alert")
+                set_alarm_active(st.session_state.redis_client, False)
+                logger.info("Initialized Redis alarm state to default (alert, alarm=False)")
+            else:
+                # Double-check alarm state is valid - if it's somehow invalid, reset to False
+                alarm_state = is_alarm_active(st.session_state.redis_client)
+                if alarm_state is None:
+                    set_alarm_active(st.session_state.redis_client, False)
+                    logger.info("Reset invalid alarm state to False")
         except Exception as e:
             logger.error(f"Failed to connect to Redis: {e}", exc_info=True)
             st.session_state.redis_connected = False
@@ -189,13 +210,33 @@ def main():
         st.markdown("---")
         st.header("Status")
         
-        # Get current status from Redis
+        # Get current status from Redis - force fresh read
         try:
+            # Force fresh read (no caching)
             current_status = get_current_status(st.session_state.redis_client)
             alarm_active = is_alarm_active(st.session_state.redis_client)
             consecutive_frames = get_consecutive_drowsy_frames(st.session_state.redis_client)
             
-            if current_status == "drowsy":
+            # Update session state for auto-refresh
+            if "last_alarm_state" not in st.session_state:
+                st.session_state.last_alarm_state = alarm_active
+            
+            # Auto-refresh if alarm state changes or if alarm is active (poll every 1 second)
+            if st.session_state.last_alarm_state != alarm_active:
+                st.session_state.last_alarm_state = alarm_active
+                time.sleep(0.1)
+                st.rerun()
+            elif alarm_active:
+                # If alarm is active, refresh every 1 second to keep UI updated
+                if "last_refresh" not in st.session_state:
+                    st.session_state.last_refresh = time.time()
+                elif time.time() - st.session_state.last_refresh > 1.0:
+                    st.session_state.last_refresh = time.time()
+                    st.rerun()
+            
+            if alarm_active:
+                st.error("🚨 **ALARM ACTIVE**")
+            elif current_status == "drowsy":
                 st.error(f"⚠️ Status: **DROWSY**")
             else:
                 st.success(f"✅ Status: **ALERT**")
@@ -239,24 +280,90 @@ def main():
             video_processor_factory=VideoProcessor,
             rtc_configuration=RTC_CONFIGURATION,
             media_stream_constraints={"video": True, "audio": False},
+            async_processing=True,
         )
+        
+        # Display status based on Redis state - force refresh by reading directly
+        # Check alarm status regardless of video playing state
+        try:
+            # Force fresh read from Redis (no caching)
+            current_status = get_current_status(st.session_state.redis_client)
+            alarm_active = is_alarm_active(st.session_state.redis_client)
+            
+            # Ensure we have valid defaults - alarm should be False by default
+            if alarm_active is None:
+                alarm_active = False
+            if current_status is None:
+                current_status = "alert"
+            
+            # Debug: Show actual values
+            logger.info(f"Status check - alarm_active: {alarm_active}, current_status: {current_status}")
+            
+            # Play audio alarm if alarm is active - show this regardless of video state
+            # ONLY show alarm if it's explicitly True
+            if alarm_active is True:
+                st.error("## 🚨 ALARM ACTIVE - Please Wake Up!")
+                # Use JavaScript to play beep sound continuously
+                alarm_js = """
+                <script>
+                    (function() {
+                        var audioContext = null;
+                        var alarmInterval = null;
+                        
+                        // Clear any existing interval
+                        if (window.currentAlarmInterval) {
+                            clearInterval(window.currentAlarmInterval);
+                            window.currentAlarmInterval = null;
+                        }
+                        
+                        function playBeep() {
+                            try {
+                                if (!audioContext) {
+                                    audioContext = new (window.AudioContext || window.webkitAudioContext)();
+                                }
+                                
+                                var oscillator = audioContext.createOscillator();
+                                var gainNode = audioContext.createGain();
+                                
+                                oscillator.connect(gainNode);
+                                gainNode.connect(audioContext.destination);
+                                
+                                oscillator.frequency.value = 800;
+                                oscillator.type = 'sine';
+                                
+                                gainNode.gain.setValueAtTime(0.3, audioContext.currentTime);
+                                gainNode.gain.exponentialRampToValueAtTime(0.01, audioContext.currentTime + 0.3);
+                                
+                                oscillator.start(audioContext.currentTime);
+                                oscillator.stop(audioContext.currentTime + 0.3);
+                            } catch(e) {
+                                console.log('Audio error:', e);
+                            }
+                        }
+                        
+                        // Play beep immediately and then every 0.5 seconds
+                        playBeep();
+                        window.currentAlarmInterval = setInterval(playBeep, 500);
+                    })();
+                </script>
+                """
+                components.html(alarm_js, height=0)
+                
+                # Auto-refresh page every 0.5 seconds when alarm is active
+                time.sleep(0.5)
+                st.rerun()
+            elif current_status == "drowsy":
+                st.warning("## ⚠️ DROWSY - Stay Alert!")
+            else:
+                st.success("## ✅ ALERT - You're awake!")
+        except Exception as e:
+            logger.error(f"Error getting status: {e}", exc_info=True)
+            # On error, default to alert state (not alarm!)
+            st.warning("⚠️ Could not read status from Redis. Defaulting to ALERT state.")
+            st.success("## ✅ ALERT - You're awake!")
         
         if webrtc_ctx.state.playing:
             st.success("✅ Video stream active - Processing frames continuously")
-            
-            # Display status based on Redis state
-            try:
-                current_status = get_current_status(st.session_state.redis_client)
-                alarm_active = is_alarm_active(st.session_state.redis_client)
-                
-                if alarm_active:
-                    st.error("## 🚨 ALARM ACTIVE - Please Wake Up!")
-                elif current_status == "drowsy":
-                    st.warning("## ⚠️ DROWSY - Stay Alert!")
-                else:
-                    st.success("## ✅ ALERT - You're awake!")
-            except Exception as e:
-                logger.error(f"Error getting status: {e}", exc_info=True)
         else:
             st.info("📹 Click 'START' above to begin video streaming")
     

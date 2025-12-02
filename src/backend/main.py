@@ -25,7 +25,22 @@ app = FastAPI(title="Driver Drowsiness Detection API", version="1.0.0")
 
 # Global model variable
 model = None
-device = "cuda" if torch.cuda.is_available() else "cpu"
+
+
+def get_device():
+    """Determine the best available device for inference.
+    
+    Priority: CUDA (NVIDIA) > MPS (Apple Silicon) > CPU
+    """
+    if torch.cuda.is_available():
+        return "cuda"
+    elif hasattr(torch.backends, "mps") and torch.backends.mps.is_available():
+        return "mps"
+    else:
+        return "cpu"
+
+
+device = get_device()
 
 
 @app.on_event("startup")
