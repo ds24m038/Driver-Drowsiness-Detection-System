@@ -10,4 +10,4 @@ RUN pip install --no-cache-dir -r requirements.txt
 
 COPY . .
 
-CMD ["python", "worker.py"]
+CMD ["python", "worker_inference.py"]

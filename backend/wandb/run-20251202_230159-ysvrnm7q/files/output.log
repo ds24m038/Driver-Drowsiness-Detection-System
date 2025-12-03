@@ -1,0 +1,47 @@
+Logged in to wandb
+Checking for model in Modal Volume: drowsiness-dataset-vol...
+Downloading /data/drowsiness_resnet18.pth to ../models/resnet18_drowsiness.pth...
+Model file not found in Modal Volume! Have you run the training script?
+Using device: cpu
+Warning: ../models/resnet18_drowsiness.pth not found. Predictions will be random/simulated.
+Worker listening...
+Traceback (most recent call last):
+  File "/Users/marcelgandler/Documents/FH_Technikum/Solution Deployment/Solution-Deployment-Project/backend/worker_inference.py", line 165, in <module>
+    streams = redis_client.xread({'camera_stream': last_id}, count=1, block=1000)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/marcelgandler/miniconda3/envs/SDC-P/lib/python3.12/site-packages/redis/commands/core.py", line 4214, in xread
+    return self.execute_command("XREAD", *pieces, keys=keys)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/marcelgandler/miniconda3/envs/SDC-P/lib/python3.12/site-packages/redis/client.py", line 657, in execute_command
+    return self._execute_command(*args, **options)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/marcelgandler/miniconda3/envs/SDC-P/lib/python3.12/site-packages/redis/client.py", line 668, in _execute_command
+    return conn.retry.call_with_retry(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/marcelgandler/miniconda3/envs/SDC-P/lib/python3.12/site-packages/redis/retry.py", line 116, in call_with_retry
+    return do()
+           ^^^^
+  File "/Users/marcelgandler/miniconda3/envs/SDC-P/lib/python3.12/site-packages/redis/client.py", line 669, in <lambda>
+    lambda: self._send_command_parse_response(
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/marcelgandler/miniconda3/envs/SDC-P/lib/python3.12/site-packages/redis/client.py", line 640, in _send_command_parse_response
+    return self.parse_response(conn, command_name, **options)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/marcelgandler/miniconda3/envs/SDC-P/lib/python3.12/site-packages/redis/client.py", line 691, in parse_response
+    response = connection.read_response()
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/marcelgandler/miniconda3/envs/SDC-P/lib/python3.12/site-packages/redis/connection.py", line 1133, in read_response
+    response = self._parser.read_response(disable_decoding=disable_decoding)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/marcelgandler/miniconda3/envs/SDC-P/lib/python3.12/site-packages/redis/_parsers/resp2.py", line 15, in read_response
+    result = self._read_response(disable_decoding=disable_decoding)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/marcelgandler/miniconda3/envs/SDC-P/lib/python3.12/site-packages/redis/_parsers/resp2.py", line 25, in _read_response
+    raw = self._buffer.readline()
+          ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/marcelgandler/miniconda3/envs/SDC-P/lib/python3.12/site-packages/redis/_parsers/socket.py", line 115, in readline
+    self._read_from_socket()
+  File "/Users/marcelgandler/miniconda3/envs/SDC-P/lib/python3.12/site-packages/redis/_parsers/socket.py", line 65, in _read_from_socket
+    data = self._sock.recv(socket_read_size)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+KeyboardInterrupt

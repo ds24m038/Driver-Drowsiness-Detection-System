@@ -1,0 +1,56 @@
+_wandb:
+    value:
+        cli_version: 0.23.0
+        e:
+            3mjrh2h3baekn86z6pgx5quii6kuoobi:
+                apple:
+                    ecpuCores: 4
+                    gpuCores: 10
+                    memoryGb: 16
+                    name: Apple M3
+                    pcpuCores: 4
+                    ramTotalBytes: "17179869184"
+                    swapTotalBytes: "7516192768"
+                codePath: backend/worker_inference.py
+                codePathLocal: worker_inference.py
+                cpu_count: 8
+                cpu_count_logical: 8
+                disk:
+                    /:
+                        total: "494384795648"
+                        used: "379925114880"
+                email: ds24m007@technikum-wien.at
+                executable: /Users/marcelgandler/miniconda3/envs/SDC-P/bin/python
+                git:
+                    commit: e86ca14598d8cf574a3cb2f8fa5efcbc3ec57f83
+                    remote: git@github.com:ds24m038/Solution-Deployment-Project.git
+                host: Marcels-Air.telekom.ip
+                memory:
+                    total: "17179869184"
+                os: macOS-14.5-arm64-arm-64bit
+                program: /Users/marcelgandler/Documents/FH_Technikum/Solution Deployment/Solution-Deployment-Project/backend/worker_inference.py
+                python: CPython 3.12.12
+                root: /Users/marcelgandler/Documents/FH_Technikum/Solution Deployment/Solution-Deployment-Project/backend
+                startedAt: "2025-12-02T22:05:22.298128Z"
+                writerId: 3mjrh2h3baekn86z6pgx5quii6kuoobi
+        m: []
+        python_version: 3.12.12
+        t:
+            "1":
+                - 1
+                - 41
+            "2":
+                - 1
+                - 41
+            "3":
+                - 16
+            "4": 3.12.12
+            "5": 0.23.0
+            "12": 0.23.0
+            "13": darwin-arm64
+architecture:
+    value: resnet18
+dataset:
+    value: live-webcam
+device:
+    value: cpu

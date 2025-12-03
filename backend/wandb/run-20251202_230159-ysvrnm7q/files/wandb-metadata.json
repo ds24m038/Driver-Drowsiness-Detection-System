@@ -1,0 +1,37 @@
+{
+  "os": "macOS-14.5-arm64-arm-64bit",
+  "python": "CPython 3.12.12",
+  "startedAt": "2025-12-02T22:01:59.221974Z",
+  "program": "/Users/marcelgandler/Documents/FH_Technikum/Solution Deployment/Solution-Deployment-Project/backend/worker_inference.py",
+  "codePath": "backend/worker_inference.py",
+  "codePathLocal": "worker_inference.py",
+  "git": {
+    "remote": "git@github.com:ds24m038/Solution-Deployment-Project.git",
+    "commit": "e86ca14598d8cf574a3cb2f8fa5efcbc3ec57f83"
+  },
+  "email": "ds24m007@technikum-wien.at",
+  "root": "/Users/marcelgandler/Documents/FH_Technikum/Solution Deployment/Solution-Deployment-Project/backend",
+  "host": "Marcels-Air.telekom.ip",
+  "executable": "/Users/marcelgandler/miniconda3/envs/SDC-P/bin/python",
+  "cpu_count": 8,
+  "cpu_count_logical": 8,
+  "disk": {
+    "/": {
+      "total": "494384795648",
+      "used": "379923988480"
+    }
+  },
+  "memory": {
+    "total": "17179869184"
+  },
+  "apple": {
+    "name": "Apple M3",
+    "ecpuCores": 4,
+    "pcpuCores": 4,
+    "gpuCores": 10,
+    "memoryGb": 16,
+    "swapTotalBytes": "7516192768",
+    "ramTotalBytes": "17179869184"
+  },
+  "writerId": "jqb6by86jptio9quvy4zs2ibqtlwr28r"
+}
