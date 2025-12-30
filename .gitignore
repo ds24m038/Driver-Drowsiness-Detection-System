@@ -1,8 +1,8 @@
 # Data folder
 Data/
 
-# Environment variables --> I INCLUDED THIS SO THAT YOU CAN USE THE WANDB API KEY TO DOWNLOAD THE MODEL FROM WANDB.AI AND ALSO SEE THAT ALL THE PERFORMANCE TRACKING WAS DONE IN WANDB.AI
-#.env
+# Environment variables
+.env
 
 # Common Python ignores (if applicable)
 __pycache__/

@@ -1,176 +1,202 @@
-# Driver Drowsiness Detection System
+# 🚗 Driver Drowsiness Detection System
 
-A complete end-to-end machine learning solution for detecting driver drowsiness using real-time webcam analysis, PyTorch CNN models, FastAPI backend, Streamlit frontend, Redis Streams for inter-process communication, and Weights & Biases for experiment tracking.
+A real-time ML-powered system that monitors driver alertness through webcam analysis and triggers an alarm sound and warning when drowsiness is detected.
 
-## Overview
 
-This system monitors a driver's state in real-time through webcam footage and triggers visual and audio alarms when drowsiness is detected for a sustained period (10 seconds). The architecture is fully containerized with Docker and can be deployed with a single command.
+---
 
-## System Architecture
+## ✨ Features
+
+- **Real-time Detection** — Continuous webcam monitoring with face detection
+- **Deep Learning Model** — Custom CNN trained on 41K+ driver images
+- **Microservices Architecture** — Decoupled services communicating via Redis Streams
+- **Automatic Alarm System** — Visual + audio alerts after 10 seconds of drowsiness
+- **Auto Model Loading** — Downloads trained model from W&B automatically
+- **Fully Containerized** — Single-command deployment with Docker Compose
+
+---
+
+## 🏗️ Architecture
 
 ```
-┌─────────────┐
-│  Streamlit  │  Webcam Capture → Face Detection → Frame Publishing
-│  Frontend   │──────────────────────────────────────────────────┐
-└─────────────┘                                                  │
-                                                                  ▼
-                                                          ┌──────────────┐
-                                                          │    Redis     │
-                                                          │   Streams    │
-                                                          └──────────────┘
-                                                                  │
-                    ┌────────────────────────────────────────────┼─────────────────────────────┐
-                    │                                            │                             │
-                    ▼                                            ▼                             ▼
-          ┌─────────────────┐                        ┌──────────────────┐          ┌─────────────────┐
-          │ Inference Worker│                        │  Alarm Manager  │          │  FastAPI Backend│
-          │                 │                        │                  │          │                 │
-          │ Consumes frames │                        │ Tracks drowsiness│          │ Model Serving   │
-          │ Runs inference  │                        │ Manages alarms   │          │ REST API        │
-          │ Publishes preds │                        │ Updates state    │          │                 │
-          └─────────────────┘                        └──────────────────┘          └─────────────────┘
+┌─────────────┐     ┌──────────────┐     ┌─────────────────┐
+│  Streamlit  │────▶│    Redis     │◀────│ Inference Worker│
+│  Frontend   │     │   Streams    │     │   (PyTorch)     │
+└─────────────┘     └──────────────┘     └─────────────────┘
+       │                   │
+       │                   ▼
+       │            ┌──────────────┐     ┌─────────────────┐
+       └───────────▶│ Alarm Manager│     │  FastAPI API    │
+                    └──────────────┘     └─────────────────┘
 ```
 
-### Components
+| Service | Description |
+|---------|-------------|
+| **Frontend** | Webcam capture, face detection, real-time display |
+| **Inference Worker** | Consumes frames, runs CNN inference |
+| **Alarm Manager** | Tracks drowsy frames, triggers alarms |
+| **FastAPI** | REST API for model serving |
+| **Redis** | Message broker + state management |
 
-1. **FastAPI Backend** (`src/backend/`)
-   - REST API for model serving
-   - Health check and prediction endpoints
-   - Loads PyTorch CNN model at startup
+---
 
-2. **Inference Worker** (`src/inference_worker/`)
-   - Consumes frames from Redis Streams
-   - Runs inference using the trained model
-   - Publishes predictions to Redis Streams
-
-3. **Alarm Manager** (`src/alarm_manager/`)
-   - Consumes predictions from Redis Streams
-   - Tracks consecutive drowsy frames
-   - Manages alarm state (activates after 10 seconds of drowsiness)
-
-4. **Streamlit Frontend** (`src/frontend/`)
-   - Webcam capture and face detection (OpenCV Haar Cascades)
-   - Real-time visualization with bounding boxes
-   - Displays driver status and triggers alarms
-   - "I am awake" button to reset alarm state
-
-5. **Redis** (Official Docker image)
-   - Central state management
-   - Redis Streams for async message passing
-   - State keys for current status, counters, and alarm flags
-
-6. **Training Notebooks** (`notebooks/`)
-   - Data exploration
-   - Model training with W&B integration
-   - Inference demos
-
-## Quick Start
+## 🚀 Quick Start
 
 ### Prerequisites
 
-- Docker and Docker Compose
-- Weights & Biases API key (for automatic model download)
-- OR a trained model file at `models/best_model.pth` (see HOWTO.md for training instructions)
+- Docker & Docker Compose
+- Weights & Biases API key ([get one here](https://wandb.ai/authorize))
 
-### Running the System
+### 1. Clone & Configure
 
-1. **Set up environment variables:**
-   ```bash
-   # Create a .env file with your W&B API key
-   echo "WANDB_API_KEY=your_wandb_api_key_here" > .env
-   
-   # Optional: Specify W&B project and artifact version
-   echo "WANDB_PROJECT=Driver-Drowsiness-Training" >> .env
-   echo "WANDB_ARTIFACT_VERSION=latest" >> .env
-   ```
-   
-   Get your W&B API key from: https://wandb.ai/authorize
+```bash
+git clone https://github.com/YOUR_USERNAME/driver-drowsiness-detection.git
+cd driver-drowsiness-detection
 
-2. **Start all services:**
-   ```bash
-   docker compose up --build
-   ```
-   
-   The system will automatically:
-   - Download the model from W&B if not found locally
-   - Fall back to local model if available
-   - Use the downloaded model for inference
+# Create environment file
+cp .env.example .env
+# Edit .env and add your WANDB_API_KEY
+```
 
-3. **Access the Streamlit UI:**
-   - Open your browser to `http://localhost:8501`
-   - Click "Start Detection"
-   - Position your face in front of the webcam
-   - The system will monitor your state and trigger alarms if drowsy
+### 2. Start the System
 
-### Service Endpoints
+```bash
+docker compose up --build
+```
 
-- **Streamlit Frontend**: http://localhost:8501
-- **FastAPI Backend**: http://localhost:8000
-  - Health: http://localhost:8000/health
-  - API Docs: http://localhost:8000/docs
-- **Redis**: localhost:6379
+The system will automatically download the trained model from W&B.
 
-## Configuration
+### 3. Open the App
 
-Key configuration parameters (in `src/config/settings.py`):
+- **Frontend**: [http://localhost:8501](http://localhost:8501)
+- **API Docs**: [http://localhost:8000/docs](http://localhost:8000/docs)
 
-- `ALARM_THRESHOLD_SECONDS = 10` - Seconds of consecutive drowsiness before alarm
-- `FPS = 5` - Frames per second for threshold calculation
-- `ALARM_THRESHOLD_FRAMES = 50` - Frames threshold (FPS × seconds)
+---
 
-### Model Loading
+## 📖 Usage
 
-The system supports automatic model loading from Weights & Biases:
+1. Click **"▶️ Start Detection"** in the sidebar
+2. Click **"START"** on the video player and allow camera access
+3. Position your face in the camera view
+4. The system will monitor continuously:
+   - 🟢 **Green box** = Alert
+   - 🟠 **Orange box** = Drowsy
+   - 🔴 **Red box** = Alarm active (after 10s of drowsiness)
+5. Click **"🙋 I am Awake"** to reset the alarm
 
-- **Automatic Download**: If the model file is not found locally, the system will automatically download it from W&B
-- **Environment Variables**:
-  - `WANDB_API_KEY` - Your W&B API key (required for download)
-  - `WANDB_PROJECT` - W&B project name (default: "Driver-Drowsiness-Training")
-  - `WANDB_ARTIFACT_VERSION` - Artifact version to download (default: "latest")
-- **Artifact Name**: The system looks for the artifact named `drowsiness_detection_model`
-- **Fallback**: If W&B download fails, the system will look for a local model file
+---
 
-This means you don't need to commit large model files to GitHub - they're stored in W&B and downloaded automatically when needed.
+## ⚙️ Configuration
 
-## Technology Stack
+| Variable | Default | Description |
+|----------|---------|-------------|
+| `WANDB_API_KEY` | — | Your W&B API key (required) |
+| `WANDB_PROJECT` | `Driver-Drowsiness-Training` | W&B project name |
+| `WANDB_ARTIFACT_VERSION` | `latest` | Model version to download |
+| `ALARM_THRESHOLD_SECONDS` | `10` | Seconds before alarm triggers |
+| `FPS` | `5` | Frame processing rate |
 
-- **ML Framework**: PyTorch
-- **Backend**: FastAPI
-- **Frontend**: Streamlit
-- **Message Queue**: Redis with Redis Streams
-- **Experiment Tracking**: Weights & Biases (W&B)
-- **Containerization**: Docker & Docker Compose
-- **Package Manager**: UV
+---
 
-## Project Structure
+## 🧪 API Reference
+
+| Endpoint | Method | Description |
+|----------|--------|-------------|
+| `/health` | GET | Health check |
+| `/predict` | POST | Predict from uploaded image |
+| `/predict/base64` | POST | Predict from base64 image |
+| `/docs` | GET | Interactive API documentation |
+
+**Example:**
+```bash
+curl -X POST "http://localhost:8000/predict" -F "file=@image.png"
+```
+
+---
+
+## 🏋️ Training the Model
+
+The dataset is available on Kaggle: [Driver Drowsiness Dataset (DDD)](https://www.kaggle.com/datasets/ismailnasri20/driver-drowsiness-dataset-ddd)
+
+```bash
+# Place data in Data/ folder
+# Data/Drowsy/      - ~22K drowsy images
+# Data/Non Drowsy/  - ~19K alert images
+```
+
+### Standard Training
+
+```bash
+python train_model.py --mode train
+```
+
+### Hyperparameter Tuning with W&B Sweeps
+
+The training script supports **automatic hyperparameter optimization** using Bayesian search:
+
+```bash
+# Run 10 trials of hyperparameter search
+python train_model.py --mode sweep --sweep-count 10
+```
+
+**Parameters searched:**
+
+| Parameter | Search Space |
+|-----------|--------------|
+| `learning_rate` | 0.0001 - 0.01 (log uniform) |
+| `batch_size` | 16, 32, 64 |
+| `epochs` | 5, 10, 15 |
+| `dropout_rate` | 0.3, 0.5, 0.7 |
+| `optimizer` | Adam, SGD, AdamW |
+
+View sweep results at [wandb.ai](https://wandb.ai) in the Sweeps dashboard.
+
+---
+
+## 🛠️ Tech Stack
+
+| Component | Technology |
+|-----------|------------|
+| ML Framework | PyTorch |
+| Backend | FastAPI + Uvicorn |
+| Frontend | Streamlit + WebRTC |
+| Message Queue | Redis Streams |
+| Experiment Tracking | Weights & Biases |
+| Containerization | Docker Compose |
+| Package Manager | UV |
+
+---
+
+## 📁 Project Structure
 
 ```
-.
-├── Data/                    # Driver Drowsiness Dataset
-│   ├── Drowsy/
-│   └── Non Drowsy/
-├── notebooks/               # Jupyter notebooks for training
-│   ├── 01_data_exploration.ipynb
-│   ├── 02_model_training.ipynb
-│   └── 03_inference_demo.ipynb
 ├── src/
-│   ├── backend/            # FastAPI application
-│   ├── frontend/           # Streamlit application
-│   ├── inference_worker/   # Inference service
-│   ├── alarm_manager/      # Alarm logic service
-│   └── config/             # Shared configuration
-├── docker/                 # Dockerfiles
-├── models/                 # Trained model storage
-├── docker-compose.yml      # Service orchestration
-├── pyproject.toml         # Dependencies (UV)
-├── README.md              # This file
-└── HOWTO.md               # Detailed setup guide
+│   ├── backend/          # FastAPI app + CNN model
+│   ├── frontend/         # Streamlit app
+│   ├── inference_worker/ # Frame processing worker
+│   ├── alarm_manager/    # Alarm logic
+│   └── config/           # Settings + Redis utils
+├── docker/               # Dockerfiles
+├── notebooks/            # Jupyter notebooks
+├── models/               # Trained model (auto-downloaded)
+├── train_model.py        # Training script
+└── docker-compose.yml    # Service orchestration
 ```
 
-## Documentation
+---
 
-- **README.md** (this file) - Overview and quickstart
-- **HOWTO.md** - Step-by-step setup and usage instructions
-- **Approach.md** - Complete project specification
+## 🐛 Troubleshooting
+
+| Issue | Solution |
+|-------|----------|
+| Model not found | Check `WANDB_API_KEY` in `.env` |
+| Webcam not working | Grant browser camera permissions |
+| Redis connection failed | Ensure `docker compose up` completed |
+| Alarm not triggering | Check logs: `docker compose logs alarm_manager` |
 
 
+
+## 🙏 Acknowledgments
+
+- Dataset: [Driver Drowsiness Dataset (DDD)](https://www.kaggle.com/datasets/ismailnasri20/driver-drowsiness-dataset-ddd) by Ismail Nasri
+- Face Detection: OpenCV Haar Cascades
